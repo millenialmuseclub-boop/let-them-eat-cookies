@@ -3,6 +3,7 @@ import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { COOKIES, COLLECTIONS, allCookiesProducts } from '../lib/data'
 import { CookieCard } from '../components/CookieCard'
 import { DiscoverFeatureCard } from '../components/DiscoverFeatureCard'
+import { getCookieImage, getSceneImage } from '../lib/images'
 
 function cookieOfTheDay() {
   const dayIndex = Math.floor(Date.now() / 86400000) % COOKIES.length
@@ -44,10 +45,10 @@ export function MainPage() {
       </section>
 
       <section className="discover-feature-grid" aria-label="Discover">
-        <DiscoverFeatureCard to="/atlas" title="Browse by Origin" description="A world map of cookie traditions, region by region." icon="🗺️" />
-        <DiscoverFeatureCard to="/quiz" title="Cookie Personality Quiz" description="Find the cookie that matches your personality." icon="🍪" />
-        <DiscoverFeatureCard to="/sommelier" title="Cookie Sommelier" description="Get a matched recommendation based on your taste." icon="🎯" />
-        <DiscoverFeatureCard to="/workshop" title="The Workshop" description="Understand the craft behind every cookie." icon="🥣" />
+        <DiscoverFeatureCard to="/atlas" title="Browse by Origin" description="A world map of cookie traditions, region by region." icon="🗺️" image={getCookieImage('cookie_alfajor')} />
+        <DiscoverFeatureCard to="/quiz" title="Cookie Personality Quiz" description="Find the cookie that matches your personality." icon="🍪" image={getCookieImage('cookie_snickerdoodle')} />
+        <DiscoverFeatureCard to="/sommelier" title="Cookie Sommelier" description="Get a matched recommendation based on your taste." icon="🎯" image={getCookieImage('cookie_austrian_linzer')} />
+        <DiscoverFeatureCard to="/workshop" title="The Workshop" description="Understand the craft behind every cookie." icon="🥣" image={getSceneImage('scene_dough_lab')} />
       </section>
 
       <section className="section-with-view-all" aria-labelledby="collections-heading">

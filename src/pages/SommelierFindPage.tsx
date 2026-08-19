@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { findCookies, explainResult } from '../lib/sommelier'
 import { FloatingBackButton } from '../components/FloatingBackButton'
+import { CookieThumbnail } from '../components/CookieHeroImage'
 import type { FindQuery } from '../types/sommelier'
 import type { CookieFamily, CookieFlavorTag } from '../types/cookie'
 
@@ -99,11 +100,22 @@ export function SommelierFindPage() {
       {submitted && (
         <section className="find-results" aria-live="polite">
           <h2>Your Matches</h2>
-          <ol>
-            {results.map(({ cookie, result }) => (
-              <li className="find-result-item" key={cookie.id}>
-                <h3><Link to={`/encyclopedia/${cookie.id}`}>{cookie.name}</Link> -- {result.score}% match</h3>
-                <p>{explainResult(cookie, result)}</p>
+          <ol className="find-result-list">
+            {results.map(({ cookie, result }, index) => (
+              <li
+                className={`card find-result-card${index === 0 ? ' find-result-card-highlight' : ''}`}
+                key={cookie.id}
+              >
+                <div className="find-result-row">
+                  <CookieThumbnail cookieId={cookie.id} name={cookie.name} />
+                  <div>
+                    <div className="find-result-heading">
+                      <h3><Link to={`/encyclopedia/${cookie.id}`}>{cookie.name}</Link></h3>
+                      <span className="find-result-score">{result.score}% match</span>
+                    </div>
+                    <p className="find-result-details">{explainResult(cookie, result)}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ol>

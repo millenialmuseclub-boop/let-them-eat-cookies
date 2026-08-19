@@ -324,68 +324,79 @@ textarea:focus-visible,
   font-size: 18px;
 }
 
-/* ---------- Hero / thumbnail photography ---------- */
+/* ---------- Hero / thumbnail photography ----------
+   Single source of truth for cookie photography sizing (previously duplicated/conflicting with a
+   second, orphaned block that targeted class names -- "-hero"/"-thumbnail" -- no component ever
+   rendered; the real component output is "-figure"/"-thumb", consolidated here). The detail-page
+   hero bleeds to the page-container's own edges (mirrors Cake's card-bleed treatment, adapted to
+   Cookies' full-page hero context rather than a card context); grid thumbnails stay flush inside
+   their card via the card's own overflow:hidden, so they only need top-corner rounding. */
 
-.cookie-hero-image-hero {
+.cookie-hero-image-figure {
   position: relative;
-  margin: -20px -20px 16px;
+  margin: 0 -16px 20px;
 }
 
-.cookie-hero-image-hero img {
-  width: 100%;
-  height: 280px;
+.cookie-hero-image {
+  width: calc(100% + 32px);
+  height: 260px;
   object-fit: cover;
   display: block;
-  border-radius: 12px 12px 0 0;
+  border-radius: 16px;
+}
+
+@media (min-width: 640px) {
+  .cookie-hero-image {
+    height: 340px;
+  }
 }
 
 .cookie-hero-image-credit {
   position: absolute;
-  bottom: 6px;
-  right: 8px;
+  bottom: 14px;
+  right: 14px;
   display: inline-block;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.55);
-  background: rgba(0, 0, 0, 0.28);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 999px;
-  padding: 3px 7px;
+  padding: 5px 10px;
   margin: 0;
 }
 
-.cookie-hero-image-thumbnail {
-  margin: -20px -20px 12px;
-}
-
-.cookie-hero-image-thumbnail img {
+.cookie-hero-image-thumb {
   width: 100%;
-  height: 140px;
+  height: auto;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
   border-radius: 12px 12px 0 0;
 }
 
 .cookie-hero-image-placeholder {
-  background: var(--caramel-bg);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--caramel-bg);
+  font-size: 2.5rem;
+}
+
+.cookie-hero-image-figure .cookie-hero-image-placeholder {
+  width: calc(100% + 32px);
+  height: 260px;
+  border-radius: 16px;
+}
+
+@media (min-width: 640px) {
+  .cookie-hero-image-figure .cookie-hero-image-placeholder {
+    height: 340px;
+  }
+}
+
+.cookie-hero-image-placeholder-thumb {
+  aspect-ratio: 4 / 3;
   border-radius: 12px 12px 0 0;
-}
-
-.cookie-hero-image-thumbnail.cookie-hero-image-placeholder {
-  height: 140px;
-}
-
-.cookie-hero-image-hero.cookie-hero-image-placeholder {
-  height: 280px;
-}
-
-.cookie-hero-image-placeholder img {
-  width: 40%;
-  height: 40%;
-  object-fit: contain;
-  border-radius: 0;
 }
 
 /* ---------- Feature cards (Main/Workshop/Crumb grids) ---------- */
@@ -418,13 +429,6 @@ textarea:focus-visible,
 .discover-feature-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 28px rgba(46, 32, 21, 0.18);
-}
-
-.discover-feature-card .cookie-hero-image-hero img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
 }
 
 .discover-feature-card-image {
@@ -461,9 +465,9 @@ textarea:focus-visible,
   color: white;
 }
 
-.discover-feature-card-content h2 {
+.discover-feature-card-content h3 {
   color: white;
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 4px;
 }
 
@@ -487,7 +491,6 @@ textarea:focus-visible,
 }
 
 @media (max-width: 640px) {
-  .discover-feature-card .cookie-hero-image-hero img,
   .discover-feature-card-image img {
     height: 220px;
   }
@@ -1248,39 +1251,52 @@ textarea:focus-visible,
 
 .find-result-row {
   display: grid;
-  grid-template-columns: 90px auto 1fr;
+  grid-template-columns: 90px 1fr;
   gap: 14px;
   align-items: start;
 }
 
-.find-result-row .cookie-hero-image-thumbnail {
-  margin: 0;
+.find-result-row .cookie-hero-image-thumb {
   width: 90px;
-}
-
-.find-result-row .cookie-hero-image-thumbnail img {
   height: 90px;
+  aspect-ratio: auto;
   border-radius: 10px;
 }
 
+.find-result-row .cookie-hero-image-placeholder-thumb {
+  width: 90px;
+  height: 90px;
+  aspect-ratio: auto;
+  border-radius: 10px;
+  font-size: 1.6rem;
+}
+
+.find-result-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .find-result-score {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--caramel);
 }
 
-.find-result-details ul {
-  padding-left: 18px;
-  margin: 8px 0 0;
+.find-result-details {
+  margin: 6px 0 0;
   font-size: 14px;
 }
 
 @media (max-width: 640px) {
   .find-result-row {
-    grid-template-columns: 70px 1fr;
+    grid-template-columns: 64px 1fr;
   }
-  .find-result-score {
-    grid-column: 2;
+  .find-result-row .cookie-hero-image-thumb,
+  .find-result-row .cookie-hero-image-placeholder-thumb {
+    width: 64px;
+    height: 64px;
   }
 }
 
@@ -1439,6 +1455,7 @@ textarea:focus-visible,
   max-width: 1080px;
   margin: 0 auto;
   padding: 20px 16px 40px;
+  overflow-x: hidden;
 }
 
 .page-container:has(> .floating-back-button) {
@@ -1535,29 +1552,6 @@ textarea:focus-visible,
   margin-top: 12px;
 }
 .collection-preview-count { font-size: 0.82rem; opacity: 0.65; }
-
-/* Cookie hero image + placeholder */
-.cookie-hero-image-figure { margin: 0 0 16px; }
-.cookie-hero-image,
-.cookie-hero-image-thumb {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  object-fit: cover;
-}
-.cookie-hero-image-thumb { aspect-ratio: 4 / 3; }
-.cookie-hero-image-placeholder,
-.cookie-hero-image-placeholder-thumb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--caramel-bg);
-  border-radius: 12px;
-  font-size: 2.5rem;
-  aspect-ratio: 4 / 3;
-}
-.cookie-hero-image-placeholder { aspect-ratio: 16 / 9; margin-bottom: 16px; }
 
 /* Discover feature grid card internals */
 .discover-feature-card-scrim {
@@ -1734,8 +1728,14 @@ textarea:focus-visible,
 .find-page { }
 .find-form { display: flex; flex-direction: column; gap: 20px; margin-top: 16px; }
 .find-slider-row { display: grid; grid-template-columns: 100px 1fr 40px; align-items: center; gap: 10px; }
+
+.find-slider-row input[type="range"] {
+  accent-color: var(--caramel);
+  height: 6px;
+  cursor: pointer;
+}
 .find-results { margin-top: 32px; }
-.find-result-item { margin-bottom: 20px; }
+.find-result-list { list-style: none; padding: 0; margin: 0; }
 
 /* Quiz */
 .quiz-page { }

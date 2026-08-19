@@ -10,13 +10,14 @@ iOS/Android (native `ios/`/`android/` projects generated and syncing clean — s
 
 ## Status
 
-Phase 1.5 (Foundation Verification + Repair + Visual Baseline) — `npm install` and `npm run build`
-both run clean, all 22 routes were driven in a real browser (desktop + 375px mobile) with no
-console errors, and two real layout bugs found during that QA pass (top-nav/heading overlap,
-floating back-button overlapping body text) were fixed, not just documented. See
-`ACCESSIBILITY.md` and `NATIVE_SETUP.md` for the detailed verification breakdown. Content is
-intentionally still at the Phase 1 scope (13 cookies, 2 of 6 Labs populated) — the next pass is
-content saturation, not this one.
+Phase 1.5 (Foundation Verification + Repair, then Visual Transformation + Cake-Level Polish) —
+`npm install` and `npm run build` both run clean, all 22 routes were driven in a real browser
+(desktop + 375px mobile) with no console errors. Real bugs found and fixed, not just documented:
+top-nav/heading overlap, a floating back-button overlapping body text, and — the highest-leverage
+one — two conflicting cookie-photography CSS systems where the live one was the plain "photo in a
+box" version instead of the intended edge-to-edge editorial bleed treatment (see
+`DESIGN_SYSTEM.md`). Content is intentionally still at the Phase 1 scope (13 cookies, 2 of 6 Labs
+populated) — the next pass is content saturation, not this one.
 
 ## Structure
 
@@ -34,6 +35,8 @@ src/
 
 ## Docs
 
+- `DESIGN_SYSTEM.md` — visual language: palette, typography, hero/card patterns, what's
+  family-reusable vs. Cookies-specific, and what the Phase 1.5 visual-polish pass actually fixed
 - `FAMILY_ARCHITECTURE_REFERENCE.md` — what's inherited from Cake/Ramen vs. Cookies-specific
 - `COOKIE_DOMAIN_MODEL.md` — the data model
 - `CONTENT_PLAN.md` — what's seeded, what's next

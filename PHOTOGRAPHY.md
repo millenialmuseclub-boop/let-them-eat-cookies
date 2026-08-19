@@ -65,6 +65,22 @@ for all 13 cookies. The branded placeholder path (`🍪` on a token-colored back
 in place and correct for any future cookie added without a verified photo, and for the scene ids
 not yet covered.
 
+## Phase 1.5: photography now reused, and a real bleed bug fixed
+
+Canonical cookie/scene photography is now reused across surfaces rather than sourcing separate
+photos per appearance, per the visual-polish pass's direction: Main's four feature-nav cards
+(Browse by Origin, Quiz, Sommelier, Workshop) reuse `cookie_alfajor`, `cookie_snickerdoodle`,
+`cookie_austrian_linzer`, and `scene_dough_lab` respectively, and Sommelier FIND's result cards
+reuse each matched cookie's own canonical thumbnail. No new photography was sourced for this —
+same discipline as before (verified Commons entries only), just wired into more places.
+
+Also fixed in this pass: the Cookie Detail hero image (`CookieHeroImage`/
+`.cookie-hero-image-figure`) was rendering fully inset in a padded box rather than the intended
+edge-to-edge bleed treatment, because two conflicting CSS blocks existed for cookie photography
+and the wrong one was live (see `DESIGN_SYSTEM.md` for the full story). Now bleeds correctly on
+both the detail hero and the four feature cards, verified with no horizontal overflow on mobile or
+desktop.
+
 ## Next phase
 
 Expand scene coverage: source and verify photos for the remaining page contexts (Main hero,
