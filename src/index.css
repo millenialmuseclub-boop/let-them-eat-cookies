@@ -307,10 +307,10 @@ textarea:focus-visible,
 }
 
 .floating-back-button {
-  position: fixed;
+  position: absolute;
   left: 16px;
-  bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 12px);
-  z-index: 19;
+  top: 12px;
+  z-index: 5;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1415,6 +1415,7 @@ textarea:focus-visible,
 
 .app-content {
   flex: 1;
+  padding-top: calc(56px + env(safe-area-inset-top, 0px)); /* clears the fixed top nav bar */
   padding-bottom: 72px; /* clears the fixed bottom tab bar */
 }
 
@@ -1434,9 +1435,14 @@ textarea:focus-visible,
 }
 
 .page-container {
+  position: relative;
   max-width: 1080px;
   margin: 0 auto;
   padding: 20px 16px 40px;
+}
+
+.page-container:has(> .floating-back-button) {
+  padding-top: 64px;
 }
 
 .button-primary,

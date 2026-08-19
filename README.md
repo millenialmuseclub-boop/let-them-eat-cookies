@@ -5,13 +5,18 @@ alongside Let Them Eat Cake (original reference) and Let Them Eat Ramen (mature 
 architecture).
 
 React 19 + TypeScript + Vite + `react-router-dom` v7, no state-management library, Capacitor for
-iOS/Android (native projects not yet generated — see `NATIVE_SETUP.md`).
+iOS/Android (native `ios/`/`android/` projects generated and syncing clean — see
+`NATIVE_SETUP.md`).
 
 ## Status
 
-Phase 1 (Production Foundation + Initial Content) — architecture and initial content complete;
-`npm install`/`npm run build` could not be executed this session because outbound npm registry
-access was blocked mid-session. See the delivery report for the full, honest status breakdown.
+Phase 1.5 (Foundation Verification + Repair + Visual Baseline) — `npm install` and `npm run build`
+both run clean, all 22 routes were driven in a real browser (desktop + 375px mobile) with no
+console errors, and two real layout bugs found during that QA pass (top-nav/heading overlap,
+floating back-button overlapping body text) were fixed, not just documented. See
+`ACCESSIBILITY.md` and `NATIVE_SETUP.md` for the detailed verification breakdown. Content is
+intentionally still at the Phase 1 scope (13 cookies, 2 of 6 Labs populated) — the next pass is
+content saturation, not this one.
 
 ## Structure
 
@@ -38,10 +43,11 @@ src/
 - `NATIVE_SETUP.md` — Capacitor/native status
 - `APP_STORE_METADATA.md` / `GOOGLE_PLAY_METADATA.md` / `STORE_SCREENSHOT_PLAN.md` — draft ASO docs
 
-## Getting started (once network access is available)
+## Getting started
 
 ```
 npm install
 npm run dev      # local dev server
 npm run build    # tsc -b && vite build
+npx cap sync     # sync web build into ios/ and android/
 ```

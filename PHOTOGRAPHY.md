@@ -1,6 +1,45 @@
 # Photography — Let Them Eat Cookies
 
-## Status: infrastructure complete, zero photos sourced in this pass (disclosed gap)
+## Status: 13 of 13 cookies photographed, 3 scene images sourced
+
+All 13 canonical cookies now have a real, verified, individually-licensed photo in
+`src/data/cookieImages.json`, sourced from Wikimedia Commons and confirmed by fetching each
+Commons file page directly (not just a search snippet) to check the depicted cookie, the license,
+the uploader/photographer, and the direct `upload.wikimedia.org` file URL:
+
+- `cookie_chocolate_chip` — Kari Sullivan, "Chocolate chip cookies cooling on a wire rack"
+- `cookie_snickerdoodle` — EvanProdromou, "Snickerdoodles.jpg"
+- `cookie_peanut_butter` — Janet Hudson (Vegan Feast Catering), classic fork-crosshatch peanut
+  butter cookies, no chips/toppings
+- `cookie_scottish_shortbread` — Nizil Shah, "Scottish Shortbread Biscuits.jpg"
+- `cookie_french_sable` — Antoine mf Pelletier, "Le véritable petit sablé" (round butter sablé
+  from Sablé-sur-Sarthe; a third historical sablé lineage alongside the Norman/Breton ones named
+  in `cookies.json` — same cookie type, worth knowing the exact regional attribution differs)
+- `cookie_italian_amaretti` — Tristan Ferne, "Amaretti biscuits for Christmas.jpg"
+- `cookie_dutch_stroopwafel` — Takeaway (Commons username), "Stroopwafels 01.jpg"
+- `cookie_austrian_linzer` — Häferl, "Linzer Augen der Bäckerei Schwarz.jpg"
+- `cookie_maamoul` — روتانا (Rotana), "Ma'amoul Filled with Dates and Nuts.jpg"
+- `cookie_indian_nankhatai` — S.M. Samee, "Nankhatai.jpg"
+- `cookie_alfajor` — V!NZ, "Alfajores-Argentins.JPG"
+- `cookie_anzac_biscuit` — pfctdayelise, "ANZAC biscuits (14 April 2006).jpg" (uploader notes this
+  particular batch was made without desiccated coconut, an optional/regional variation — still a
+  genuine ANZAC biscuit)
+- `cookie_polvoron` — Marianne Perdomo, "Polvorón de Estepa.jpg" (the Spanish/Estepa lineage
+  specifically named in `cookies.json`, not the Filipino polvoron variant also on Commons)
+
+**Scene photography** (`src/data/sceneImages.json`) — lower priority, 3 generic baking-process
+scenes sourced and verified the same way, since no component in `src/` currently calls
+`getSceneImage` with a specific expected id:
+
+- `scene_dough_lab` — ParentingPatch, "Rolling Out Cookie Dough.JPG"
+- `scene_chocolate_lab` — John V. Pozniak (Gentgeen), "Melting Chocolate in Double Boiler.jpg"
+- `scene_baking_tray` — Sarah Fleming, "Chocolate chip cookies in the oven, March 2008.jpg"
+
+No cookie was left unphotographed and no scene id search came up totally empty this pass — but
+scene coverage is intentionally partial (3 of the ~8-9 page contexts named in the original spec:
+Main, Workshop hub, Sommelier, Crumb, Cookie 101, Trails, Curated Kitchen, Collections do not yet
+have a scene entry). Add more scene ids the same way — search Commons, fetch the actual file page,
+confirm the license and a direct `upload.wikimedia.org` URL — rather than guessing a URL pattern.
 
 The source-agnostic image architecture is fully built and working:
 
@@ -14,25 +53,23 @@ The source-agnostic image architecture is fully built and working:
   background, with `aria-label="{name} (photo not yet available)"`) when one doesn't. The
   placeholder is never a mismatched or fabricated food photo.
 
-**`cookieImages.json` and `sceneImages.json` currently contain `{}` — no cookie and no scene has a
-sourced photo yet.** This is an honest scope decision, not an oversight: legitimately sourcing and
-verifying real, correctly-matched, properly-licensed photography for 13 cookies plus ~8 scene
-contexts requires searching real photo libraries, confirming each photo actually depicts the
-correct cookie (not a visually-similar different cookie), and capturing accurate
-photographer/source/license metadata for each one — work that was not completed in this pass and
-that this document does not want to paper over with placeholder-but-labeled-real entries.
+**`cookieImages.json` now has all 13 canonical cookies; `sceneImages.json` has 3 scene ids** (see
+the Status section above for the full list). Every entry was verified against the actual Commons
+file page, not assumed from a search result thumbnail.
 
 ## What this means in the running app
 
-Every `CookieCard`, `CookieDetailPage`, and `CookieHeroImage` currently renders the branded
-placeholder. The app is fully functional and every accessibility requirement (meaningful
-`aria-label`, no broken `<img>` tags) is met by the placeholder path — this is not a broken state,
-just an unphotographed one.
+Every `CookieCard`, `CookieDetailPage`, and `CookieHeroImage` now renders a real, credited photo
+for all 13 cookies. The branded placeholder path (`🍪` on a token-colored background, with
+`aria-label="{name} (photo not yet available)"`) is no longer exercised for any cookie, but remains
+in place and correct for any future cookie added without a verified photo, and for the scene ids
+not yet covered.
 
 ## Next phase
 
-Source real photography as part of the planned content-saturation pass: confirm each photo
-against the cookie's actual defining characteristics (do not accept a "close enough" match),
-record `photographer`/`photographerUrl`/`source`/`sourceUrl` for every image per the schema above,
-and only mark this document's status as "coverage complete" once every entry has been verified
-against the photo itself — not assumed from a search result thumbnail.
+Expand scene coverage: source and verify photos for the remaining page contexts (Main hero,
+Workshop hub, Sommelier, Crumb, Cookie 101, Trails, Curated Kitchen category headers, Collections)
+the same way — search Commons, fetch the actual file page, confirm the license and a direct
+`upload.wikimedia.org` URL, never guess a URL pattern. If a cookie or scene ever needs a
+different/better photo, follow the same verification discipline rather than accepting a "close
+enough" match.

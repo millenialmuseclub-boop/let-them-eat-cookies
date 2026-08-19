@@ -24,10 +24,23 @@ merit; both are reasonable additions for the next pass.
 - Encyclopedia, Atlas, Collections, Personality Quiz, Sommelier FIND, and Build a Cookie all
   operate on the same 13 records without any surface needing cookie-specific special-casing.
 
+## Phase 1.5 verification note
+
+Confirmed (not just assumed) that `src/types/lab.ts`'s `Lab` interface and `LabPage`/
+`LabExplorer` are already fully generic — Dough Lab and Chocolate Lab are two independent data
+records against the exact same component/route code, proven by driving both in a real browser.
+`WorkshopPage.tsx` already has a static `allLabs` list covering all six planned labs (Dough, Flour,
+Sugar, Butter & Fat, Chocolate, Texture) and gates each tile on whether `labs.json` has a matching
+`slug`, rendering an honest "Coming Soon" tile for the four not yet written. No code changes were
+needed to prepare for Flour/Sugar/Butter & Fat/Texture Labs — only new `labs.json` entries in the
+content-saturation pass. Deliberately did not add stub/shell entries for those four in this pass:
+doing so would have flipped their Workshop tiles from "Coming Soon" to live links pointing at
+placeholder content, which is exactly the premature-saturation risk this pass was scoped to avoid.
+
 ## Next phase (recommended, not started here)
 
 Per the user's own framing: expand from ~13 to ~35–40 cookies, finish the remaining 4 Labs (Flour,
-Sugar, Butter & Fat, Texture), build Sommelier PAIR with real pairing data, expand Crumb content
-depth, source and verify real photography for the full catalog, fill the remaining `bakeware`/
-`storage` commerce gaps, and — once native builds are unblocked — complete the Capacitor iOS/
-Android setup and a first real device/store QA pass.
+Sugar, Butter & Fat, Texture — schema and routing already proven ready, see above), build Sommelier
+PAIR with real pairing data, expand Crumb content depth, saturate real photography for the full
+catalog, fill the remaining `bakeware`/`storage` commerce gaps, and finish Android launcher-icon
+generation (see `NATIVE_SETUP.md`) plus a first real device/store QA pass.

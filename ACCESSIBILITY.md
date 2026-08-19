@@ -36,15 +36,44 @@ implementation rather than as a final pass.
 - **Logical tab order**: no `tabIndex` overrides were introduced anywhere in this pass; DOM order
   matches visual/reading order on every page.
 
+## Verified in Phase 1.5
+
+`npm install`/`npm run build` ran cleanly this pass; the app was built, served, and driven in a
+real browser (desktop and 375px mobile viewport) across all 22 routes.
+
+- **Keyboard navigation**: confirmed by tabbing from a fresh page load — the skip link is the
+  first focusable element, `document.activeElement` verified via script.
+- **`:focus-visible` styling**: confirmed present in `index.css` (`a:focus-visible`,
+  `button:focus-visible`, `input/select/textarea/[tabindex]:focus-visible`).
+- **`aria-pressed` + non-color-only state**: confirmed on My Cookies controls
+  (`✓ Want to Try` / `★ Favorite`) via `getAttribute('aria-pressed')` after clicking, both before
+  and after a full page reload — state persists and the glyph/aria-pressed pairing survives.
+  Sommelier FIND's `role="group"` flavor/family toggle buttons and live results region
+  (`aria-live="polite"`) were exercised end-to-end (selected two flavor tags, submitted, got
+  live-rendered ranked matches with plain-language reasoning).
+- **Safe external links**: Curated Kitchen affiliate links use `rel="noreferrer sponsored"` +
+  `target="_blank"`, confirmed by source inspection.
+- **No console errors** across any route in a real browser session.
+
+Two real layout/clearance bugs were found and fixed in this pass (not merely documented):
+
+1. The fixed top nav bar had no compensating `padding-top` on `.app-content`, so it visually
+   clipped the top of every page's `<h1>` (confirmed via screenshot, not just DOM inspection).
+   Fixed by adding `padding-top: calc(56px + env(safe-area-inset-top, 0px))` to `.app-content`.
+2. `FloatingBackButton` was `position: fixed` at a constant viewport bottom-left offset, so it
+   visually overlapped whatever body content (e.g. the Family/Texture fact list on Cookie Detail)
+   happened to scroll underneath it — a real legibility bug, confirmed via screenshot on mobile.
+   Fixed by making `.page-container` a positioning context and changing the button to
+   `position: absolute` pinned to the container's top-left (with a reserved top gutter via
+   `.page-container:has(> .floating-back-button) { padding-top: 64px }` for pages with no hero
+   image), so it scrolls away with the page instead of persistently overlapping content.
+
 ## Genuinely not verified in this pass
 
-`npm install`/`npm run build` could not run this session because outbound access to the npm
-registry was blocked (see NATIVE_SETUP.md and the final report). That means:
-
-- No screen reader (VoiceOver/NVDA/TalkBack) was actually run against the built app.
+- No actual screen reader (VoiceOver/NVDA/TalkBack) was run — verification was via DOM/ARIA
+  inspection and scripted keyboard-focus checks in a real browser, not an assistive-technology
+  session.
 - No automated contrast checker (axe, Lighthouse) was run.
-- Keyboard-only navigation was reasoned about from the JSX/ARIA (every interactive element is a
-  real `<button>`/`<a>`/`<input>`, none are `<div onClick>`), but never manually tab-walked in a
-  browser.
+- Touch target sizing (~44px) was reasoned from CSS values, not measured on a physical device.
 
-These are reported here as open QA items, not claimed as verified.
+These remain open QA items for a future pass, not claimed as verified.

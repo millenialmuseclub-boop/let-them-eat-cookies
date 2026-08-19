@@ -1,0 +1,57 @@
+# iOS TestFlight release workflow — structure only.
+#
+# Ported from Let Them Eat Ramen's proven cloud iOS release pattern. Not yet runnable: Cookies
+# has no Apple Developer identifier, App Store Connect record, distribution certificate, or
+# provisioning profile of its own yet (see NATIVE_SETUP.md). This file documents the exact
+# secrets this workflow will need once those exist — none are present in this repo.
+#
+# Required repository secrets (to be added later, never committed):
+#   IOS_DIST_SIGNING_CERT_P12_BASE64   — base64-encoded .p12 distribution certificate
+#   IOS_DIST_SIGNING_CERT_PASSWORD     — password for the .p12 above
+#   IOS_PROVISIONING_PROFILE_BASE64    — base64-encoded .mobileprovision for com.letthemeatcookies.app
+#   APP_STORE_CONNECT_KEY_ID           — App Store Connect API key ID
+#   APP_STORE_CONNECT_ISSUER_ID        — App Store Connect API issuer ID
+#   APP_STORE_CONNECT_API_KEY_BASE64   — base64-encoded .p8 App Store Connect API private key
+
+name: iOS Release (TestFlight)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-upload:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web app
+        run: npm run build
+
+      - name: Sync Capacitor iOS
+        run: npx cap sync ios
+
+      # The following steps are structure-only until the secrets above are configured.
+      - name: Import signing certificate
+        run: echo "TODO once IOS_DIST_SIGNING_CERT_P12_BASE64 is configured"
+
+      - name: Install provisioning profile
+        run: echo "TODO once IOS_PROVISIONING_PROFILE_BASE64 is configured"
+
+      - name: Archive
+        run: |
+          echo "TODO: xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Release -archivePath build/App.xcarchive archive"
+
+      - name: Export IPA
+        run: |
+          echo "TODO: xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/export -exportOptionsPlist ios/ExportOptions.plist"
+
+      - name: Upload to TestFlight
+        run: |
+          echo "TODO: xcrun altool --upload-app -f build/export/App.ipa -t ios --apiKey $APP_STORE_CONNECT_KEY_ID --apiIssuer $APP_STORE_CONNECT_ISSUER_ID"

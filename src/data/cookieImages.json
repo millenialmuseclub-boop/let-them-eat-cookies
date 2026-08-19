@@ -1,1 +1,90 @@
-{}
+{
+  "cookie_chocolate_chip": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Chocolate_chip_cookies_cooling_on_a_wire_rack%2C_May_2009.jpg",
+    "photographer": "Kari Sullivan",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chocolate_chip_cookies_cooling_on_a_wire_rack,_May_2009.jpg"
+  },
+  "cookie_snickerdoodle": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Snickerdoodles.jpg",
+    "photographer": "EvanProdromou",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:EvanProdromou",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Snickerdoodles.jpg"
+  },
+  "cookie_peanut_butter": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Peanut_butter_cookies%2C_September_2009.jpg",
+    "photographer": "Janet Hudson (Vegan Feast Catering)",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peanut_butter_cookies,_September_2009.jpg"
+  },
+  "cookie_scottish_shortbread": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Scottish_Shortbread_Biscuits.jpg",
+    "photographer": "Nizil Shah",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:Nizil_Shah",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Scottish_Shortbread_Biscuits.jpg"
+  },
+  "cookie_french_sable": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Le_v%C3%A9ritable_petit_sabl%C3%A9.jpg",
+    "photographer": "Antoine mf Pelletier",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:Antoine_mf_Pelletier",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Le_v%C3%A9ritable_petit_sabl%C3%A9.jpg"
+  },
+  "cookie_dutch_stroopwafel": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Stroopwafels_01.jpg",
+    "photographer": "Takeaway",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:Takeaway",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stroopwafels_01.jpg"
+  },
+  "cookie_austrian_linzer": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Linzer_Augen_der_B%C3%A4ckerei_Schwarz.jpg",
+    "photographer": "Häferl",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:Haeferl",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Linzer_Augen_der_B%C3%A4ckerei_Schwarz.jpg"
+  },
+  "cookie_italian_amaretti": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Amaretti_biscuits_for_Christmas.jpg",
+    "photographer": "Tristan Ferne",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amaretti_biscuits_for_Christmas.jpg"
+  },
+  "cookie_maamoul": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Ma%27amoul_Filled_with_Dates_and_Nuts.jpg",
+    "photographer": "روتانا (Rotana)",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:%D8%B1%D9%88%D8%AA%D8%A7%D9%86%D8%A7",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ma%27amoul_Filled_with_Dates_and_Nuts.jpg"
+  },
+  "cookie_indian_nankhatai": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Nankhatai.jpg",
+    "photographer": "S.M. Samee",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:Samee",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nankhatai.jpg"
+  },
+  "cookie_alfajor": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Alfajores-Argentins.JPG",
+    "photographer": "V!NZ",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/user:V%21NZ",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alfajores-Argentins.JPG"
+  },
+  "cookie_anzac_biscuit": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/ANZAC_biscuits_%2814_April_2006%29.jpg",
+    "photographer": "pfctdayelise",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/User:Pfctdayelise",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:ANZAC_biscuits.JPG"
+  },
+  "cookie_polvoron": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Polvor%C3%B3n_de_Estepa.jpg",
+    "photographer": "Marianne Perdomo",
+    "photographerUrl": "https://commons.wikimedia.org/wiki/user:Mperdomo",
+    "source": "Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Polvor%C3%B3n_de_Estepa.jpg"
+  }
+}
