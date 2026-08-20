@@ -4,6 +4,15 @@ import { LABS_BY_SLUG } from '../lib/data'
 import { LabExplorer } from '../components/LabExplorer'
 import { ContextualCuratedKitchen } from '../components/ContextualCuratedKitchen'
 import { FloatingBackButton } from '../components/FloatingBackButton'
+import { getSceneImage } from '../lib/images'
+
+// Only labs with a genuinely matching scene photo get a header image -- flour/sugar/fat/texture
+// labs have no corresponding asset in sceneImages.json, so they stay text-led rather than reusing
+// an unrelated photo.
+const LAB_SCENE_ID: Record<string, string> = {
+  'dough-lab': 'scene_dough_lab',
+  'chocolate-lab': 'scene_chocolate_lab',
+}
 
 export function LabPage() {
   const { labSlug = '' } = useParams()
@@ -12,9 +21,18 @@ export function LabPage() {
 
   if (!lab) return <Navigate to="/workshop" replace />
 
+  const sceneId = LAB_SCENE_ID[lab.slug]
+  const scene = sceneId ? getSceneImage(sceneId) : undefined
+
   return (
     <main className="page-container">
       <FloatingBackButton />
+      {scene && (
+        <figure className="lab-hero-image">
+          <img src={scene.url} alt="" loading="lazy" />
+          <figcaption className="lab-hero-credit">Photo by {scene.photographer}</figcaption>
+        </figure>
+      )}
       <h1>{lab.title}</h1>
       <p>{lab.description}</p>
       <LabExplorer lab={lab} />

@@ -1818,6 +1818,19 @@ textarea:focus-visible,
 }
 .collection-preview-count { font-size: 0.82rem; opacity: 0.65; }
 
+/* Collections index -- each card leads with its flagship cookie's photo (distinct per collection)
+   rather than the plain text-only card used for Trails. */
+.collection-card-photo {
+  padding: 0;
+  overflow: hidden;
+}
+.collection-card-photo .collection-card-body {
+  padding: 14px 16px 16px;
+}
+.collection-card-photo h2 {
+  font-size: 19px;
+}
+
 /* Discover feature grid card internals */
 .discover-feature-card-scrim {
   padding: 20px;

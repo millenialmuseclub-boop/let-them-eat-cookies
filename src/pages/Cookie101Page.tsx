@@ -1,12 +1,19 @@
 import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { FloatingBackButton } from '../components/FloatingBackButton'
+import { PageHeroBand } from '../components/PageHeroBand'
+import { getSceneImage } from '../lib/images'
 
 export function Cookie101Page() {
   useDocumentTitle('Cookie 101')
   return (
     <main className="page-container guide-article">
       <FloatingBackButton />
-      <h1>Cookie 101</h1>
+      <PageHeroBand
+        image={getSceneImage('scene_baking_tray')}
+        eyebrow="The Essential Primer"
+        title="Cookie 101"
+        description="The handful of components and techniques nearly every cookie in the world is built from."
+      />
       <p>
         Nearly every cookie in the world is built from the same handful of components: a flour base,
         a fat, a sweetener, sometimes a binder or leavening agent, and whatever flavor or mix-ins

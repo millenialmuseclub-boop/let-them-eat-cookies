@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
-import { COLLECTIONS } from '../lib/data'
+import { COLLECTIONS, getCookie } from '../lib/data'
+import { getCollectionFlagshipCookieId } from '../lib/images'
+import { CookieThumbnail } from '../components/CookieHeroImage'
 
 export function CollectionsPage() {
   useDocumentTitle('Curated Collections')
@@ -8,13 +10,20 @@ export function CollectionsPage() {
     <main className="page-container">
       <h1>Curated Collections</h1>
       <div className="collections-grid">
-        {COLLECTIONS.map((collection) => (
-          <Link to={`/collections/${collection.id}`} className="collection-card" key={collection.id}>
-            <h2>{collection.title}</h2>
-            <p>{collection.description}</p>
-            <span className="collection-preview-count">{collection.cookieIds.length} cookies</span>
-          </Link>
-        ))}
+        {COLLECTIONS.map((collection) => {
+          const flagshipId = getCollectionFlagshipCookieId(collection.id)
+          const flagship = flagshipId ? getCookie(flagshipId) : undefined
+          return (
+            <Link to={`/collections/${collection.id}`} className="collection-card collection-card-photo" key={collection.id}>
+              <CookieThumbnail cookieId={flagshipId ?? collection.id} name={flagship?.name ?? collection.title} />
+              <div className="collection-card-body">
+                <h2>{collection.title}</h2>
+                <p>{collection.description}</p>
+                <span className="collection-preview-count">{collection.cookieIds.length} cookies</span>
+              </div>
+            </Link>
+          )
+        })}
       </div>
     </main>
   )
