@@ -81,6 +81,26 @@ and the wrong one was live (see `DESIGN_SYSTEM.md` for the full story). Now blee
 both the detail hero and the four feature cards, verified with no horizontal overflow on mobile or
 desktop.
 
+## Phase 1.5, second pass: reused across the five remaining hub surfaces
+
+Per "reuse intelligently, don't duplicate-source" -- no new cookie photography was sourced this
+pass. Existing canonical images were reused as photographic hero bands (new `PageHeroBand`
+component, `.page-hero-band` in `index.css`) on the hub pages that were previously text-only tiles:
+
+- Workshop hub -- `scene_dough_lab`
+- Sommelier hub -- `cookie_dutch_stroopwafel`
+- Atlas -- `cookie_maamoul`, plus a small (56px) `CookieThumbnail` on every cookie row in every
+  region list (previously text-only links)
+- Crumb -- `scene_baking_tray` (Cookie 101 feature card) and `cookie_scottish_shortbread` (Cookie
+  Trails feature card), via `DiscoverFeatureCard`'s existing `image` prop
+- Curated Kitchen -- no photo hero (no legitimate product photography exists for this surface; used
+  the text-only `PageHeroBand` variant instead of forcing an unrelated cookie photo onto a commerce
+  page)
+
+Coverage remains 13/13 cookies, 3 scenes -- this was a reuse pass, not a sourcing pass. Broader
+scene coverage (a photo for every remaining page context named in the original spec) is still a
+genuine open item for a future pass.
+
 ## Next phase
 
 Expand scene coverage: source and verify photos for the remaining page contexts (Main hero,

@@ -37,10 +37,29 @@ content-saturation pass. Deliberately did not add stub/shell entries for those f
 doing so would have flipped their Workshop tiles from "Coming Soon" to live links pointing at
 placeholder content, which is exactly the premature-saturation risk this pass was scoped to avoid.
 
+## Phase 1.5, second pass: 100% recipe coverage + content-completeness rule
+
+All 13 canonical cookies now have a complete, original, structured `Recipe` record (see
+`COOKIE_DOMAIN_MODEL.md`'s Recipe section and `src/data/recipes.json`) — 13/13, zero "Coming Soon"
+or placeholder recipes. Each recipe respects its cookie's actual tradition rather than a shared
+American-drop-cookie template: Stroopwafel is a yeasted waffle-iron batter (not oven-baked at all),
+Ma'amoul's dough gets a multi-hour unrefrigerated semolina rest before shaping, Amaretti has no
+flour or butter, Polvorón requires toasting the flour first. Multi-component cookies (Stroopwafel,
+Linzer, Alfajor, Ma'amoul) use grouped ingredient lists (e.g. "For the dough" / "For the filling")
+rather than one flat list. Every recipe carries a `sourceNote` disclosing that its prose was
+written originally for this app from `cookies.json`'s existing historical/technique notes, never
+copied from a published recipe.
+
+This establishes the **content-completeness rule** now documented in the master spec: a canonical
+cookie isn't production-complete without a recipe (among other fields) — future cookies in the
+35-40 expansion must be seeded complete, not name-first-fill-later.
+
 ## Next phase (recommended, not started here)
 
-Per the user's own framing: expand from ~13 to ~35–40 cookies, finish the remaining 4 Labs (Flour,
-Sugar, Butter & Fat, Texture — schema and routing already proven ready, see above), build Sommelier
-PAIR with real pairing data, expand Crumb content depth, saturate real photography for the full
-catalog, fill the remaining `bakeware`/`storage` commerce gaps, and finish Android launcher-icon
+Per the user's own framing: expand from ~13 to ~35–40 cookies (each seeded complete per the new
+content-completeness rule, including its recipe from day one), finish the remaining 4 Labs (Flour,
+Sugar, Butter & Fat, Texture — schema and routing already proven ready), build Sommelier PAIR with
+real pairing data, expand Crumb content depth, saturate real photography for the full catalog
+(including broader scene coverage for Workshop/Sommelier/Crumb/Atlas beyond what's now reused
+there), fill the remaining `bakeware`/`storage` commerce gaps, and finish Android launcher-icon
 generation (see `NATIVE_SETUP.md`) plus a first real device/store QA pass.

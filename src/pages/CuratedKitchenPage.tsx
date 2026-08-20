@@ -1,6 +1,7 @@
 import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { PRODUCTS } from '../lib/data'
 import { AffiliateDisclosure } from '../components/AffiliateDisclosure'
+import { PageHeroBand } from '../components/PageHeroBand'
 import type { ProductCategory } from '../types/product'
 
 const CATEGORY_LABELS: Record<ProductCategory, string> = {
@@ -23,8 +24,11 @@ export function CuratedKitchenPage() {
 
   return (
     <main className="page-container">
-      <h1>Curated Kitchen</h1>
-      <p>Tools and ingredients we actually recommend, organized by what you're baking.</p>
+      <PageHeroBand
+        eyebrow="Objects for the Cookie Kitchen"
+        title="Curated Kitchen"
+        description="A short, honest list of tools and ingredients we'd actually keep on our own counter, organized by what you're baking -- not a product database."
+      />
       {categories.map((category) => {
         const products = cookiesProducts.filter((p) => p.category === category)
         return (

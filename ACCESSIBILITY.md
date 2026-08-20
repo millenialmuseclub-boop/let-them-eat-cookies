@@ -68,6 +68,25 @@ Two real layout/clearance bugs were found and fixed in this pass (not merely doc
    `.page-container:has(> .floating-back-button) { padding-top: 64px }` for pages with no hero
    image), so it scrolls away with the page instead of persistently overlapping content.
 
+## Phase 1.5, second pass: recipes + hub pages
+
+- Recipe steps are a real `<ol>` (ordered list), not a styled `<div>` sequence -- the visual step
+  number is CSS-generated content (`counter(recipe-step)`) layered on top of, not replacing,
+  genuine list semantics, so screen readers still announce "item N of M."
+- Baker's notes / storage / variations are behind a native `<details>`/`<summary>` disclosure
+  (same pattern already used for Traditions/Troubleshooter), with `summary` sized to a 44px
+  minimum touch target.
+- `PageHeroBand` (new, used on Workshop/Sommelier/Atlas/Curated Kitchen headers) renders its
+  `<h1>` as real page content inside the scrim, not as a background-image caption -- confirmed
+  via a fresh-browser DOM check that heading order/hierarchy is unaffected by the photo treatment.
+  Decorative hero photos use `alt=""` (the visible eyebrow + h1 already carry the page's meaning);
+  only genuinely informative photos (recipe hero, cookie thumbnails) carry a real `alt`.
+- Atlas's per-cookie thumbnails reuse `CookieThumbnail`, which already handles alt text and the
+  branded-placeholder fallback -- no new accessibility surface introduced.
+- No palette or contrast changes were made; all new UI (recipe glance strip, hero bands, My
+  Cookies shelf cards) uses existing WCAG-AA-checked tokens (`--caramel`, `--caramel-bg`,
+  `--bg-card`, `--border`) rather than new colors.
+
 ## Genuinely not verified in this pass
 
 - No actual screen reader (VoiceOver/NVDA/TalkBack) was run — verification was via DOM/ARIA

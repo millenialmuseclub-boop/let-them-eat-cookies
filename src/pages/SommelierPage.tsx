@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
+import { getCookieImage } from '../lib/images'
+import { PageHeroBand } from '../components/PageHeroBand'
 
 export function SommelierPage() {
   useDocumentTitle('Sommelier')
   return (
     <main className="page-container">
-      <h1>Sommelier</h1>
-      <p>Get matched to a cookie based on what you actually like -- no LLM guesswork, just a deterministic match.</p>
+      <PageHeroBand
+        image={getCookieImage('cookie_dutch_stroopwafel')}
+        eyebrow="Sommelier"
+        title="Tell us what you're craving"
+        description="No LLM guesswork -- a deterministic match with a plain-language reason for every result."
+      />
       <div className="workshop-group-grid">
         <Link to="/sommelier/find" className="workshop-link-card">
           <h2>FIND</h2>

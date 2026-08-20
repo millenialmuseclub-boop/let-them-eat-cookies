@@ -1,14 +1,16 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
-import { getCookie, COOKIES, COLLECTIONS } from '../lib/data'
+import { getCookie, getRecipeForCookie, COOKIES, COLLECTIONS } from '../lib/data'
 import { CookieHeroImage } from '../components/CookieHeroImage'
 import { FlavorProfileBars } from '../components/FlavorProfileBars'
 import { SavedCookieControls } from '../components/SavedCookieControls'
 import { FloatingBackButton } from '../components/FloatingBackButton'
+import { RecipeSection } from '../components/RecipeSection'
 
 export function CookieDetailPage() {
   const { cookieId = '' } = useParams()
   const cookie = getCookie(cookieId)
+  const recipe = cookie ? getRecipeForCookie(cookie.id) : undefined
   useDocumentTitle(cookie?.name ?? 'Cookie')
 
   if (!cookie) return <Navigate to="/encyclopedia" replace />
@@ -58,6 +60,8 @@ export function CookieDetailPage() {
           <p><strong>Common mix-ins:</strong> {cookie.commonMixIns.join(', ')}</p>
         )}
       </section>
+
+      {recipe && <RecipeSection recipe={recipe} />}
 
       <section className="cookie-detail-section" aria-labelledby="variations-heading">
         <h2 id="variations-heading">Variations</h2>

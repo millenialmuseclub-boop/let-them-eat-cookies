@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { regionsByWorldRegion, getTradition, worldRegions } from '../lib/atlas'
 import { getCookie } from '../lib/data'
+import { getCookieImage } from '../lib/images'
+import { CookieThumbnail } from '../components/CookieHeroImage'
+import { PageHeroBand } from '../components/PageHeroBand'
 
 export function AtlasPage() {
   useDocumentTitle('Browse by Origin')
@@ -12,12 +15,12 @@ export function AtlasPage() {
 
   return (
     <main className="page-container atlas-page">
-      <h1>Browse by Origin</h1>
-      <p className="atlas-complexity-note">
-        Cookie origins aren't always a single point on a map -- some traditions are shared across
-        multiple countries, or genuinely disputed. We note that honestly rather than forcing false
-        precision.
-      </p>
+      <PageHeroBand
+        image={getCookieImage('cookie_maamoul')}
+        eyebrow="An Editorial Atlas"
+        title="Browse by Origin"
+        description="Cookie origins aren't always a single point on a map -- some traditions are shared across multiple countries, or genuinely disputed. We note that honestly rather than forcing false precision."
+      />
 
       <div className="atlas-region-chips" role="group" aria-label="World regions">
         {regions.map((region) => (
@@ -49,9 +52,14 @@ export function AtlasPage() {
                     if (!cookie) return null
                     return (
                       <li key={entry.id}>
-                        <Link to={`/encyclopedia/${cookie.id}`}>{cookie.name}</Link>
-                        <span className="atlas-origin-complexity-tag"> · {entry.originComplexity.replace('-', ' ')}</span>
-                        <p>{entry.shortDescription}</p>
+                        <Link to={`/encyclopedia/${cookie.id}`} className="atlas-cookie-row">
+                          <CookieThumbnail cookieId={cookie.id} name={cookie.name} />
+                          <div className="atlas-cookie-row-body">
+                            <span className="atlas-cookie-row-name">{cookie.name}</span>
+                            <span className="atlas-origin-complexity-tag">{entry.originComplexity.replace('-', ' ')}</span>
+                            <p>{entry.shortDescription}</p>
+                          </div>
+                        </Link>
                       </li>
                     )
                   })}

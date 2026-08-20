@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { LABS } from '../lib/data'
+import { getSceneImage } from '../lib/images'
+import { PageHeroBand } from '../components/PageHeroBand'
 
 export function WorkshopPage() {
   useDocumentTitle('Workshop')
@@ -16,8 +18,12 @@ export function WorkshopPage() {
 
   return (
     <main className="page-container">
-      <h1>Workshop</h1>
-      <p>Understand the craft behind every cookie -- from ingredients to technique.</p>
+      <PageHeroBand
+        image={getSceneImage('scene_dough_lab')}
+        eyebrow="The Workshop"
+        title="Workshop"
+        description="Understand the craft behind every cookie -- from ingredients to technique."
+      />
 
       <section className="workshop-group" aria-labelledby="understand-heading">
         <h2 id="understand-heading">Understand the Cookie</h2>

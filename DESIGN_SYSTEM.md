@@ -90,9 +90,64 @@ target sizing are unaffected by any change here. The one new interactive style
 (`input[type="range"] { accent-color }`) only affects the browser-native thumb/track color, not
 focus or keyboard behavior.
 
-## What this pass deliberately did not touch
+## Phase 1.5, second pass: the five hub pages, mobile-app shell, and recipes
 
-Per scope: Atlas, Workshop hub, Sommelier hub, Crumb hub, and Curated Kitchen still use their
-original card treatments (`.workshop-link-card` etc.), not the photo-bleed/scrim system. They were
-functionally verified (no console errors, no overflow) but not visually re-composed — a reasonable
-next increment, not done here to keep this pass bounded rather than touching all ~20 pages at once.
+The five surfaces explicitly deferred above were finished in a follow-up pass, along with a mobile
+app-shell audit and 13/13 recipe coverage. This section documents what changed and why, since it's
+the most likely reference point for extending any of these patterns later.
+
+### Hub pages: shared language, surface-specific composition
+
+Per explicit instruction, this was **not** "paste `DiscoverFeatureCard` onto five more pages." Each
+hub uses `PageHeroBand` (new, family-reusable — see `FAMILY_ARCHITECTURE_REFERENCE.md`) for a
+compact photographic header, but the body composition differs by what the surface actually is:
+
+- **Workshop** — kept its existing three-tier grouping (Understand / Master / Solve / Shop) but
+  gave `.workshop-link-card` a caramel top-accent border and the same hover-lift/press-scale
+  interaction as every other card family, replacing a flat bordered box.
+- **Sommelier** — same card grid, but the copy changed from a feature-list tone ("FIND / PAIR /
+  CREATE") to the "tell us what you're craving" framing requested, carried by the hero band's
+  title and description rather than by restructuring the cards.
+- **Atlas** — the region cards are unchanged, but every cookie *inside* a region's list is now a
+  photographic row (56px `CookieThumbnail` + name + origin-complexity tag + description) instead
+  of a plain text link, making the Region → Tradition → Cookie hierarchy visually legible, not just
+  structurally true.
+- **Crumb** — genuinely mixed layout: the two most substantial modules (Cookie 101, Cookie Trails)
+  are `DiscoverFeatureCard` photo tiles under a magazine-style masthead; the four lighter modules
+  (Vocabulary, Find Your Cookie, Quiz, Traditions) stay as the compact `workshop-link-card` grid.
+  This is the "shared visual language, surface-specific composition" instruction applied literally
+  — not every module gets equal visual weight, matching how a real magazine allocates space.
+- **Curated Kitchen** — deliberately did *not* get a photo hero. No legitimate product photography
+  exists for this surface (see `PHOTOGRAPHY.md`), and forcing an unrelated cookie photo onto a
+  commerce page would be exactly the "misleading imagery" this project's discipline exists to
+  avoid. Uses `PageHeroBand`'s plain (no-image) variant instead — same eyebrow/title/description
+  typography, no photo.
+
+**A real bug was caught here too**: `PageHeroBand`'s plain variant initially inherited the photo
+variant's `display: flex` container, which laid the eyebrow/title/description out as side-by-side
+flex items instead of stacked text — caught via screenshot, not just code review, and fixed by
+giving `.page-hero-band-plain` its own `display: block`.
+
+### Recipes: glanceable-on-a-phone, not a document
+
+`RecipeSection.tsx`'s layout decisions, in priority order for a reader standing in a kitchen:
+1. An at-a-glance strip (`.recipe-glance`) — yield/prep/chill/bake/total/difficulty — is the first
+   thing rendered after the intro, styled as a filled `--caramel-bg` block so it reads as a distinct
+   "quick facts" zone, not more paragraph text.
+2. Ingredients are a real list with a bold amount+unit prefix per line, grouped under a sub-heading
+   only when there's more than one group (single-component cookies don't get a redundant "For the
+   dough" label).
+3. Instructions are a real ordered list (`<ol>`) with a CSS counter-generated numbered badge
+   layered on top — accessible list semantics are preserved even though the visual number isn't a
+   plain `::marker`.
+4. Baker's notes, storage, and variations are progressively disclosed behind a `<details>` — this
+   is genuinely secondary information a reader consults after the core recipe, not hidden to
+   shorten the page for its own sake.
+
+### Mobile-first verification, this pass
+
+375px / 390px / 430px all checked via `scrollWidth === clientWidth`, not just visual inspection,
+across every touched route including Cookie Detail with a full recipe rendered. The
+`overflow-x: hidden` requirement on any bleeding element's positioned ancestor (documented in the
+first design-system pass) applies again here — `PageHeroBand` uses the same bleed technique as
+`CookieHeroImage` and depends on the same `.page-container` rule.

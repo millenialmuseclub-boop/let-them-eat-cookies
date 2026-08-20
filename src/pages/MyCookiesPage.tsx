@@ -36,8 +36,13 @@ export function MyCookiesPage() {
   return (
     <main className="page-container my-cookies-page">
       <h1>My Cookies</h1>
-      <p>Saved locally on this device. Nothing here is sent anywhere.</p>
-      {records.length === 0 && <p>You haven't saved any cookies yet. Browse the Encyclopedia to get started.</p>}
+      <p>Your private cookie shelf -- saved locally on this device. Nothing here is sent anywhere.</p>
+      {records.length === 0 && (
+        <div className="my-cookies-empty">
+          <p>Your shelf is empty. Save a cookie you want to try, have baked, or love, and it'll show up here.</p>
+          <Link to="/encyclopedia" className="button-primary">Browse the Encyclopedia</Link>
+        </div>
+      )}
       {renderGroup('Favorites', favorites)}
       {renderGroup('Want to Try', wantToTry)}
       {renderGroup('Baked / Tried', baked)}

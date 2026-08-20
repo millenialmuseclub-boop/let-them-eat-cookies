@@ -12,6 +12,7 @@ import troubleshooterJson from '../data/troubleshooter.json'
 import personalityQuizJson from '../data/personalityQuiz.json'
 import cookiePersonalitiesJson from '../data/cookiePersonalities.json'
 import productsJson from '../data/products.json'
+import recipesJson from '../data/recipes.json'
 
 import type { CookieProfile } from '../types/cookie'
 import type { RegionalCookieEntry, WorldRegionTradition } from '../types/atlas'
@@ -21,6 +22,7 @@ import type { Lab } from '../types/lab'
 import type { TroubleshooterProblem } from '../types/troubleshooter'
 import type { QuizQuestion, CookiePersonality } from '../types/personalityQuiz'
 import type { AffiliateProduct } from '../types/product'
+import type { Recipe } from '../types/recipe'
 
 export const COOKIES = cookiesJson as CookieProfile[]
 export const REGIONS = regionsJson as RegionalCookieEntry[]
@@ -33,6 +35,7 @@ export const TROUBLESHOOTER = troubleshooterJson as TroubleshooterProblem[]
 export const PERSONALITY_QUIZ = personalityQuizJson as QuizQuestion[]
 export const COOKIE_PERSONALITIES = cookiePersonalitiesJson as CookiePersonality[]
 export const PRODUCTS = productsJson as AffiliateProduct[]
+export const RECIPES = recipesJson as Recipe[]
 
 function toMap<T extends { id: string }>(items: T[]): Map<string, T> {
   return new Map(items.map((item) => [item.id, item]))
@@ -42,6 +45,11 @@ export const COOKIES_BY_ID = toMap(COOKIES)
 export const COLLECTIONS_BY_ID = toMap(COLLECTIONS)
 export const LABS_BY_SLUG = new Map(LABS.map((lab) => [lab.slug, lab]))
 export const PERSONALITIES_BY_COOKIE_ID = new Map(COOKIE_PERSONALITIES.map((p) => [p.cookieId, p]))
+export const RECIPE_BY_COOKIE_ID = new Map(RECIPES.map((r) => [r.cookieId, r]))
+
+export function getRecipeForCookie(cookieId: string): Recipe | undefined {
+  return RECIPE_BY_COOKIE_ID.get(cookieId)
+}
 
 export function getCookie(id: string): CookieProfile | undefined {
   return COOKIES_BY_ID.get(id)

@@ -28,12 +28,13 @@ true` with none flagged `needsVerification`, so nothing pending is accidentally 
 external-link behavior (`rel="noreferrer sponsored"` + `target="_blank"`) and the affiliate
 disclosure link (About & Legal) both confirmed present in a real browser session.
 
-One minor, non-blocking observation: `product_scraper_cake` and `product_bench_scraper_ramen` are
-two genuinely distinct offers (different networks, different URLs, different sourceApp) that
-happen to share the display name "Bench Scraper," so Curated Kitchen currently shows two
-back-to-back tiles with the same title. Not a data-integrity bug — left as-is per this pass's scope
-(no new catalog search), worth a content-only rename ("Bench Scraper (Cake)" / a shorter
-description delta) in the next commerce pass if it reads as confusing in practice.
+**Resolved in Phase 1.5, second pass**: `product_scraper_cake` and `product_bench_scraper_ramen`
+both displayed as plain "Bench Scraper," which was confusing even though they're genuinely
+distinct offers (different networks, different URLs, different sourceApp). Renamed the
+user-facing `name` field only, using language taken verbatim from each product's own existing
+`description` field (truthful, not fabricated): "Bench Scraper -- Mixing & Portioning"
+(`product_scraper_cake`) and "Bench Scraper -- Kneading & Portioning"
+(`product_bench_scraper_ramen`). No URL, network, merchant, or offer data was touched.
 
 ## Integrity rules honored
 

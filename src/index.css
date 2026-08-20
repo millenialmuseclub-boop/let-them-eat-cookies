@@ -828,6 +828,218 @@ textarea:focus-visible,
   color: inherit;
 }
 
+/* ---------- Recipe section (Cookie Detail flagship) ---------- */
+
+.recipe-section {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.recipe-intro {
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+
+.recipe-glance {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 14px;
+  background: var(--caramel-bg);
+  border-radius: 12px;
+}
+
+.recipe-glance-item dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  margin: 0 0 2px;
+}
+
+.recipe-glance-item dd {
+  margin: 0;
+  font-weight: 700;
+  color: var(--caramel);
+}
+
+.recipe-glance-difficulty {
+  text-transform: capitalize;
+}
+
+.recipe-meta-line {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.recipe-body-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 720px) {
+  .recipe-body-grid {
+    grid-template-columns: 1fr 1.4fr;
+    align-items: start;
+  }
+}
+
+.recipe-ingredients h3,
+.recipe-instructions h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.recipe-ingredient-group {
+  margin-bottom: 14px;
+}
+
+.recipe-ingredient-group h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--caramel);
+  margin: 0 0 6px;
+}
+
+.recipe-ingredients ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recipe-ingredients li {
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.recipe-ingredient-amount {
+  font-weight: 700;
+}
+
+.recipe-ingredient-note {
+  opacity: 0.7;
+  font-size: 0.92em;
+}
+
+.recipe-instructions ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: recipe-step;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recipe-instructions li {
+  counter-increment: recipe-step;
+  position: relative;
+  padding-left: 36px;
+}
+
+.recipe-instructions li::before {
+  content: counter(recipe-step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--caramel);
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-instructions p {
+  margin: 0 0 4px;
+  line-height: 1.6;
+}
+
+.recipe-step-stage {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--caramel);
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.recipe-technique-note {
+  font-size: 0.9em;
+  opacity: 0.75;
+  font-style: italic;
+}
+
+.recipe-lab-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.88em;
+  font-weight: 600;
+}
+
+.recipe-details-disclosure {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.recipe-details-disclosure summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--caramel);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.recipe-disclosure-body {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.recipe-notes-block h4 {
+  font-size: 14px;
+  margin: 0 0 6px;
+}
+
+.recipe-notes-block ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recipe-notes-block li {
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.recipe-allergen-note {
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+.recipe-source-note {
+  margin-top: 16px;
+  font-size: 11px;
+  opacity: 0.55;
+  font-style: italic;
+}
+
 /* ---------- Saved state controls + badges ---------- */
 
 .saved-cookie-controls {
@@ -1613,11 +1825,33 @@ textarea:focus-visible,
 .atlas-country-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow);
 }
-.atlas-cookie-list { list-style: none; padding: 0; margin: 10px 0 0; display: flex; flex-direction: column; gap: 10px; }
-.atlas-origin-complexity-tag { font-size: 0.78rem; opacity: 0.65; text-transform: capitalize; }
+.atlas-cookie-list { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-direction: column; gap: 4px; }
+.atlas-cookie-row {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 8px 6px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s ease;
+}
+.atlas-cookie-row:hover { background: var(--caramel-bg); }
+.atlas-cookie-row .cookie-hero-image-thumb,
+.atlas-cookie-row .cookie-hero-image-placeholder-thumb {
+  width: 56px;
+  height: 56px;
+  aspect-ratio: auto;
+  border-radius: 10px;
+}
+.atlas-cookie-row-name { font-weight: 700; display: block; }
+.atlas-cookie-row-body p { margin: 2px 0 0; font-size: 0.9rem; opacity: 0.8; }
+.atlas-origin-complexity-tag { font-size: 0.75rem; opacity: 0.65; text-transform: capitalize; }
 
 /* Cookie detail */
 .cookie-detail-page { position: relative; }
@@ -1696,6 +1930,83 @@ textarea:focus-visible,
 .tier-tag-experimental { background: #fdf3d8; color: #7a5a10; }
 .tier-tag-discouraged { background: #fbe1e1; color: #7a1f1f; }
 
+/* ---------- Page hero band (Workshop / Sommelier / Atlas / Curated Kitchen headers) ---------- */
+
+.page-hero-band {
+  position: relative;
+  margin: 0 -16px 24px;
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+  min-height: 168px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.page-hero-band-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-hero-band-scrim {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 20px 20px 18px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+  color: white;
+}
+
+.page-hero-band-scrim h1 {
+  color: white;
+  margin: 2px 0 4px;
+}
+
+.page-hero-band-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.page-hero-band-description {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.95;
+  max-width: 480px;
+}
+
+.page-hero-band-credit {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  z-index: 1;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.page-hero-band-plain {
+  display: block;
+  min-height: 0;
+  margin: 0 0 20px;
+}
+
+.page-hero-band-plain .page-hero-band-eyebrow {
+  color: var(--caramel);
+}
+
+.page-hero-band-plain .page-hero-band-description {
+  max-width: none;
+  opacity: 0.85;
+  color: var(--text);
+  margin-top: 6px;
+}
+
 /* Workshop groups */
 .workshop-group-grid {
   display: grid;
@@ -1709,11 +2020,32 @@ textarea:focus-visible,
   color: inherit;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
+  border-radius: 14px;
+  padding: 18px 16px;
   min-height: 44px;
+  border-top: 3px solid var(--caramel);
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: var(--shadow);
 }
-.workshop-link-card-coming-soon { opacity: 0.6; }
+.workshop-link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(46, 32, 21, 0.16);
+}
+.workshop-link-card:active {
+  transform: scale(0.98);
+}
+.workshop-link-card-coming-soon { opacity: 0.6; border-top-color: var(--border); }
+
+.crumb-masthead { margin-bottom: 20px; }
+.crumb-masthead-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--caramel);
+  margin: 0 0 4px;
+}
+.crumb-secondary-grid { margin-top: 24px; }
 .coming-soon-tag {
   display: inline-block;
   font-size: 0.78rem;
@@ -1763,11 +2095,33 @@ textarea:focus-visible,
 
 /* My Cookies */
 .my-cookies-page { }
-.my-cookies-group { margin: 24px 0; }
-.my-cookies-list { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
-.my-cookies-item { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100px; text-decoration: none; color: inherit; text-align: center; font-size: 0.85rem; }
+.my-cookies-group { margin: 28px 0; }
+.my-cookies-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 14px; margin-top: 12px; }
+.my-cookies-item {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.85rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.my-cookies-item:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(46, 32, 21, 0.16); }
+.my-cookies-item:active { transform: scale(0.97); }
 .my-cookies-item img,
-.my-cookies-item .cookie-hero-image-placeholder-thumb { width: 100px; height: 75px; }
+.my-cookies-item .cookie-hero-image-placeholder-thumb { width: 100%; height: 84px; border-radius: 0; }
+.my-cookies-item span { padding: 8px 8px 10px; text-align: center; font-weight: 600; }
+.my-cookies-empty {
+  margin-top: 12px;
+  padding: 28px 20px;
+  text-align: center;
+  background: var(--caramel-bg);
+  border-radius: 16px;
+}
+.my-cookies-empty p { margin: 0 0 12px; opacity: 0.85; }
 
 .cookie-state-badge-favorite { }
 .top-nav-library-link { display: flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: none; color: inherit; }

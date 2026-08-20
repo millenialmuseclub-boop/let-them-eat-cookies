@@ -21,6 +21,24 @@ What Cookies inherited from Cake/Ramen, and where it deliberately diverged.
 - WCAG 2.2 AA conventions from Ramen's `ACCESSIBILITY.md` (see this repo's own `ACCESSIBILITY.md`
   for what's actually implemented here).
 
+## New family-reusable patterns (Phase 1.5, second pass)
+
+- **Canonical Food Entity → Recipe architecture** (`src/types/recipe.ts`, `src/data/recipes.json`,
+  `src/lib/data.ts`'s `getRecipeForCookie()`, `RecipeSection.tsx`): a structured (never prose-blob)
+  recipe keyed 1:1 to a canonical entity, with grouped ingredients, staged/numbered instructions,
+  and `relatedLabSlug` links from individual steps back into the Workshop-equivalent technique
+  system rather than duplicating technique explanations inline. This is the family's first Recipe
+  implementation and is designed to generalize: `Canonical Food Entity → Recipe → Ingredients →
+  Method → Technique Knowledge (Workshop/Labs) → Troubleshooting (shared engine, not per-entity) →
+  Contextual Commerce (Curated Kitchen)`. Should port cleanly to Cake (cakes) and Ramen (bowls)
+  without redesign — **not generalized into a shared package in this pass**, per instruction, but
+  documented here as the pattern to reuse when that need is real.
+- **`PageHeroBand`** (`src/components/PageHeroBand.tsx`): a compact photographic header for hub
+  pages, distinct from the full-page `CookieHeroImage` and the grid-oriented
+  `DiscoverFeatureCard` — same bleed/scrim visual language, hub-header proportions. Has a plain
+  (no-photo) variant for surfaces with no legitimate photography (Curated Kitchen). Reusable
+  anywhere a family app needs a photographic section header shorter than a full page hero.
+
 ## Deliberately different from both Cake and Ramen
 
 - **Genuinely global Atlas**, not a single-country deep-dive like Ramen's Japan-focused Atlas —
@@ -41,6 +59,6 @@ What Cookies inherited from Cake/Ramen, and where it deliberately diverged.
 - Sommelier PAIR and CREATE are "Coming Soon" placeholders — FIND is the only implemented mode.
 - Crumb has 6 modules with real but intentionally lighter content than Ramen's Slurp tab.
 - No interactive Atlas map (see above).
-- `npm install`/`npm run build` could not be executed this session (npm registry access was
-  blocked mid-session) — see the final report and `NATIVE_SETUP.md`/`ACCESSIBILITY.md` for what
-  that means for verification claims.
+- Sommelier PAIR/CREATE, and the remaining 4 Workshop Labs (Flour, Sugar, Butter & Fat, Texture),
+  remain "Coming Soon" — the shared architecture for both was verified ready in earlier passes
+  (see `CONTENT_PLAN.md`), but populating them is scoped to the future content-saturation pass.

@@ -1,17 +1,36 @@
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
+import { getCookieImage, getSceneImage } from '../lib/images'
+import { DiscoverFeatureCard } from '../components/DiscoverFeatureCard'
 
 export function CrumbPage() {
   useDocumentTitle('Crumb')
   return (
     <main className="page-container">
-      <h1>Crumb</h1>
-      <p>Culture, history, vocabulary, and cookie trivia -- the stories behind the recipes.</p>
-      <div className="workshop-group-grid">
-        <Link to="/crumb/101" className="workshop-link-card">
-          <h2>Cookie 101</h2>
-          <p>The essential primer on how cookies work.</p>
-        </Link>
+      <header className="crumb-masthead">
+        <p className="crumb-masthead-eyebrow">A Small Cookie Culture Magazine</p>
+        <h1>Crumb</h1>
+        <p>Culture, history, vocabulary, and cookie trivia -- the stories behind the recipes.</p>
+      </header>
+
+      <section className="discover-feature-grid" aria-label="Featured Crumb stories">
+        <DiscoverFeatureCard
+          to="/crumb/101"
+          title="Cookie 101"
+          description="The essential primer on how cookies work."
+          icon="📖"
+          image={getSceneImage('scene_baking_tray')}
+        />
+        <DiscoverFeatureCard
+          to="/crumb/trails"
+          title="Cookie Trails"
+          description="Themed paths through the Encyclopedia."
+          icon="🧭"
+          image={getCookieImage('cookie_scottish_shortbread')}
+        />
+      </section>
+
+      <div className="workshop-group-grid crumb-secondary-grid">
         <Link to="/atlas" className="workshop-link-card">
           <h2>Cookie Traditions</h2>
           <p>Explore traditions by region.</p>
@@ -23,10 +42,6 @@ export function CrumbPage() {
         <Link to="/sommelier/find" className="workshop-link-card">
           <h2>Find Your Cookie</h2>
           <p>Get matched to a cookie based on your taste.</p>
-        </Link>
-        <Link to="/crumb/trails" className="workshop-link-card">
-          <h2>Cookie Trails</h2>
-          <p>Themed paths through the Encyclopedia.</p>
         </Link>
         <Link to="/crumb/quiz" className="workshop-link-card">
           <h2>Cookie 101 Quiz</h2>

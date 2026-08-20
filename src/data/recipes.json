@@ -1,0 +1,689 @@
+[
+  {
+    "id": "recipe_chocolate_chip",
+    "cookieId": "cookie_chocolate_chip",
+    "title": "Classic Chocolate Chip Cookies",
+    "intro": "A straightforward creamed-butter dough in the Toll House tradition, biased toward a chewy center and set, faintly crisp edges rather than a thin, spread-out cookie.",
+    "yield": "About 24 cookies",
+    "prepTime": "20 min",
+    "chillTime": "30 min (minimum)",
+    "bakeTime": "10-12 min",
+    "totalTime": "About 1 hr 5 min",
+    "difficulty": "easy",
+    "equipment": ["Stand or hand mixer", "Baking sheets", "Parchment paper", "Cookie scoop"],
+    "temperature": "375°F (190°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Unsalted butter", "amount": "1", "unit": "cup", "note": "softened" },
+          { "ingredient": "Brown sugar", "amount": "1", "unit": "cup", "note": "packed" },
+          { "ingredient": "Granulated sugar", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Eggs", "amount": "2", "unit": "large" },
+          { "ingredient": "Vanilla extract", "amount": "2", "unit": "tsp" },
+          { "ingredient": "All-purpose flour", "amount": "2 1/4", "unit": "cups" },
+          { "ingredient": "Baking soda", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Fine salt", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Semi-sweet chocolate chips or chopped chocolate", "amount": "2", "unit": "cups" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Cream the butter with both sugars until light and fluffy, 2-3 minutes.", "techniqueNote": "This is the creaming method -- beating air into the fat/sugar mixture is what gives the finished cookie a lighter, more controlled spread.", "relatedLabSlug": "dough-lab" },
+      { "step": 2, "instruction": "Beat in the eggs one at a time, then the vanilla, until fully combined." },
+      { "step": 3, "instruction": "Whisk the flour, baking soda, and salt together in a separate bowl, then fold into the wet mixture just until no dry streaks remain." },
+      { "step": 4, "instruction": "Fold in the chocolate chips." },
+      { "step": 5, "stage": "Chill", "instruction": "Cover and chill the dough at least 30 minutes.", "techniqueNote": "Chilling firms the butter back up, which noticeably reduces spread and deepens flavor as the flour hydrates.", "relatedLabSlug": "dough-lab" },
+      { "step": 6, "stage": "Bake", "instruction": "Scoop 2-tablespoon portions onto parchment-lined sheets, spaced 2 inches apart, and bake at 375°F for 10-12 minutes, until the edges are set and golden but the centers still look slightly underdone." },
+      { "step": 7, "instruction": "Let the cookies rest on the sheet for 5 minutes before transferring to a rack -- they finish setting as they cool." }
+    ],
+    "bakersNotes": [
+      "Underbaking slightly is the single biggest lever for a chewy center -- pull the sheet when the centers still look a touch pale and glossy.",
+      "A longer chill (up to 24-48 hours) noticeably deepens flavor and reduces spread further, a technique borrowed by many modern bakery-style recipes.",
+      "Room-temperature butter should hold a dent when pressed but not look shiny or greasy -- overly soft butter causes excess spread."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 5 days.",
+    "makeAhead": "Portioned raw dough balls can be refrigerated up to 3 days before baking.",
+    "freezing": "Freeze portioned raw dough balls on a tray, then transfer to a bag; bake straight from frozen, adding 2-3 minutes to the bake time.",
+    "variations": ["Brown-butter version: brown the butter first and let it re-solidify before creaming.", "Add flaky salt on top before baking for a sweet-salty contrast."],
+    "relatedWorkshopLessons": ["dough-lab", "chocolate-lab"],
+    "sourceNote": "Original instructions written for this app, grounded in the standard Toll House creamed-butter ratio described in cookies.json's historical notes; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_snickerdoodle",
+    "cookieId": "cookie_snickerdoodle",
+    "title": "Classic Snickerdoodles",
+    "intro": "Cream of tartar is what makes a snickerdoodle a snickerdoodle -- it's what gives the crumb its faint tang and helps the tops crackle as they bake.",
+    "yield": "About 24 cookies",
+    "prepTime": "20 min",
+    "chillTime": "30 min",
+    "bakeTime": "9-11 min",
+    "totalTime": "About 1 hr",
+    "difficulty": "easy",
+    "equipment": ["Stand or hand mixer", "Baking sheets", "Parchment paper", "Small bowl for coating"],
+    "temperature": "375°F (190°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Unsalted butter", "amount": "1", "unit": "cup", "note": "softened" },
+          { "ingredient": "Granulated sugar", "amount": "1 1/2", "unit": "cups" },
+          { "ingredient": "Eggs", "amount": "2", "unit": "large" },
+          { "ingredient": "All-purpose flour", "amount": "2 3/4", "unit": "cups" },
+          { "ingredient": "Cream of tartar", "amount": "2", "unit": "tsp" },
+          { "ingredient": "Baking soda", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Fine salt", "amount": "1/2", "unit": "tsp" }
+        ]
+      },
+      {
+        "title": "For the coating",
+        "ingredients": [
+          { "ingredient": "Granulated sugar", "amount": "1/4", "unit": "cup" },
+          { "ingredient": "Ground cinnamon", "amount": "1 1/2", "unit": "tbsp" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Cream the butter and sugar together until light and fluffy, then beat in the eggs.", "relatedLabSlug": "dough-lab" },
+      { "step": 2, "instruction": "Whisk the flour, cream of tartar, baking soda, and salt together, then fold into the wet mixture until just combined." },
+      { "step": 3, "stage": "Chill", "instruction": "Chill the dough 30 minutes -- it should be firm enough to roll into neat balls without sticking to your hands." },
+      { "step": 4, "stage": "Shape and coat", "instruction": "Stir the coating sugar and cinnamon together in a small bowl. Roll the dough into 1 1/2-tablespoon balls and roll each one in the cinnamon sugar until fully coated." },
+      { "step": 5, "stage": "Bake", "instruction": "Space the balls 2 inches apart on parchment-lined sheets and bake at 375°F for 9-11 minutes, until the tops have crackled and the edges are just set but the centers still look soft." },
+      { "step": 6, "instruction": "Cool on the sheet for 5 minutes before transferring to a rack." }
+    ],
+    "bakersNotes": [
+      "Cream of tartar isn't optional if you want the real tang -- baking powder alone (a common substitution) gives a sweeter, flatter-tasting cookie.",
+      "The crackled top comes from the dough spreading faster than the sugar coating can stretch to cover it -- a slightly underchilled dough crackles more dramatically.",
+      "Don't skip the coating step even for a small batch: an uncoated snickerdoodle is just a sugar cookie."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 1 week.",
+    "makeAhead": "Roll and coat the dough balls up to 2 days ahead and refrigerate on a covered tray.",
+    "freezing": "Freeze coated, unbaked dough balls; bake from frozen, adding about 2 minutes.",
+    "variations": ["Brown-butter snickerdoodle: brown the butter and chill it back to a spreadable consistency before creaming."],
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app; ratios reflect the traditional cream-of-tartar formula described in cookies.json, not copied from any published recipe."
+  },
+  {
+    "id": "recipe_peanut_butter",
+    "cookieId": "cookie_peanut_butter",
+    "title": "Classic Peanut Butter Cookies",
+    "intro": "A dense, nutty drop cookie finished with the traditional fork-crosshatch pattern, which exists for a practical reason: this dough is too stiff to spread on its own.",
+    "yield": "About 22 cookies",
+    "prepTime": "15 min",
+    "chillTime": "30 min",
+    "bakeTime": "10-12 min",
+    "totalTime": "About 1 hr",
+    "difficulty": "easy",
+    "equipment": ["Stand or hand mixer", "Baking sheets", "Parchment paper", "Fork"],
+    "temperature": "350°F (175°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Unsalted butter", "amount": "1/2", "unit": "cup", "note": "softened" },
+          { "ingredient": "Creamy peanut butter", "amount": "1", "unit": "cup" },
+          { "ingredient": "Brown sugar", "amount": "1/2", "unit": "cup", "note": "packed" },
+          { "ingredient": "Granulated sugar", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Egg", "amount": "1", "unit": "large" },
+          { "ingredient": "Vanilla extract", "amount": "1", "unit": "tsp" },
+          { "ingredient": "All-purpose flour", "amount": "1 1/2", "unit": "cups" },
+          { "ingredient": "Baking soda", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Fine salt", "amount": "1/2", "unit": "tsp" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Cream the butter and peanut butter together, then beat in both sugars until fluffy.", "relatedLabSlug": "dough-lab" },
+      { "step": 2, "instruction": "Beat in the egg and vanilla." },
+      { "step": 3, "instruction": "Whisk the flour, baking soda, and salt together, then fold into the wet mixture until a stiff dough forms." },
+      { "step": 4, "stage": "Chill", "instruction": "Chill 30 minutes -- this dough is already stiff, but chilling keeps the crosshatch pattern from smoothing out during baking." },
+      { "step": 5, "stage": "Shape", "instruction": "Roll into 1 1/2-tablespoon balls, space on parchment-lined sheets, and press each one twice with a fork in a crosshatch pattern, flattening to about half an inch thick." },
+      { "step": 6, "stage": "Bake", "instruction": "Bake at 350°F for 10-12 minutes, until the edges are just golden. The centers will look underdone -- that's correct." },
+      { "step": 7, "instruction": "Cool on the sheet for 5 minutes before transferring to a rack; the cookies firm up considerably as they cool." }
+    ],
+    "bakersNotes": [
+      "The crosshatch isn't just decorative -- this dough genuinely won't spread much on its own, so flattening it controls the final shape and thickness.",
+      "Natural, oil-separated peanut butter can make the dough greasy; a standard processed creamy peanut butter gives a more predictable texture.",
+      "Don't overbake: this cookie firms up a lot as it cools, and a cookie that looks fully set in the oven will be dry once cooled."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 1 week.",
+    "makeAhead": "The dough can be made and refrigerated up to 2 days ahead.",
+    "freezing": "Freeze shaped and crosshatched dough rounds; bake from frozen, adding 1-2 minutes.",
+    "variations": ["Peanut butter blossom: press a chocolate candy into the center immediately after baking instead of crosshatching.", "Fold in 1/2 cup chopped peanuts for extra crunch."],
+    "allergenNotes": "Contains peanuts and tree-nut cross-contact risk in shared kitchens.",
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app; the crosshatch technique and stiff-dough ratio reflect the traditional format described in cookies.json, not copied from any published recipe."
+  },
+  {
+    "id": "recipe_scottish_shortbread",
+    "cookieId": "cookie_scottish_shortbread",
+    "title": "Classic Scottish Shortbread",
+    "intro": "Just three ingredients, in a traditional 1:2:3 ratio of sugar to butter to flour by weight -- the whole cookie depends on working the dough gently and baking it low and slow.",
+    "yield": "16 wedges (one 9-inch round)",
+    "prepTime": "15 min",
+    "chillTime": "20 min",
+    "bakeTime": "35-40 min",
+    "totalTime": "About 1 hr 15 min",
+    "difficulty": "easy",
+    "equipment": ["9-inch round pan or tart tin", "Fork", "Sharp knife"],
+    "temperature": "300°F (150°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Unsalted butter", "amount": "1", "unit": "cup", "note": "cool but pliable, cut into pieces" },
+          { "ingredient": "Caster or fine granulated sugar", "amount": "1/2", "unit": "cup", "note": "plus extra for finishing" },
+          { "ingredient": "All-purpose flour", "amount": "2", "unit": "cups" },
+          { "ingredient": "Fine salt", "amount": "1/4", "unit": "tsp" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Rub the butter into the flour, sugar, and salt with your fingertips (or pulse briefly in a food processor) until the mixture looks like coarse, sandy crumbs and just begins to clump.", "techniqueNote": "This is the rubbing-in method, not creaming -- you're not trying to incorporate air, just coat the flour in fat, which is what gives shortbread its short, sandy crumb instead of a chewy one.", "relatedLabSlug": "dough-lab" },
+      { "step": 2, "instruction": "Press the mixture together in the bowl with your hands until it just holds as a dough -- avoid kneading it, which develops gluten and toughens the final texture." },
+      { "step": 3, "stage": "Shape and chill", "instruction": "Press the dough evenly into an ungreased 9-inch round pan. Prick all over with a fork and score into 16 wedges with a knife (don't cut all the way through)." },
+      { "step": 4, "instruction": "Chill the shaped dough 20 minutes -- this helps it hold its shape and stay pale rather than spreading at the edges." },
+      { "step": 5, "stage": "Bake", "instruction": "Bake at 300°F for 35-40 minutes, until pale gold and set but not browned." },
+      { "step": 6, "stage": "Finish", "instruction": "While still warm, re-cut along the scored lines and sprinkle with a little extra sugar. Cool completely in the pan before removing the wedges -- shortbread is fragile while warm." }
+    ],
+    "bakersNotes": [
+      "Low, slow baking is what keeps shortbread pale rather than browned -- resist the urge to raise the oven temperature to speed things up.",
+      "The dough should feel cool, not soft or greasy, when you press it into the pan; if the kitchen is warm, chill the raw dough 10 minutes before pressing it in.",
+      "Pricking with a fork isn't decorative -- it lets steam escape evenly so the shortbread bakes flat instead of puffing unevenly."
+    ],
+    "storage": "Keeps in an airtight tin at room temperature for up to 3 weeks -- shortbread's low moisture is what gives it exceptional keeping qualities.",
+    "makeAhead": "The raw dough can be pressed into the pan and refrigerated up to 2 days before baking.",
+    "freezing": "Freeze the raw pressed and scored dough in its pan, well wrapped; bake from frozen, adding about 5 minutes.",
+    "variations": ["Petticoat tails: crimp the edge decoratively before scoring into wedges.", "Add finely grated lemon or orange zest to the dough."],
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app, built on the traditional 1:2:3 sugar:butter:flour ratio described in cookies.json's historical notes; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_french_sable",
+    "cookieId": "cookie_french_sable",
+    "title": "Sablé Breton (Salted Butter Sablés)",
+    "intro": "This version follows the thicker, salted-butter Breton lineage rather than the thinner Norman one -- the salt is a real regional signature, not a modern addition.",
+    "yield": "About 20 cookies",
+    "prepTime": "20 min",
+    "chillTime": "1 hr",
+    "bakeTime": "14-16 min",
+    "totalTime": "About 1 hr 40 min",
+    "difficulty": "intermediate",
+    "equipment": ["Stand or hand mixer", "Rolling pin", "Round cutter", "Baking sheets", "Parchment paper"],
+    "temperature": "350°F (175°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Salted butter", "amount": "1", "unit": "cup", "note": "softened; use good-quality salted butter, not unsalted plus added salt" },
+          { "ingredient": "Granulated sugar", "amount": "3/4", "unit": "cup" },
+          { "ingredient": "Egg yolks", "amount": "3", "unit": "large", "note": "at room temperature" },
+          { "ingredient": "All-purpose flour", "amount": "2", "unit": "cups" },
+          { "ingredient": "Baking powder", "amount": "1", "unit": "tsp" }
+        ]
+      },
+      {
+        "title": "For finishing",
+        "ingredients": [
+          { "ingredient": "Egg yolk", "amount": "1", "unit": "large", "note": "beaten, for egg wash" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Cream the butter and sugar together until pale and fluffy, about 3 minutes -- this takes longer than a typical drop-cookie dough because there's no liquid to help it along.", "relatedLabSlug": "dough-lab" },
+      { "step": 2, "instruction": "Beat in the egg yolks one at a time, mixing well after each addition." },
+      { "step": 3, "instruction": "Whisk the flour and baking powder together, then fold into the wet mixture just until combined into a soft dough." },
+      { "step": 4, "stage": "Chill", "instruction": "Shape the dough into a disc, wrap, and chill at least 1 hour -- this dough is soft and egg-enriched, and needs a firm chill to roll cleanly." },
+      { "step": 5, "stage": "Roll and cut", "instruction": "On a lightly floured surface, roll the chilled dough to about 1/2 inch thick and cut into rounds. Re-chill the cut rounds for 10 minutes if the kitchen is warm." },
+      { "step": 6, "stage": "Bake", "instruction": "Brush the tops with egg wash and score a light crosshatch pattern with a fork if desired. Bake at 350°F for 14-16 minutes, until deep golden at the edges." },
+      { "step": 7, "instruction": "Cool on the sheet for 5 minutes before transferring to a rack -- these are more fragile straight from the oven than a typical drop cookie." }
+    ],
+    "bakersNotes": [
+      "Real salted butter (not a pinch of table salt stirred into unsalted butter) gives a more even, dissolved salinity throughout the dough.",
+      "This dough is genuinely softer and stickier than most rolled cookie doughs because of the extra yolks -- flour your surface generously and work quickly once it's out of the fridge.",
+      "The egg wash is what gives the classic glossy, deep-gold sablé finish; skipping it results in a paler, matte top."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 5 days.",
+    "makeAhead": "The dough disc can be refrigerated up to 3 days, or rolled and cut ahead and refrigerated 1 day before baking.",
+    "freezing": "Freeze the dough disc (unrolled) for up to 2 months; thaw overnight in the fridge before rolling.",
+    "variations": ["Sablé Normand: use unsalted butter and reduce chill time slightly for a thinner, crisper result.", "Sandwich two sablés around jam or ganache."],
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app, reflecting the salted-butter Breton lineage documented in cookies.json; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_italian_amaretti",
+    "cookieId": "cookie_italian_amaretti",
+    "title": "Almond Amaretti",
+    "intro": "No flour, no butter -- this dough is just ground almonds, sugar, and whipped egg whites, leaned toward a crisp shell over a chewy center rather than a fully dry version.",
+    "yield": "About 24 cookies",
+    "prepTime": "20 min",
+    "bakeTime": "18-20 min",
+    "totalTime": "About 40 min",
+    "difficulty": "intermediate",
+    "equipment": ["Stand or hand mixer", "Fine-mesh sieve", "Baking sheets", "Parchment paper", "Piping bag or two spoons"],
+    "temperature": "300°F (150°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Almond flour or very finely ground blanched almonds", "amount": "2", "unit": "cups" },
+          { "ingredient": "Granulated sugar", "amount": "1", "unit": "cup" },
+          { "ingredient": "Egg whites", "amount": "2", "unit": "large", "note": "at room temperature" },
+          { "ingredient": "Almond extract", "amount": "1/2", "unit": "tsp" },
+          { "ingredient": "Fine salt", "amount": "Pinch" }
+        ]
+      },
+      {
+        "title": "For finishing",
+        "ingredients": [
+          { "ingredient": "Powdered sugar", "amount": "1/2", "unit": "cup", "note": "for rolling" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Whip the whites", "instruction": "Beat the egg whites with the salt to soft, foamy peaks -- not stiff, glossy meringue peaks, just enough to aerate them.", "techniqueNote": "This whipped egg white is the cookie's only leavening -- there's no chemical raising agent, so the amount of air you beat in directly controls the final rise and chew." },
+      { "step": 2, "stage": "Make the dough", "instruction": "Whisk the almond flour and sugar together, then fold in the whipped egg whites and almond extract until a thick, sticky paste forms." },
+      { "step": 3, "stage": "Shape", "instruction": "Roll heaping-tablespoon portions of the paste into balls (dampen your hands slightly if it's sticky), then roll each ball in powdered sugar until fully coated." },
+      { "step": 4, "stage": "Bake", "instruction": "Space on parchment-lined sheets and bake at 300°F for 18-20 minutes, until the tops have cracked and turned pale gold but the centers still feel soft when gently pressed." },
+      { "step": 5, "instruction": "Cool completely on the sheet -- amaretti are very fragile warm and firm up significantly as they cool." }
+    ],
+    "bakersNotes": [
+      "Genuine almond extract (not imitation) makes a real difference here, since almond is the only flavor in the cookie.",
+      "The cracked, sugar-dusted top comes from rolling generously in powdered sugar before baking -- don't skimp on the coating.",
+      "For a drier, fully crisp amaretti secchi rather than a chewy amaretti morbidi, bake 5-8 minutes longer at the same temperature."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 1 week; texture continues to firm slightly with storage.",
+    "makeAhead": "The rolled, sugared balls can be refrigerated up to 1 day before baking.",
+    "freezing": "Freeze baked, cooled amaretti in an airtight container for up to 2 months.",
+    "variations": ["Add finely grated orange zest to the paste.", "Fold in 2 tablespoons cocoa powder for a chocolate amaretti."],
+    "allergenNotes": "Contains tree nuts (almonds) and egg.",
+    "sourceNote": "Original instructions written for this app, reflecting the traditional whipped-egg-white leavening method described in cookies.json; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_dutch_stroopwafel",
+    "cookieId": "cookie_dutch_stroopwafel",
+    "title": "Home Stroopwafels",
+    "intro": "A yeasted waffle-iron batter, split while warm and filled with a butter-caramel syrup -- this is genuinely a waffle-iron project rather than an oven bake, and needs a pizzelle or stroopwafel iron to shape correctly.",
+    "yield": "About 12 stroopwafels",
+    "prepTime": "30 min",
+    "chillTime": "1 hr (dough rest)",
+    "bakeTime": "About 2 min per wafer",
+    "totalTime": "About 2 hr",
+    "difficulty": "advanced",
+    "equipment": ["Stroopwafel or pizzelle iron", "Stand mixer with dough hook", "Saucepan", "Serrated knife"],
+    "temperature": "Waffle iron on medium-high",
+    "ingredientGroups": [
+      {
+        "title": "For the waffle dough",
+        "ingredients": [
+          { "ingredient": "All-purpose flour", "amount": "2 1/2", "unit": "cups" },
+          { "ingredient": "Active dry yeast", "amount": "2 1/4", "unit": "tsp", "note": "one packet" },
+          { "ingredient": "Granulated sugar", "amount": "1/4", "unit": "cup" },
+          { "ingredient": "Unsalted butter", "amount": "1/2", "unit": "cup", "note": "melted and cooled" },
+          { "ingredient": "Egg", "amount": "1", "unit": "large" },
+          { "ingredient": "Warm milk", "amount": "1/4", "unit": "cup", "note": "about 110°F" },
+          { "ingredient": "Fine salt", "amount": "1/2", "unit": "tsp" }
+        ]
+      },
+      {
+        "title": "For the caramel filling",
+        "ingredients": [
+          { "ingredient": "Unsalted butter", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Brown sugar", "amount": "3/4", "unit": "cup", "note": "packed" },
+          { "ingredient": "Golden syrup or light corn syrup", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Ground cinnamon", "amount": "1/2", "unit": "tsp" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Combine the warm milk, yeast, and a pinch of the sugar; let sit 5-10 minutes until foamy." },
+      { "step": 2, "instruction": "In a stand mixer with the dough hook, combine the flour, remaining sugar, and salt. Add the yeast mixture, melted butter, and egg, and knead until a smooth, slightly sticky dough forms, about 5 minutes." },
+      { "step": 3, "stage": "Rest", "instruction": "Cover and let rest in a warm spot for about 1 hour, until visibly puffed (it won't necessarily double the way a bread dough does)." },
+      { "step": 4, "stage": "Make the filling", "instruction": "While the dough rests, melt the butter, brown sugar, syrup, and cinnamon together in a saucepan over low heat, stirring until smooth. Keep warm -- it needs to stay pourable when you fill the wafers." },
+      { "step": 5, "stage": "Cook the wafers", "instruction": "Divide the dough into 12 balls. Cook each one in a preheated stroopwafel or pizzelle iron until deep golden, about 2 minutes." },
+      { "step": 6, "stage": "Split and fill", "instruction": "While each wafer is still hot and pliable, use a serrated knife to carefully slice it in half horizontally into two thin discs. Spread the warm filling over one half and press the other half back on top." },
+      { "step": 7, "instruction": "Work quickly -- the wafers become too brittle to split cleanly once they cool. If a batch cools before you finish, a few seconds back on the warm iron will soften it again." }
+    ],
+    "bakersNotes": [
+      "Splitting the wafer while hot is the trickiest step -- have your filling ready and warm before the first wafer comes off the iron, not after.",
+      "If the filling starts to set up and become hard to spread, warm it briefly over low heat again.",
+      "A stroopwafel is traditionally rested on top of a hot cup of coffee or tea for a minute before eating, which gently re-softens the filling."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 5 days; the filling firms slightly with storage.",
+    "makeAhead": "The caramel filling can be made up to 3 days ahead and gently rewarmed before use.",
+    "freezing": "Not recommended -- the filling's texture suffers on thawing.",
+    "variations": ["Stir a pinch of speculaas spice blend into the filling instead of plain cinnamon.", "Dip the finished, cooled edge in melted chocolate."],
+    "relatedWorkshopLessons": ["chocolate-lab"],
+    "sourceNote": "Original instructions written for this app, reflecting the traditional yeasted-waffle-plus-caramel-syrup format described in cookies.json; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_austrian_linzer",
+    "cookieId": "cookie_austrian_linzer",
+    "title": "Linzer Cookies",
+    "intro": "A hazelnut-and-cinnamon shortbread dough cut into windowed pairs and sandwiched with raspberry jam, the most historically associated filling, though apricot is a common and equally traditional swap.",
+    "yield": "About 18 sandwich cookies",
+    "prepTime": "30 min",
+    "chillTime": "1 hr",
+    "bakeTime": "10-12 min",
+    "totalTime": "About 2 hr",
+    "difficulty": "intermediate",
+    "equipment": ["Food processor", "Rolling pin", "Round cutter", "Small window-shaped cutter", "Baking sheets", "Parchment paper"],
+    "temperature": "350°F (175°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Toasted hazelnuts, finely ground", "amount": "1", "unit": "cup" },
+          { "ingredient": "All-purpose flour", "amount": "1 3/4", "unit": "cups" },
+          { "ingredient": "Ground cinnamon", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Fine salt", "amount": "1/4", "unit": "tsp" },
+          { "ingredient": "Unsalted butter", "amount": "3/4", "unit": "cup", "note": "softened" },
+          { "ingredient": "Granulated sugar", "amount": "3/4", "unit": "cup" },
+          { "ingredient": "Egg yolk", "amount": "1", "unit": "large" },
+          { "ingredient": "Vanilla extract", "amount": "1", "unit": "tsp" }
+        ]
+      },
+      {
+        "title": "For assembly",
+        "ingredients": [
+          { "ingredient": "Raspberry jam", "amount": "3/4", "unit": "cup", "note": "or apricot jam" },
+          { "ingredient": "Powdered sugar", "amount": "For dusting" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Whisk the ground hazelnuts, flour, cinnamon, and salt together in a bowl." },
+      { "step": 2, "instruction": "Cream the butter and sugar until light, then beat in the egg yolk and vanilla.", "relatedLabSlug": "dough-lab" },
+      { "step": 3, "instruction": "Fold the flour mixture into the butter mixture just until a dough comes together." },
+      { "step": 4, "stage": "Chill", "instruction": "Divide the dough in half, shape into discs, wrap, and chill at least 1 hour -- this dough is nut-enriched and needs a firm chill to roll and cut cleanly." },
+      { "step": 5, "stage": "Roll and cut", "instruction": "Roll each disc to about 1/4 inch thick. Cut an equal number of rounds; cut a small window shape from the center of half of them." },
+      { "step": 6, "instruction": "Re-chill the cut cookies for 10 minutes if the dough has softened, then transfer to parchment-lined sheets." },
+      { "step": 7, "stage": "Bake", "instruction": "Bake at 350°F for 10-12 minutes, until just golden at the edges. Cool completely on a rack before filling." },
+      { "step": 8, "stage": "Assemble", "instruction": "Dust the windowed cookies with powdered sugar first (easier before the jam is added). Spread about 1 teaspoon of jam on each solid cookie, then top with a windowed cookie to sandwich." }
+    ],
+    "bakersNotes": [
+      "Toasting the hazelnuts yourself, even briefly, gives noticeably more flavor than pre-ground nut flour.",
+      "Dust the top (windowed) cookies with powdered sugar before assembling, not after -- jam can seep up through the window and make the sugar look wet.",
+      "Let the sandwiches sit an hour or two before serving; the jam softens the cut edges slightly, which is part of the intended texture."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 4 days; the jam continues to soften the cookies slightly over time.",
+    "makeAhead": "The unbaked dough discs can be refrigerated up to 3 days.",
+    "freezing": "Freeze the unfilled, baked cookies for up to 2 months; assemble with fresh jam after thawing.",
+    "variations": ["Apricot jam in place of raspberry.", "Substitute ground almonds for hazelnuts."],
+    "allergenNotes": "Contains tree nuts (hazelnuts) and egg.",
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app, reflecting the traditional nut-flour windowed-sandwich format described in cookies.json; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_maamoul",
+    "cookieId": "cookie_maamoul",
+    "title": "Date-Filled Ma'amoul",
+    "intro": "A semolina dough enriched with ghee, rested to soften the grain, then filled with date paste and pressed in a decorative mold -- this version uses the date filling most commonly associated with the cookie, though walnut and pistachio are equally traditional.",
+    "yield": "About 24 cookies",
+    "prepTime": "40 min",
+    "chillTime": "3 hr (dough rest, not refrigerated)",
+    "bakeTime": "15-18 min",
+    "totalTime": "About 4 hr 15 min",
+    "difficulty": "advanced",
+    "equipment": ["Ma'amoul mold (or a fork and your hands, if unavailable)", "Baking sheets", "Parchment paper", "Fine sieve"],
+    "temperature": "350°F (175°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Fine semolina (not coarse)", "amount": "3", "unit": "cups" },
+          { "ingredient": "All-purpose flour", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Ghee or clarified butter, melted", "amount": "1", "unit": "cup" },
+          { "ingredient": "Granulated sugar", "amount": "2", "unit": "tbsp" },
+          { "ingredient": "Warm water", "amount": "1/2", "unit": "cup", "note": "plus more as needed" },
+          { "ingredient": "Orange blossom water", "amount": "2", "unit": "tbsp" }
+        ]
+      },
+      {
+        "title": "For the date filling",
+        "ingredients": [
+          { "ingredient": "Pitted dates, soft (Medjool preferred)", "amount": "2", "unit": "cups" },
+          { "ingredient": "Unsalted butter or ghee", "amount": "2", "unit": "tbsp" },
+          { "ingredient": "Ground cinnamon", "amount": "1/2", "unit": "tsp" }
+        ]
+      },
+      {
+        "title": "For finishing",
+        "ingredients": [
+          { "ingredient": "Powdered sugar", "amount": "For dusting" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Rest the dough (start ahead)", "instruction": "Combine the semolina, flour, sugar, and melted ghee in a large bowl, rubbing it through with your fingers until every grain is coated. Cover and let rest at room temperature at least 3 hours, or overnight -- this is the step that makes the dough tender rather than gritty; don't shortcut it." },
+      { "step": 2, "stage": "Make the filling", "instruction": "Pulse the dates with the butter and cinnamon in a food processor until a smooth, thick paste forms (add a teaspoon of hot water if it's too stiff to process). Set aside." },
+      { "step": 3, "stage": "Finish the dough", "instruction": "After resting, work the warm water and orange blossom water into the semolina mixture a little at a time, kneading gently, until the dough holds together and feels like soft, moldable clay -- not sticky, not crumbly." },
+      { "step": 4, "stage": "Fill and shape", "instruction": "Roll the dough into 1-inch balls. Press a thumb into the center of each to make a deep well, fill with about a teaspoon of date paste, then pinch and roll the dough back over the filling to seal completely." },
+      { "step": 5, "instruction": "If using a mold, press the filled ball firmly into the mold to take its pattern, then tap it out onto a parchment-lined sheet. If shaping by hand, gently press a decorative pattern into the top with a fork." },
+      { "step": 6, "stage": "Bake", "instruction": "Bake at 350°F for 15-18 minutes -- ma'amoul should stay pale, not brown; pull them as soon as the bottoms are just set and lightly colored." },
+      { "step": 7, "stage": "Finish", "instruction": "Cool completely before dusting generously with powdered sugar -- these are very fragile while warm." }
+    ],
+    "bakersNotes": [
+      "The long semolina rest is the single most important step -- skipping or shortening it results in a gritty, sandy texture instead of the intended tender crumb.",
+      "Seal the filling completely; any exposed date paste will leak and burn during baking.",
+      "If you don't have a carved mold, a fork pressed in a simple radial pattern is a reasonable substitute -- the pattern-to-filling coding is a real household convention but not a functional requirement."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 2 weeks -- ma'amoul is traditionally made in large batches for a holiday and meant to keep well.",
+    "makeAhead": "The date filling can be made up to 1 week ahead and refrigerated.",
+    "freezing": "Freeze baked, cooled ma'amoul (before the final sugar dusting) for up to 2 months; dust with powdered sugar after thawing.",
+    "variations": ["Walnut filling: substitute finely chopped walnuts mixed with a little sugar and cinnamon for the date paste.", "Pistachio filling: substitute finely ground pistachios mixed with sugar and a touch of rose water."],
+    "allergenNotes": "Recipe as written is nut-free (date filling), but common variations contain tree nuts (walnut, pistachio).",
+    "sourceNote": "Original instructions written for this app, reflecting the semolina-rest technique and mold-shaping tradition described in cookies.json; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_indian_nankhatai",
+    "cookieId": "cookie_indian_nankhatai",
+    "title": "Cardamom Nankhatai",
+    "intro": "Ghee stands in for butter here, both historically and functionally -- it gives this shortbread-style cookie its characteristic crumb and a flavor that plain butter doesn't quite replicate.",
+    "yield": "About 20 cookies",
+    "prepTime": "20 min",
+    "bakeTime": "16-18 min",
+    "totalTime": "About 40 min",
+    "difficulty": "easy",
+    "equipment": ["Mixing bowl", "Baking sheets", "Parchment paper"],
+    "temperature": "300°F (150°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Ghee, softened but not melted", "amount": "1", "unit": "cup" },
+          { "ingredient": "Powdered sugar", "amount": "1", "unit": "cup" },
+          { "ingredient": "All-purpose flour", "amount": "1 3/4", "unit": "cups" },
+          { "ingredient": "Fine semolina (sooji)", "amount": "1/4", "unit": "cup" },
+          { "ingredient": "Ground cardamom", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Baking powder", "amount": "1/2", "unit": "tsp" },
+          { "ingredient": "Baking soda", "amount": "1/4", "unit": "tsp" },
+          { "ingredient": "Fine salt", "amount": "Pinch" }
+        ]
+      },
+      {
+        "title": "For topping",
+        "ingredients": [
+          { "ingredient": "Sliced almonds or pistachios", "amount": "20 slivers", "note": "one per cookie" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Beat the ghee and powdered sugar together until light and creamy, about 2 minutes.", "relatedLabSlug": "dough-lab" },
+      { "step": 2, "instruction": "Whisk the flour, semolina, cardamom, baking powder, baking soda, and salt together, then work into the ghee mixture with your hands until a soft, slightly crumbly dough forms." },
+      { "step": 3, "stage": "Shape", "instruction": "Roll into 1-inch balls and flatten gently into thick discs on a parchment-lined sheet, spaced 1 1/2 inches apart. Press a nut sliver into the center of each." },
+      { "step": 4, "stage": "Bake", "instruction": "Bake at 300°F for 16-18 minutes, until the tops have cracked slightly and the bottoms are just barely golden -- nankhatai should stay pale overall." },
+      { "step": 5, "instruction": "Cool on the sheet 10 minutes before moving -- these are very tender and fragile until fully cooled." }
+    ],
+    "bakersNotes": [
+      "Ghee at room temperature should be soft and scoopable but not liquid -- if it's melted, chill the dough 15 minutes before shaping.",
+      "The cracked-top look is traditional and correct, not a sign of a problem -- it comes from the dough's low gluten development.",
+      "Adding the semolina isn't optional for the classic crumb; leaving it out gives a softer, less distinctive texture."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 2 weeks.",
+    "makeAhead": "The dough can be shaped, topped, and refrigerated up to 1 day before baking.",
+    "freezing": "Freeze baked, cooled nankhatai in an airtight container for up to 2 months.",
+    "variations": ["Eggless is standard here, not a substitution.", "Add a pinch of saffron threads soaked in a teaspoon of warm milk for a saffron nankhatai."],
+    "allergenNotes": "Topping contains tree nuts; omit for a nut-free version.",
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app, reflecting the ghee-and-semolina formula described in cookies.json's historical notes; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_alfajor",
+    "cookieId": "cookie_alfajor",
+    "title": "Alfajores de Dulce de Leche",
+    "intro": "Cornstarch is the key ingredient most non-Argentine bakers skip -- it's what gives the cookie rounds their signature powdery, almost melt-away tenderness rather than a standard shortbread snap.",
+    "yield": "About 15 sandwich cookies",
+    "prepTime": "25 min",
+    "chillTime": "30 min",
+    "bakeTime": "8-10 min",
+    "totalTime": "About 1 hr 30 min",
+    "difficulty": "intermediate",
+    "equipment": ["Stand or hand mixer", "Rolling pin", "Round cutter", "Baking sheets", "Parchment paper"],
+    "temperature": "350°F (175°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Cornstarch", "amount": "1 1/2", "unit": "cups" },
+          { "ingredient": "All-purpose flour", "amount": "1", "unit": "cup" },
+          { "ingredient": "Baking powder", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Fine salt", "amount": "1/4", "unit": "tsp" },
+          { "ingredient": "Unsalted butter", "amount": "1/2", "unit": "cup", "note": "softened" },
+          { "ingredient": "Granulated sugar", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Egg yolks", "amount": "3", "unit": "large" },
+          { "ingredient": "Vanilla extract", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Lemon or orange zest", "amount": "1", "unit": "tsp" }
+        ]
+      },
+      {
+        "title": "For assembly",
+        "ingredients": [
+          { "ingredient": "Dulce de leche", "amount": "1", "unit": "cup" },
+          { "ingredient": "Shredded coconut", "amount": "For rolling the edges", "note": "optional" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Make the dough", "instruction": "Whisk the cornstarch, flour, baking powder, and salt together in a bowl." },
+      { "step": 2, "instruction": "Cream the butter and sugar until light, then beat in the egg yolks, vanilla, and zest.", "relatedLabSlug": "dough-lab" },
+      { "step": 3, "instruction": "Fold the dry ingredients into the wet mixture just until a soft dough forms -- it will feel much softer and more delicate than a standard butter cookie dough because of the high starch content." },
+      { "step": 4, "stage": "Chill", "instruction": "Wrap the dough and chill at least 30 minutes, until firm enough to roll." },
+      { "step": 5, "stage": "Roll and cut", "instruction": "Roll the dough to about 1/4 inch thick between two sheets of parchment (it's too soft to roll comfortably on a bare counter). Cut into rounds and transfer to parchment-lined sheets." },
+      { "step": 6, "stage": "Bake", "instruction": "Bake at 350°F for 8-10 minutes -- the rounds should stay very pale, with barely any color at the edges. This is intentional; alfajor cookies are meant to stay soft, not crisp." },
+      { "step": 7, "instruction": "Cool completely on a rack before filling -- they're delicate straight from the oven." },
+      { "step": 8, "stage": "Assemble", "instruction": "Spread a generous layer of dulce de leche (thicker than you'd expect) on one round and sandwich with a second. If desired, roll the exposed filling edge in shredded coconut." }
+    ],
+    "bakersNotes": [
+      "Watch the bake closely -- alfajor cookies should look almost underbaked when you pull them; browning means they'll be crisp instead of soft.",
+      "The dough is genuinely fragile before baking; rolling between parchment sheets instead of on a floured counter makes it much easier to handle.",
+      "Use a thick, spoonable dulce de leche rather than a thin, pourable one, or it will squeeze out the sides when sandwiched."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 4 days; the dulce de leche softens the cookies further over time, which is part of the intended texture.",
+    "makeAhead": "The unbaked dough disc can be refrigerated up to 2 days.",
+    "freezing": "Freeze the unfilled, baked rounds for up to 2 months; assemble with fresh dulce de leche after thawing.",
+    "variations": ["Dip the finished sandwiched cookie halfway in melted chocolate.", "Roll the entire edge in shredded coconut, not just a portion."],
+    "relatedWorkshopLessons": ["dough-lab", "chocolate-lab"],
+    "sourceNote": "Original instructions written for this app, reflecting the cornstarch-enriched dough and dulce de leche format described in cookies.json; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_anzac_biscuit",
+    "cookieId": "cookie_anzac_biscuit",
+    "title": "ANZAC Biscuits",
+    "intro": "Egg-free by design, using golden syrup and a baking-soda-and-water reaction instead -- a formula built specifically to survive a long sea voyage, and still the traditional method today.",
+    "yield": "About 24 biscuits",
+    "prepTime": "15 min",
+    "bakeTime": "12-15 min",
+    "totalTime": "About 35 min",
+    "difficulty": "easy",
+    "equipment": ["Saucepan", "Baking sheets", "Parchment paper"],
+    "temperature": "325°F (165°C)",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "Rolled oats", "amount": "1", "unit": "cup" },
+          { "ingredient": "All-purpose flour", "amount": "1", "unit": "cup" },
+          { "ingredient": "Desiccated coconut", "amount": "1", "unit": "cup" },
+          { "ingredient": "Granulated sugar", "amount": "3/4", "unit": "cup" },
+          { "ingredient": "Unsalted butter", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Golden syrup", "amount": "3", "unit": "tbsp" },
+          { "ingredient": "Baking soda", "amount": "1", "unit": "tsp" },
+          { "ingredient": "Boiling water", "amount": "2", "unit": "tbsp" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Mix the dry ingredients", "instruction": "Stir the oats, flour, coconut, and sugar together in a large bowl." },
+      { "step": 2, "stage": "Melt the binder", "instruction": "Melt the butter and golden syrup together in a small saucepan over low heat." },
+      { "step": 3, "stage": "Activate the leavener", "instruction": "Dissolve the baking soda in the boiling water, then stir it into the warm butter mixture -- it will foam up noticeably.", "techniqueNote": "This foaming reaction is the biscuit's entire leavening system; there's no creamed fat or whipped egg to fall back on, so mix it in immediately while it's still active." },
+      { "step": 4, "stage": "Combine", "instruction": "Pour the butter mixture over the dry ingredients and stir until evenly combined into a stiff, slightly sticky dough." },
+      { "step": 5, "stage": "Shape and bake", "instruction": "Roll into 1-tablespoon balls, space 2 inches apart on parchment-lined sheets, and flatten slightly. Bake at 325°F for 12-15 minutes, until golden." },
+      { "step": 6, "instruction": "Cool on the sheet for 5 minutes -- they firm up considerably as they cool, and bake time is what determines chewy versus crisp." }
+    ],
+    "bakersNotes": [
+      "Bake time is the main control here: closer to 12 minutes gives a chewier biscuit, closer to 15 gives a crisper one -- both are legitimate traditional results.",
+      "Golden syrup has a distinct flavor from light corn syrup; if substituting, expect a milder result.",
+      "These keep unusually well even at room temperature without refrigeration, which was the entire point of the original wartime recipe."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 3 weeks.",
+    "makeAhead": "The dough can be mixed and refrigerated up to 1 day; bring to room temperature before shaping if it firms up too much to roll.",
+    "freezing": "Freeze baked, cooled biscuits in an airtight container for up to 3 months.",
+    "variations": ["A traditionally protected recipe in Australia -- significant departures like a chocolate coating are generally sold as a distinct product rather than as an Anzac biscuit."],
+    "allergenNotes": "Contains coconut and oats (verify oats are processed in a facility appropriate for any gluten sensitivity, if relevant).",
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app, reflecting the egg-free golden-syrup formula documented in cookies.json's historical notes; not copied from any published recipe."
+  },
+  {
+    "id": "recipe_polvoron",
+    "cookieId": "cookie_polvoron",
+    "title": "Polvorón de Estepa (Almond Polvorones)",
+    "intro": "The defining technique here is toasting the flour before mixing, which removes moisture and raw flavor -- skip it and the cookie won't achieve its signature dust-dry crumble.",
+    "yield": "About 18 cookies",
+    "prepTime": "20 min",
+    "chillTime": "30 min",
+    "bakeTime": "18-20 min",
+    "totalTime": "About 1 hr 15 min (plus flour-toasting cooling time)",
+    "difficulty": "intermediate",
+    "equipment": ["Baking sheet (for toasting flour)", "Mixing bowl", "Round cutter", "Baking sheets", "Parchment paper"],
+    "temperature": "300°F (150°C) for toasting flour; 325°F (165°C) for baking",
+    "ingredientGroups": [
+      {
+        "title": "For the dough",
+        "ingredients": [
+          { "ingredient": "All-purpose flour", "amount": "2", "unit": "cups", "note": "to be toasted" },
+          { "ingredient": "Finely ground almonds", "amount": "1/2", "unit": "cup" },
+          { "ingredient": "Powdered sugar", "amount": "3/4", "unit": "cup" },
+          { "ingredient": "Lard or a neutral solid fat, softened", "amount": "1", "unit": "cup", "note": "traditional; unsalted butter is a workable substitute" },
+          { "ingredient": "Fine salt", "amount": "Pinch" }
+        ]
+      },
+      {
+        "title": "For finishing",
+        "ingredients": [
+          { "ingredient": "Powdered sugar", "amount": "For a heavy final dusting" }
+        ]
+      }
+    ],
+    "instructions": [
+      { "step": 1, "stage": "Toast the flour", "instruction": "Spread the flour on a baking sheet and toast at 300°F for 15-20 minutes, stirring every 5 minutes, until pale golden and fragrant. Cool completely before using -- this step removes moisture and raw flour taste, and is essential to the traditional texture." },
+      { "step": 2, "stage": "Make the dough", "instruction": "Whisk the cooled toasted flour, ground almonds, powdered sugar, and salt together." },
+      { "step": 3, "instruction": "Work the softened fat into the dry mixture with your hands until an evenly combined, very short dough forms -- it should hold together when pressed but crumble easily, closer to wet sand than a typical cookie dough.", "relatedLabSlug": "dough-lab" },
+      { "step": 4, "stage": "Shape and chill", "instruction": "Press the dough into a round about 1/2 inch thick and cut into rounds (or press directly into individual small rounds by hand, since this dough doesn't roll cleanly). Chill 30 minutes." },
+      { "step": 5, "stage": "Bake", "instruction": "Transfer carefully to parchment-lined sheets, keeping the rounds intact, and bake at 325°F for 18-20 minutes. They should stay very pale -- almost no browning." },
+      { "step": 6, "stage": "Finish", "instruction": "Cool completely and undisturbed on the sheet -- these are extremely fragile until fully cooled. Once cool, dust heavily and evenly with powdered sugar." }
+    ],
+    "bakersNotes": [
+      "Do not skip toasting the flour -- it's the single technique that separates a real polvorón from a plain shortbread, and there's no substitute step.",
+      "This dough will not hold together like a normal cookie dough; work gently and expect some rounds to need patching by hand rather than clean cutting.",
+      "Traditionally each cookie is wrapped in a twist of colored tissue paper both for presentation and because they're genuinely too fragile to stack loose."
+    ],
+    "storage": "Keeps in an airtight container at room temperature for up to 3 weeks; handle gently, as they remain fragile indefinitely.",
+    "makeAhead": "Toast the flour up to 1 week ahead and store airtight at room temperature.",
+    "freezing": "Freeze baked, cooled, undusted polvorones in a rigid container (they crush easily); dust with powdered sugar after thawing.",
+    "variations": ["Mexican polvorón: substitute butter or vegetable shortening for lard and add 1 teaspoon ground cinnamon in place of almonds for a different, equally traditional lineage."],
+    "allergenNotes": "Contains tree nuts (almonds); the Mexican variation is typically nut-free.",
+    "relatedWorkshopLessons": ["dough-lab"],
+    "sourceNote": "Original instructions written for this app, reflecting the toasted-flour technique specific to the Estepa lineage described in cookies.json; not copied from any published recipe."
+  }
+]

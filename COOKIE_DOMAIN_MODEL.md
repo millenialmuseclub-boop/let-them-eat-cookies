@@ -35,6 +35,22 @@ for genuinely shared or disputed traditions (e.g. Polvorón is tagged `multi-reg
 Spain/Mexico; Ma'amoul's `WorldRegionTradition` intro explicitly notes its cross-community
 history).
 
+## Recipe (`src/types/recipe.ts`)
+
+One canonical, structured `Recipe` per `CookieProfile` (never a prose blob) — `id, cookieId, title,
+intro, yield, prepTime, chillTime?, bakeTime, totalTime, difficulty, equipment[], temperature,
+ingredientGroups[]` (each `{title, ingredients[]}` with `{ingredient, amount, unit?, note?}`),
+`instructions[]` (`{step, stage?, instruction, techniqueNote?, relatedLabSlug?}`), `bakersNotes[],
+storage, makeAhead?, freezing?, substitutions?, variations?, allergenNotes?,
+relatedWorkshopLessons?, sourceNote`. 13/13 seeded in `src/data/recipes.json`, one per canonical
+cookie, keyed via `RECIPE_BY_COOKIE_ID`/`getRecipeForCookie()` in `src/lib/data.ts`. Rendered by
+`RecipeSection.tsx` on Cookie Detail, between Technique and Variations. `instructions[].
+relatedLabSlug` links a step directly to the Lab that explains its underlying technique (e.g. a
+chilling step links to `dough-lab`) rather than duplicating Workshop content inside the recipe —
+only populated for labs that actually exist (`dough-lab`, `chocolate-lab`) to avoid dead links into
+"Coming Soon" labs. All recipe prose is original, written for this app from the historical/technique
+notes already in `cookies.json`, not copied from any published recipe (see each `sourceNote`).
+
 ## Lab (`src/types/lab.ts`)
 
 Reused verbatim from Ramen's schema: `concepts[]` (tap-to-expand glossary) + `variables[]`

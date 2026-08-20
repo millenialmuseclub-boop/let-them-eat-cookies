@@ -10,14 +10,18 @@ iOS/Android (native `ios/`/`android/` projects generated and syncing clean — s
 
 ## Status
 
-Phase 1.5 (Foundation Verification + Repair, then Visual Transformation + Cake-Level Polish) —
-`npm install` and `npm run build` both run clean, all 22 routes were driven in a real browser
-(desktop + 375px mobile) with no console errors. Real bugs found and fixed, not just documented:
-top-nav/heading overlap, a floating back-button overlapping body text, and — the highest-leverage
-one — two conflicting cookie-photography CSS systems where the live one was the plain "photo in a
-box" version instead of the intended edge-to-edge editorial bleed treatment (see
-`DESIGN_SYSTEM.md`). Content is intentionally still at the Phase 1 scope (13 cookies, 2 of 6 Labs
-populated) — the next pass is content saturation, not this one.
+Phase 1.5, three passes so far: Foundation Verification + Repair → Visual Transformation +
+Cake-Level Polish → **Mobile App Completion + Recipes + Final Visual System**. `npm install` and
+`npm run build` both run clean. All 22 routes verified in a real browser at desktop and at
+375px/390px/430px mobile widths with no console errors and no horizontal overflow.
+
+This latest pass: finished the five hub pages left visually behind by the previous pass (Atlas,
+Workshop, Sommelier, Crumb, Curated Kitchen — each with a surface-specific composition, not one
+card pasted everywhere), gave all 13 canonical cookies a complete original structured recipe
+integrated directly into Cookie Detail, resolved the "Bench Scraper" product-naming collision, and
+refined My Cookies toward a personal-shelf feel. See `DESIGN_SYSTEM.md` for the hub-composition
+rationale and `COOKIE_DOMAIN_MODEL.md` for the Recipe schema. Content is intentionally still at 13
+cookies / 2 of 6 Labs populated — the next pass is content saturation, not this one.
 
 ## Structure
 
