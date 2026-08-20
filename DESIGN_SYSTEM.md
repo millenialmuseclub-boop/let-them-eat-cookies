@@ -232,3 +232,24 @@ across every touched route including Cookie Detail with a full recipe rendered. 
 `overflow-x: hidden` requirement on any bleeding element's positioned ancestor (documented in the
 first design-system pass) applies again here — `PageHeroBand` uses the same bleed technique as
 `CookieHeroImage` and depends on the same `.page-container` rule.
+
+## Family visual refinement pass (2026-08-20)
+
+Two structural fixes closed out the last known deviations from the porcelain/raspberry/plum/
+champagne palette established above:
+
+1. **Leftover cocoa-brown shadow values.** Three hover-shadow rules (`.discover-feature-card`,
+   `.workshop-link-card`, `.my-cookies-item`) still hardcoded the *pre-Phase-1.5* cocoa ink
+   (`rgba(46, 32, 21, …)`) instead of the plum-based shadow — survivors of the ground-up palette
+   replacement documented above that a value-level grep had missed. Swapped to
+   `rgba(58, 21, 48, …)` (matching `--plum`), same alpha/blur/spread. A repo-wide grep for the old
+   cocoa hex/rgba confirms none remain.
+2. **Workshop/Crumb over-carding.** `.workshop-link-card`, shared by `WorkshopPage.tsx` and
+   `CrumbPage.tsx`'s secondary grid, moved from a bordered/shadowed card grid to a divider-based
+   editorial rail (fine `border-bottom`/`border-top`, no radius/shadow, opacity+padding-left hover
+   instead of lift+shadow) — the same "cards should feel intentional, not automatic" principle
+   Ramen and Cake already apply.
+
+`--raspberry` and `--champagne` were confirmed already functioning as *interactive* colors (links,
+active states, focus rings, tags), not merely decorative — no change needed there. Dark-mode token
+coverage was spot-checked after both fixes; no gaps found.

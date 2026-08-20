@@ -138,3 +138,25 @@ the same way — search Commons, fetch the actual file page, confirm the license
 `upload.wikimedia.org` URL, never guess a URL pattern. If a cookie or scene ever needs a
 different/better photo, follow the same verification discipline rather than accepting a "close
 enough" match.
+
+## Family visual refinement pass (2026-08-20)
+
+No new photography was sourced this pass — coverage remains 49/52 cookies, 3 scenes. This pass
+was a *reuse* pass: closing structural gaps where existing licensed photography wasn't yet
+surfaced, not a sourcing pass.
+
+- Main hero (`MainPage.tsx`) switched from text-only to `PageHeroBand` using the existing
+  `cookie_macaron` photo.
+- Each of the 12 curated Collections now leads with a distinct, genuinely-a-member flagship
+  cookie photo (`getCollectionFlagshipCookieId()` in `src/lib/images.ts`) instead of rendering as
+  a text-only card — picked by hand from each collection's own `cookieIds` so the photo is always
+  an honest representative, never an arbitrary or repeated stand-in.
+- Cookie 101 (`Cookie101Page.tsx`) gained a `PageHeroBand` masthead using `scene_baking_tray`.
+- Dough Lab and Chocolate Lab — the only two Workshop labs with matching scene photography — gained
+  a header image via the previously-unused `.lab-hero-image` CSS block. Flour/Sugar/Fat/Texture
+  labs remain intentionally text-only; no matching scene asset exists for them yet.
+
+Genuine remaining gap, unchanged from the prior note above: scene coverage is still 3 of the ~8-9
+named contexts. Sommelier hub, Crumb masthead, and Curated Kitchen category headers currently reuse
+cookie photography rather than dedicated scene photography, which is an acceptable but not ideal
+substitute — a future sourcing pass (not a reuse pass) is the honest next step.
