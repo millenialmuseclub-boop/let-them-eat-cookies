@@ -27,8 +27,8 @@
   --cocoa-strong: var(--plum); /* kept as an alias so `h1,h2,h3 { color: var(--cocoa-strong) }` below needs no rename */
   --bg: var(--cream);
   --bg-card: #fffbfa; /* warm porcelain card, not pure white */
-  --border: rgba(58, 21, 48, 0.12);
-  --shadow: rgba(58, 21, 48, 0.08) 0 4px 16px;
+  --border: rgba(58, 21, 48, 0.07);
+  --shadow: rgba(58, 21, 48, 0.10) 0 8px 28px;
 
   --heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
 
@@ -48,8 +48,8 @@
     --cocoa-strong: #f7e6ea;
     --bg: #1f1420;
     --bg-card: #2b1a2c;
-    --border: rgba(247, 230, 234, 0.14);
-    --shadow: rgba(0, 0, 0, 0.35) 0 4px 16px;
+    --border: rgba(247, 230, 234, 0.09);
+    --shadow: rgba(0, 0, 0, 0.4) 0 8px 28px;
     --raspberry: #f472b0; /* ~6.7:1 against dark bg */
     --raspberry-bg: rgba(244, 114, 176, 0.18);
     --pink-bold: #ff8fc4;
@@ -1755,8 +1755,8 @@ textarea:focus-visible,
 /* Hero / section headers */
 .hero-section { padding: 24px 0 8px; }
 .hero-tagline { font-size: 1.1rem; opacity: 0.85; max-width: 60ch; }
-.cookie-of-day-section { margin: 32px 0; }
-.section-with-view-all { margin: 32px 0; }
+.cookie-of-day-section { margin: 48px 0; }
+.section-with-view-all { margin: 48px 0; }
 .section-header-row {
   display: flex;
   align-items: baseline;
