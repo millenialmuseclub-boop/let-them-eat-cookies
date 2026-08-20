@@ -1,15 +1,22 @@
-# App Store Metadata (Draft) — Let Them Eat Cookies
+# App Store Metadata — Let Them Eat Cookies
 
-Not final copy — structure prepared for the eventual App Store Connect listing.
+Status: **live in App Store Connect** (Apple ID `6803303494`), not just a local draft — the fields
+below marked "saved" were entered directly into the real App Store Connect record in a prior pass.
 
 - **App name**: Let Them Eat Cookies
-- **Subtitle (draft)**: A World of Cookies, Explained
+- **Subtitle**: A World of Cookies, Explained
 - **Bundle ID**: `com.jordypop.letthemeatcookies`
+- **SKU**: `LETC-IOS-001`
 - **Version**: 1.0 (build 1)
 - **Category**: Food & Drink
-- **Age rating**: 4+ (no objectionable content)
+- **Age rating**: 12+ globally, with regional exceptions (13+ in most countries) — set in App Store
+  Connect's ratings questionnaire; not something this pass touches further.
 
-## Description (draft)
+## Promotional Text (saved)
+
+> A world of cookies, explained — history, craft, and complete recipes.
+
+## Description (saved)
 
 > Let Them Eat Cookies is an editorial guide to cookies from around the world — their history,
 > their craft, and where they actually come from. Explore 52 canonical cookies across more than
@@ -18,48 +25,60 @@ Not final copy — structure prepared for the eventual App Store Connect listing
 > get matched to your ideal cookie with the Sommelier, and learn the technique behind every bake
 > in the Workshop.
 
-## Keywords (draft)
+## Keywords (saved)
 
-cookies, baking, recipes, cookie recipes, dessert, world cuisine, baking guide, dough, pâtisserie
+`cookies,baking,recipes,cookie recipes,dessert,world cuisine,baking guide,dough,patisserie`
 
-## What's new since the last metadata draft
+## What's New (for this build, if requested at submission)
 
-52 canonical cookies (up from 13), each with a complete structured recipe (52/52) -- previously
-this listing could only promise an encyclopedia, not a usable recipe collection.
+> Let Them Eat Cookies launches with 52 cookies from traditions around the world, each with a
+> complete original recipe, real photography, a global Atlas, the Sommelier flavor-matching tool,
+> and a private local library to track what you want to try, have baked, and love.
+
+## Review Notes (for App Review — draft, ready to paste into the Notes field)
+
+> Let Them Eat Cookies is a fully local, account-free reference and recipe app. There is no
+> sign-in, no backend, no user data collection (App Privacy is declared as Data Not Collected).
+> Locally saved state (My Cookies) lives entirely in the device's localStorage. The Curated Kitchen
+> section contains standard e-commerce affiliate links (clearly disclosed in-app) to
+> real third-party retailers; no purchase can be made inside the app itself. Two of six planned
+> "Labs" in the Workshop section are live (Dough Lab, Chocolate Lab); the remaining four are
+> honestly labeled "Coming Soon" rather than hidden or faked.
 
 ## Screenshots
 
-See `STORE_SCREENSHOT_PLAN.md`.
+See `STORE_SCREENSHOT_PLAN.md` — 8 iPhone (1284×2778) + 8 iPad (2048×2732) screenshots of the real
+running app now exist in `app-store-assets/screenshots/`. Not yet uploaded to App Store Connect
+(explicitly out of scope for this pass — upload is a real, consequential action reserved for the
+user).
 
-## App Store Connect fields (draft, not yet entered anywhere)
+## App Store Connect fields — status
 
-- **Support URL**: not yet set — needs a real, reachable page (the family's `jordypop.vercel.app`
-  pattern per `ABOUT_PAGE`/`FAMILY_ARCHITECTURE_REFERENCE.md`, or a dedicated one). This was
-  flagged as "not independently verified as live for this app" in an earlier pass and remains
-  unverified — check before submission, not after.
-- **Marketing URL**: optional, not set.
-- **Privacy policy URL**: same caveat as Support URL — the in-app About page links to a URL
-  following the family pattern but its liveness for Cookies specifically has not been confirmed.
-- **Copyright**: draft `© 2026 [rights holder]` — needs the actual legal name.
-- **Age rating**: 4+ (no objectionable content) — the app has no user-generated content, no
-  chat/social features, no mature themes; this should hold up as-is in Apple's questionnaire.
-- **Export compliance / encryption**: the app uses only standard HTTPS (no custom encryption). No
-  `ITSAppUsesNonExemptEncryption` key is currently set in `Info.plist` — Apple will ask the
-  encryption question on every upload without it; adding
-  `<key>ITSAppUsesNonExemptEncryption</key><false/>` to `Info.plist` would let it be answered "No"
-  automatically. Not added in this pass to avoid touching Info.plist without the user confirming
-  that's actually correct for how the app will be distributed.
-- **Privacy disclosures (App Privacy / "nutrition label")**: the app collects nothing — no
-  accounts, no analytics, no network calls beyond hotlinking Wikimedia Commons images, all saved
-  state (My Cookies) is local `localStorage` only. This should map to "Data Not Collected" in App
-  Store Connect's privacy questionnaire, but that questionnaire must still be filled out
-  in-console by whoever holds App Store Connect access — not something I can pre-fill from here.
+- **Support URL** (saved): `https://jordypop.vercel.app/support/let-them-eat-cookies` — verified
+  live with real support-contact content before being entered.
+- **Privacy Policy URL** (saved): `https://jordypop.vercel.app/policies/let-them-eat-cookies/privacy`
+  — verified live before being entered.
+- **Marketing URL**: not set (optional).
+- **Copyright** (saved): `Jordann Lopez` — matches the same field's value on the sibling Cake app.
+- **App Review contact info** (saved): Jordann Lopez, reusing the same phone/email already on file
+  for Cake (same real submitter, same App Store Connect account).
+- **Export compliance**: answered directly in App Store Connect's build-compliance dialog ("None of
+  the algorithms" — standard HTTPS only) rather than via an `Info.plist` key, since that's a
+  cleaner, non-destructive way to satisfy it without editing native config unnecessarily.
+- **App Privacy declaration** (saved): **Data Not Collected** — the app has no accounts, no
+  analytics, and its only network activity is hotlinking Wikimedia Commons images; all persisted
+  state is local-only `localStorage`.
 
-## Status
+## Feature-claim accuracy check
 
-**No App Store Connect record exists** — creating one requires Apple Developer portal access this
-environment doesn't have (and shouldn't be given credentials for). This document remains a content
-draft only, ready to paste in once that record exists. Feature claims in the description above are
-scoped to what's actually shipped: 52 cookies, 52 recipes, Encyclopedia, Atlas, Workshop (2 of 6
-Labs live, described generically as "the technique behind every bake" rather than naming specific
-Labs), Sommelier FIND (not PAIR/CREATE, which don't exist), Crumb, My Cookies.
+Every claim in the Description/Promotional Text/What's New above is scoped to what's actually
+shipped: 52 cookies, 52 recipes, Encyclopedia, Atlas, Workshop (Dough Lab + Chocolate Lab live, 4
+more honestly "Coming Soon"), Sommelier FIND (not PAIR/CREATE, which don't exist), Crumb, My
+Cookies. No mention of anything unbuilt.
+
+## Not done in this pass
+
+- Nothing uploaded or submitted to App Store Connect beyond what was already saved in the prior
+  pass (text fields, URLs, compliance answer, privacy declaration, build attachment).
+- Screenshots exist as files but were not uploaded — that upload step, plus clicking "Add for
+  Review," are left for the user.

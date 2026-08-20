@@ -10,26 +10,29 @@ iOS/Android (native `ios/`/`android/` projects generated and syncing clean — s
 
 ## Status
 
-Phase 1.5, five passes so far: Foundation Verification + Repair → Visual Transformation +
-Cake-Level Polish → Mobile App Completion + Recipes + Final Visual System → Final Feminine
-Redesign + 50-Cookie Saturation → **Final Release Candidate + TestFlight Pass**. `npm install` and
-`npm run build` both run clean. All routes verified in a real browser at desktop and at
-375px/390px/430px mobile widths with no console errors and no horizontal overflow.
+Phase 1.5, six passes so far, culminating in **TestFlight acceptance and an automated
+release-candidate pass**. `npm install` and `npm run build` both run clean. All routes verified in
+a real browser at desktop and at 375px/390px/430px mobile widths with no console errors and no
+horizontal overflow.
 
 **Content/visual state**: 52 canonical cookies, 52/52 with complete original recipes, 49/52
-photographed (3 honest gaps). Porcelain/raspberry/plum/champagne palette complete, the previous
-default-blue-link defect fixed, mobile nav corrected. See `DESIGN_SYSTEM.md` and `CONTENT_PLAN.md`.
+photographed (3 honest gaps), zero data-integrity issues (verified programmatically: no duplicate
+IDs, no broken collection/region/tradition/lab references). Porcelain/raspberry/plum/champagne
+palette complete, no default-blue-link regressions, mobile nav correct. See `DESIGN_SYSTEM.md` and
+`CONTENT_PLAN.md`.
 
-**Release state (this pass)**: App icon and splash regenerated to match the new palette (they'd
-been shipping in the old caramel/mustard palette). Route-level code splitting via `React.lazy`
-dropped the largest JS chunk from 633KB to 324KB raw, eliminating the build's chunk-size warning.
-`ios/release.xcconfig` + a real (not placeholder) `.github/workflows/ios-release.yml` were ported
-from Let Them Eat Cake's actual, proven, working release workflow. The GitHub repo now has this
-project's real history pushed to `main`. **Genuine remaining blocker**: TestFlight upload needs an
-App Store provisioning profile for `com.jordypop.letthemeatcookies` (Apple Developer portal access,
-can't be done from here) plus re-adding Cake's reusable signing secrets to this repo (GitHub
-doesn't share secrets across repos even within the same account) — see `NATIVE_SETUP.md` for the
-exact, minimal remaining steps.
+**Release state**: Build `1.0 (1)` was signed, archived, and uploaded via the GitHub Actions
+`ios-release.yml` workflow — Apple's own `altool` confirmed "UPLOAD SUCCEEDED with no errors," and
+the build shows in App Store Connect's TestFlight tab. App Store Connect metadata (description,
+keywords, support/privacy URLs, App Review contact, App Privacy declaration) is filled in and saved
+— see `APP_STORE_METADATA.md`. Real App Store screenshots (8 iPhone + 8 iPad, exact Apple pixel
+dimensions, generated deterministically from the actual running app) exist in
+`app-store-assets/screenshots/` — see `STORE_SCREENSHOT_PLAN.md`. Route-level code splitting via
+`React.lazy` keeps the largest JS chunk at 324KB raw (down from an original 633KB single bundle).
+
+**Genuine remaining step**: uploading the screenshots into App Store Connect and clicking "Add for
+Review" are real, consequential actions left for the user — not technical blockers, deliberate
+stopping points.
 
 ## Structure
 
