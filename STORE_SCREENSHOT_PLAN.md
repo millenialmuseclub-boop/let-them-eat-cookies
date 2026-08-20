@@ -1,10 +1,16 @@
 # Store Screenshot Plan — Let Them Eat Cookies
 
-**Status: the visual redesign (feminine porcelain/raspberry palette, corrected navigation) and the
-52-cookie catalog are both now in place -- this is the first point at which screenshots would
-actually represent the finished product. Not yet captured (requires a native build/simulator, not
-just the web dev server) — this plan reflects strongest-candidate framing, updated for the current
-app.**
+**Status: NOT YET CAPTURED. Genuine blocker, not an oversight.** The visual redesign (feminine
+porcelain/raspberry palette, corrected navigation) and the 52-cookie catalog are both now in
+place, so this is the first point where screenshots would actually represent the finished product
+— but capturing real App Store screenshots requires an iOS Simulator or physical device at the
+exact required resolutions, and this environment has no macOS/Xcode available (the same constraint
+that blocks a local `xcodebuild archive`). The in-browser preview tool used throughout this
+project's QA also failed to produce screenshots in this session specifically (a tooling issue, not
+a visual defect — extensively cross-verified via DOM/computed-style checks instead throughout this
+pass). Per explicit instruction, these were **not faked, stretched, or approximated** from a
+browser viewport — do that from an actual Simulator/device once one is available, using the shot
+list below.
 
 Planned screenshot set:
 

@@ -54,6 +54,24 @@ This documents what actually governs Cookies' visual language after the Phase 1.
 pass, and marks which parts are inherited/reusable across the Let Them Eat family versus specific
 to Cookies. It reflects the real, shipped `src/index.css` — not aspirational styling.
 
+## Phase 1.5, release pass: performance (measured, not assumed)
+
+The 52-cookie catalog's production build warned that its single JS chunk exceeded Vite's 500KB
+threshold: **633.24 KB raw / 172.71 KB gzip**, one bundle. Converted every route in `App.tsx` to
+`React.lazy()` + a single `<Suspense>` boundary around the router (standard pattern, no new
+dependency, no state-management change). Result, measured via the same `npm run build`:
+
+- Largest chunk now `data-*.js` at **324.17 KB raw / 79.79 KB gzip** (the shared cookie/recipe/
+  region JSON, needed across nearly every route, so Vite correctly hoists it into its own
+  once-loaded chunk rather than duplicating it per-route).
+- App-shell/vendor chunk **244.90 KB / 78.55 KB gzip**.
+- ~30 per-route chunks from 0.2 KB to 9.2 KB each, loaded on demand.
+- Vite's chunk-size warning is gone — every chunk is now under the threshold.
+- Verified against the actual production build (`vite preview`, not the dev server) that
+  navigating between routes fetches the expected per-route chunk (confirmed via
+  `read_network_requests` showing e.g. `MainPage-*.js` then `CookieDetailPage-*.js` loading only
+  when each route is visited) with zero console errors.
+
 ## FAMILY-REUSABLE
 
 These structural patterns came from Cake (and, for native/build concerns, Ramen) and should be

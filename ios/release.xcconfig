@@ -1,0 +1,18 @@
+// Scoped to the App target's Release configuration only (see baseConfigurationReference in
+// App.xcodeproj/project.pbxproj) -- mirrors Let Them Eat Cake's proven ios/release.xcconfig
+// pattern exactly. Deliberately NOT passed as xcodebuild command-line overrides in
+// .github/workflows/ios-release.yml: those apply to every target in the build graph (including
+// auto-generated SPM resource-bundle targets that can't be signed at all), and headless
+// `xcodebuild archive` resolves Automatic signing to "development" purpose for every target
+// regardless of the archive action, causing signing-identity conflicts. Scoping via xcconfig
+// avoids both problems.
+//
+// DEVELOPMENT_TEAM is the shared Let Them Eat family Apple Developer Team ID (not a secret --
+// reused as-is from Cake/Ramen's own release.xcconfig). PROVISIONING_PROFILE_SPECIFIER names a
+// profile that must still be created in the Apple Developer portal for com.letthemeatcookies.app
+// specifically -- profiles are bound 1:1 to a bundle ID and cannot be reused across apps, unlike
+// the Distribution certificate and Team ID above it.
+CODE_SIGN_STYLE = Manual
+CODE_SIGN_IDENTITY = Apple Distribution
+DEVELOPMENT_TEAM = J48FJJ3ABL
+PROVISIONING_PROFILE_SPECIFIER = Let Them Eat Cookies App Store

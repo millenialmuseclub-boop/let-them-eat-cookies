@@ -1,57 +1,134 @@
-# iOS TestFlight release workflow — structure only.
-#
-# Ported from Let Them Eat Ramen's proven cloud iOS release pattern. Not yet runnable: Cookies
-# has no Apple Developer identifier, App Store Connect record, distribution certificate, or
-# provisioning profile of its own yet (see NATIVE_SETUP.md). This file documents the exact
-# secrets this workflow will need once those exist — none are present in this repo.
-#
-# Required repository secrets (to be added later, never committed):
-#   IOS_DIST_SIGNING_CERT_P12_BASE64   — base64-encoded .p12 distribution certificate
-#   IOS_DIST_SIGNING_CERT_PASSWORD     — password for the .p12 above
-#   IOS_PROVISIONING_PROFILE_BASE64    — base64-encoded .mobileprovision for com.letthemeatcookies.app
-#   APP_STORE_CONNECT_KEY_ID           — App Store Connect API key ID
-#   APP_STORE_CONNECT_ISSUER_ID        — App Store Connect API issuer ID
-#   APP_STORE_CONNECT_API_KEY_BASE64   — base64-encoded .p8 App Store Connect API private key
+name: Build, Sign, and Upload iOS Release Build
 
-name: iOS Release (TestFlight)
-
+# Manual only. Builds a signed, production release .ipa using the Apple Distribution certificate
+# and App Store provisioning profile stored in repo secrets, then uploads it to App Store Connect /
+# TestFlight via the App Store Connect API key (also in secrets). Runs on macOS since Xcode has no
+# Windows/Linux equivalent. Ported directly from Let Them Eat Cake's proven, working
+# ios-release.yml (see NATIVE_SETUP.md for what's reused vs. Cookies-specific) -- same steps, same
+# secret names, adapted only for Cookies' app name/bundle ID/output filename.
 on:
   workflow_dispatch:
 
 jobs:
-  build-and-upload:
+  build-sign-upload:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "22"
+          cache: "npm"
 
-      - name: Install dependencies
+      - name: Install web app dependencies
         run: npm ci
 
       - name: Build web app
         run: npm run build
 
-      - name: Sync Capacitor iOS
+      - name: Sync Capacitor iOS project with the fresh web build
         run: npx cap sync ios
 
-      # The following steps are structure-only until the secrets above are configured.
-      - name: Import signing certificate
-        run: echo "TODO once IOS_DIST_SIGNING_CERT_P12_BASE64 is configured"
+      - name: Create temporary keychain and import distribution certificate
+        env:
+          IOS_DIST_CERT_P12_BASE64: ${{ secrets.IOS_DIST_CERT_P12_BASE64 }}
+          IOS_DIST_CERT_PASSWORD: ${{ secrets.IOS_DIST_CERT_PASSWORD }}
+        run: |
+          KEYCHAIN_PATH="$RUNNER_TEMP/signing.keychain-db"
+          KEYCHAIN_PASSWORD=$(openssl rand -base64 24)
+          echo "$IOS_DIST_CERT_P12_BASE64" | base64 -d > "$RUNNER_TEMP/distribution.p12"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$RUNNER_TEMP/distribution.p12" -P "$IOS_DIST_CERT_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security list-keychain -d user -s "$KEYCHAIN_PATH" $(security list-keychains -d user | sed 's/"//g')
+
+          rm -f "$RUNNER_TEMP/distribution.p12"
 
       - name: Install provisioning profile
-        run: echo "TODO once IOS_PROVISIONING_PROFILE_BASE64 is configured"
+        env:
+          IOS_PROVISION_PROFILE_BASE64: ${{ secrets.IOS_PROVISION_PROFILE_BASE64 }}
+        run: |
+          PROFILE_DIR="$HOME/Library/MobileDevice/Provisioning Profiles"
+          mkdir -p "$PROFILE_DIR"
+          printf '%s' "$IOS_PROVISION_PROFILE_BASE64" | base64 -d > "$RUNNER_TEMP/profile.mobileprovision"
+
+          security cms -D -i "$RUNNER_TEMP/profile.mobileprovision" > "$RUNNER_TEMP/profile.plist"
+          UUID=$(/usr/libexec/PlistBuddy -c "Print :UUID" "$RUNNER_TEMP/profile.plist")
+          cp "$RUNNER_TEMP/profile.mobileprovision" "$PROFILE_DIR/$UUID.mobileprovision"
+
+      - name: Set up App Store Connect API key
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          printf '%s' "$APP_STORE_CONNECT_API_KEY_BASE64" | base64 -d > ~/.appstoreconnect/private_keys/AuthKey_${APP_STORE_CONNECT_KEY_ID}.p8
 
       - name: Archive
+        # No signing overrides on the command line here on purpose -- see ios/release.xcconfig's
+        # own comment for why (Cake's hard-won lesson, ported as-is).
         run: |
-          echo "TODO: xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Release -archivePath build/App.xcarchive archive"
+          xcodebuild archive \
+            -project ios/App/App.xcodeproj \
+            -scheme App \
+            -configuration Release \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -destination "generic/platform=iOS"
 
-      - name: Export IPA
+      - name: Export signed IPA
         run: |
-          echo "TODO: xcodebuild -exportArchive -archivePath build/App.xcarchive -exportPath build/export -exportOptionsPlist ios/ExportOptions.plist"
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<'EOF'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store</string>
+            <key>teamID</key>
+            <string>J48FJJ3ABL</string>
+            <key>signingStyle</key>
+            <string>manual</string>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>com.letthemeatcookies.app</key>
+              <string>Let Them Eat Cookies App Store</string>
+            </dict>
+          </dict>
+          </plist>
+          EOF
 
-      - name: Upload to TestFlight
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/App.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist"
+
+      - name: Upload to App Store Connect / TestFlight
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
         run: |
-          echo "TODO: xcrun altool --upload-app -f build/export/App.ipa -t ios --apiKey $APP_STORE_CONNECT_KEY_ID --apiIssuer $APP_STORE_CONNECT_ISSUER_ID"
+          xcrun altool --upload-app \
+            --type ios \
+            --file "$RUNNER_TEMP/export/App.ipa" \
+            --apiKey "$APP_STORE_CONNECT_KEY_ID" \
+            --apiIssuer "$APP_STORE_CONNECT_ISSUER_ID"
+
+      - name: Clean up keys and profiles
+        if: always()
+        run: |
+          rm -f ~/.appstoreconnect/private_keys/AuthKey_*.p8
+          rm -rf "$HOME/Library/MobileDevice/Provisioning Profiles"
+          security delete-keychain "$RUNNER_TEMP/signing.keychain-db" || true
+
+      - name: Upload archive as build artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: letthemeatcookies-ios-archive
+          path: ${{ runner.temp }}/App.xcarchive
+          retention-days: 30

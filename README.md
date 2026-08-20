@@ -10,22 +10,26 @@ iOS/Android (native `ios/`/`android/` projects generated and syncing clean — s
 
 ## Status
 
-Phase 1.5, four passes so far: Foundation Verification + Repair → Visual Transformation +
-Cake-Level Polish → Mobile App Completion + Recipes + Final Visual System → **Final Feminine
-Redesign + 50-Cookie Saturation**. `npm install` and `npm run build` both run clean. All routes
-verified in a real browser at desktop and at 375px/390px/430px mobile widths with no console
-errors and no horizontal overflow.
+Phase 1.5, five passes so far: Foundation Verification + Repair → Visual Transformation +
+Cake-Level Polish → Mobile App Completion + Recipes + Final Visual System → Final Feminine
+Redesign + 50-Cookie Saturation → **Final Release Candidate + TestFlight Pass**. `npm install` and
+`npm run build` both run clean. All routes verified in a real browser at desktop and at
+375px/390px/430px mobile widths with no console errors and no horizontal overflow.
 
-This latest pass replaced the app's entire color identity (a caramel/butter palette that was
-internally coherent but still read as masculine and web-like) with a porcelain/raspberry/plum
-pâtisserie palette, fixed a real defect where the top-nav wordmark and the *entire bottom tab bar*
-were rendering as unstyled default-blue browser links (dead CSS selectors matching no real
-element), and expanded the canonical catalog from 13 to **52 cookies**, each with a complete
-original recipe (52/52 coverage) and photography where a confident match exists (49/52 — 3 honest
-gaps, documented in `PHOTOGRAPHY.md`, not faked). See `DESIGN_SYSTEM.md` for the full palette and
-link-defect writeup, and `COOKIE_DOMAIN_MODEL.md`/`CONTENT_PLAN.md` for the catalog. 2 of 6
-Workshop Labs remain populated (Dough, Chocolate) — the architecture is proven ready for the rest,
-per `CONTENT_PLAN.md`.
+**Content/visual state**: 52 canonical cookies, 52/52 with complete original recipes, 49/52
+photographed (3 honest gaps). Porcelain/raspberry/plum/champagne palette complete, the previous
+default-blue-link defect fixed, mobile nav corrected. See `DESIGN_SYSTEM.md` and `CONTENT_PLAN.md`.
+
+**Release state (this pass)**: App icon and splash regenerated to match the new palette (they'd
+been shipping in the old caramel/mustard palette). Route-level code splitting via `React.lazy`
+dropped the largest JS chunk from 633KB to 324KB raw, eliminating the build's chunk-size warning.
+`ios/release.xcconfig` + a real (not placeholder) `.github/workflows/ios-release.yml` were ported
+from Let Them Eat Cake's actual, proven, working release workflow. The GitHub repo now has this
+project's real history pushed to `main`. **Genuine remaining blocker**: TestFlight upload needs an
+App Store provisioning profile for `com.letthemeatcookies.app` (Apple Developer portal access,
+can't be done from here) plus re-adding Cake's reusable signing secrets to this repo (GitHub
+doesn't share secrets across repos even within the same account) — see `NATIVE_SETUP.md` for the
+exact, minimal remaining steps.
 
 ## Structure
 

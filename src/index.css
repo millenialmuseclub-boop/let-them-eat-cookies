@@ -1717,6 +1717,10 @@ textarea:focus-visible,
   overflow-x: hidden;
 }
 
+.route-fallback {
+  min-height: 60vh;
+}
+
 .page-container:has(> .floating-back-button) {
   padding-top: 64px;
 }
