@@ -4,6 +4,7 @@ import { COOKIES, COLLECTIONS, allCookiesProducts } from '../lib/data'
 import { CookieCard } from '../components/CookieCard'
 import { DiscoverFeatureCard } from '../components/DiscoverFeatureCard'
 import { getCookieImage, getSceneImage } from '../lib/images'
+import { PageHeroBand } from '../components/PageHeroBand'
 
 function cookieOfTheDay() {
   const dayIndex = Math.floor(Date.now() / 86400000) % COOKIES.length
@@ -19,13 +20,12 @@ export function MainPage() {
 
   return (
     <main className="page-container">
-      <section className="hero-section" aria-label="Welcome">
-        <h1>Let Them Eat Cookies</h1>
-        <p className="hero-tagline">
-          An editorial guide to cookies from around the world -- their history, their craft, and where they
-          actually come from.
-        </p>
-      </section>
+      <PageHeroBand
+        image={getCookieImage('cookie_macaron')}
+        eyebrow="Let Them Eat Cookies"
+        title="An Editorial Guide to Cookies"
+        description="Cookies from around the world -- their history, their craft, and where they actually come from."
+      />
 
       <section className="cookie-of-day-section" aria-labelledby="cookie-of-day-heading">
         <h2 id="cookie-of-day-heading">Cookie of the Day</h2>
