@@ -1,5 +1,55 @@
 # Design System — Let Them Eat Cookies
 
+## Phase 1.5, final pass: the palette itself was the problem, not just layout
+
+Every prior pass in this project's history treated the caramel/butter/parchment palette as
+correct because it was internally coherent and passed contrast — and every time, that
+assumption was wrong. The actual user feedback was specific: the app read as masculine,
+brown-dominated, and web-like, and no amount of layout/photography/hub-page polish on top of
+that palette fixed it, because the palette itself was never re-examined.
+
+**The fix**: a ground-up palette replacement, not an accent added on top. `--cream` went from a
+beige parchment (`#faf1e2`) to a porcelain blush-white (`#fdf3f0`); `--cocoa` (dark chocolate ink)
+became `--plum` (`#3a1530`, deep plum-espresso); `--caramel` (the primary accent) became
+`--raspberry` (`#a3134f`); `--butter` (secondary accent) became `--champagne` (`#c9a24b`). A new
+`--pink-bold` (`#d6127a`) token was added specifically for a handful of confident, "fashion pink"
+brand moments (the active bottom-tab dot, hero eyebrows) — deliberately not the workhorse text
+color, since at ~4.56:1 against `--cream` it only clears AA at larger/bold sizes. All values are
+contrast-verified in both light and dark mode (see the ratio comments in `src/index.css`'s
+`:root`/`prefers-color-scheme: dark` blocks). A Google Fonts `Playfair Display` serif was added for
+`--heading` (h1/h2/h3), replacing the system-ui-for-everything approach, to carry the
+"editorial/pâtisserie" feeling typography alone can't fake with a sans-serif.
+
+Because every existing component already referenced these tokens by CSS custom property (not
+hardcoded hex values), renaming the tokens' *values* — not rewriting dozens of component rules —
+was enough to retheme the entire app in one pass. This is the payoff of the token-based approach
+documented in the original design-system pass: a "wrong hue family" problem turned out to be a
+single-file fix, not a rewrite.
+
+## Phase 1.5, final pass: the default-blue-link defect
+
+A real, severe, previously undetected bug: `src/index.css` had **no global `a` base style at all**
+— every link's color came from a component-specific class, and two of the most visible navigation
+surfaces had class-name mismatches that meant their styling rules matched nothing:
+
+- `.top-nav-brand` ("Let Them Eat Cookies" wordmark) had layout rules but no `color` — it inherited
+  the browser's default link blue.
+- The **entire bottom tab bar** was styled under dead selectors `.tab-bar-item`/`.tab-bar-item.active`
+  that matched no rendered element — `BottomTabBar.tsx` actually renders
+  `.bottom-tab-item`/`.bottom-tab-item-active`. Every tab, active or not, rendered as an unstyled,
+  underlined, browser-default-blue link. This is almost certainly the single most visible instance
+  of what the user reported as "blue browser-default-looking links."
+
+Fixed with a global `a { color: var(--raspberry); text-decoration: none; }` base (plus a pinned
+`a:visited` so links never go purple, and `a:hover { text-decoration: underline }` for affordance),
+so any future link that doesn't get a specific component style still inherits something
+intentional rather than the user-agent default. Then the two broken components were given real,
+specific styles on top: the wordmark is a bold serif brand mark (not styled as a link at all), and
+the bottom tab bar got its actual real classes styled for the first time, plus the small
+`--pink-bold` active-tab dot mentioned above. A dedicated `.editorial-module a` /
+`.cookie-detail-section p a` rule keeps prose-embedded links (e.g. "Visit Crumb for more stories")
+underlined by default, since inline text links need a non-color signal distinct from nav links.
+
 This documents what actually governs Cookies' visual language after the Phase 1.5 visual-polish
 pass, and marks which parts are inherited/reusable across the Let Them Eat family versus specific
 to Cookies. It reflects the real, shipped `src/index.css` — not aspirational styling.
@@ -9,10 +59,23 @@ to Cookies. It reflects the real, shipped `src/index.css` — not aspirational s
 These structural patterns came from Cake (and, for native/build concerns, Ramen) and should be
 the starting point for any future Let Them Eat app, not reinvented each time.
 
-- **Token shape**: `--cream`/`--cocoa`/one strong accent/one secondary accent, `--bg`/`--bg-card`/
+- **Token shape**: `--cream`/`--plum`/one strong accent/one secondary accent, `--bg`/`--bg-card`/
   `--text`/`--border`/`--shadow`, redefined under `prefers-color-scheme: dark`. Cookies' actual
-  values live in `src/index.css` `:root` (lines 1–52) — Cake's and Ramen's are their own hue, not
-  copied.
+  values live in `src/index.css` `:root` — Cake's and Ramen's are their own hue, not copied.
+- **Lesson for future family apps: "internally coherent" is not the same question as "correct
+  identity."** This app shipped three passes with a palette that was contrast-checked, structurally
+  sound, and consistently applied — and still read as wrong to the person it was built for. A
+  design pass that only re-checks a palette's internal consistency (do the tokens cohere, does
+  contrast pass) will never catch that kind of miss; it takes someone actually looking at the
+  product and asking "does this feel like what we're trying to be" as a separate, explicit
+  question. Ask that question early, not after three rounds of layout polish on top of an
+  unexamined palette.
+- **Global element-level link defaults are not optional.** This app went three passes with `a`
+  links inheriting the browser's default blue/underline in several highly visible places (see
+  below) because no one had written a base `a { color; text-decoration }` rule — only
+  component-specific classes, some of which had silently dead selectors. Any future app should
+  set an intentional global link default in the very first design-tokens pass, not rely on every
+  component remembering to style its own links.
 - **Photo-bleed hero pattern**: a hero image escapes its container's padding via matched negative
   margins (`margin: 0 -16px 20px` against a 16px container gutter) rather than sitting inset in a
   bordered box. This is the single highest-leverage difference between an "editorial" feel and a

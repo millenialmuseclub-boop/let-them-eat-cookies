@@ -101,6 +101,35 @@ Coverage remains 13/13 cookies, 3 scenes -- this was a reuse pass, not a sourcin
 scene coverage (a photo for every remaining page context named in the original spec) is still a
 genuine open item for a future pass.
 
+## Phase 1.5, saturation pass: 49/52 cookies photographed
+
+The catalog grew from 13 to 52 canonical cookies. Photography for the 39 new cookies was sourced
+the same way as every prior pass: Wikimedia Commons only, every candidate verified by fetching the
+actual file page (not a search snippet) to confirm depicted subject, license, photographer, and
+the real `upload.wikimedia.org` URL. **36 of the 39 new cookies got verified photos; 3 were
+honestly left unphotographed** rather than forcing a weak match:
+
+- `cookie_marranitos` — no Commons file specifically depicting pig-shaped piloncillo bread found.
+- `cookie_pepas` — the only close Commons match was Argentine *pastafrola* (a lattice quince tart),
+  a related but visually distinct dish, not the small round pepas cookie -- rejected as not
+  specific enough.
+- `cookie_barazek` — no Commons file for this Levantine sesame-pistachio cookie found despite
+  multiple searches.
+
+All three render the app's branded placeholder correctly and honestly (verified in a real browser:
+`aria-label="{name} (photo not yet available)"`, no broken image, no mismatched substitute).
+
+One disclosed judgment call: `cookie_ghraybeh`'s photo is a Commons file labeled "Ghribia
+(Algerian cookie)" rather than a Levant-specific label. Ghraybeh/ghraiba/ghorayeba are the same
+shortbread-cookie family across Maghrebi and Levantine naming conventions, and the file is used on
+Wikipedia's general shortbread-biscuit article, so it was treated as a legitimate regional-name
+match rather than a lookalike substitution -- flagged here for transparency rather than presented
+as a clean single-source match.
+
+**Total coverage: 49/52 cookies, 3 scenes** (scene coverage unchanged this pass — no new scene
+photography was sourced, since this pass's photography effort was scoped to the new cookie
+catalog per instruction).
+
 ## Next phase
 
 Expand scene coverage: source and verify photos for the remaining page contexts (Main hero,

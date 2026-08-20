@@ -10,8 +10,10 @@ sweetener, leavening, family, textureCategory, commonMixIns[], commonVariations[
 modernVariations[], flavorProfile{sweetness,richness,crispness,spice}, flavorTags[],
 preparationOverview, variationTag, variationNote`
 
-13 seeded records in `src/data/cookies.json`. `family` is one of `drop | rolled | shaped | bar |
-sandwich | wafer`; `textureCategory` one of `crisp | chewy | soft | crumbly | cakey`.
+**52 seeded records** in `src/data/cookies.json` (expanded from 13 in the Phase 1.5 saturation
+pass — see `CONTENT_PLAN.md` for the full list and regional breakdown). `family` is one of `drop |
+rolled | shaped | bar | sandwich | wafer`; `textureCategory` one of `crisp | chewy | soft |
+crumbly | cakey`.
 
 ## Cookie Anatomy (`src/types/workshop.ts` → `CookieAnatomyStage`)
 
@@ -28,12 +30,14 @@ hand-authored per pair — the same approach Ramen used for Build a Bowl.
 
 ## Atlas (`src/types/atlas.ts`)
 
-`RegionalCookieEntry` (13 records, one per cookie) carries an honest `originComplexity`:
-`single-origin | regional | multi-region | disputed`. `WorldRegionTradition` (10 records) groups
-entries by `worldRegion` with an editorial introduction. No forced single-point-on-a-map precision
-for genuinely shared or disputed traditions (e.g. Polvorón is tagged `multi-region` across
-Spain/Mexico; Ma'amoul's `WorldRegionTradition` intro explicitly notes its cross-community
-history).
+`RegionalCookieEntry` (52 records, one per cookie) carries an honest `originComplexity`:
+`single-origin | regional | multi-region | disputed`. `WorldRegionTradition` (**11 records** as of
+the saturation pass — added Scandinavia) groups entries by `worldRegion` with an editorial
+introduction. No forced single-point-on-a-map precision for genuinely shared or disputed
+traditions (e.g. Polvorón is tagged `multi-region` across Spain/Mexico; Ma'amoul's
+`WorldRegionTradition` intro explicitly notes its cross-community history; Florentine and Brutti
+ma Buoni are both tagged `disputed` since their France/Italy and Piedmont/Lombardy origins are
+genuinely unresolved, not just under-researched).
 
 ## Recipe (`src/types/recipe.ts`)
 
@@ -42,7 +46,10 @@ intro, yield, prepTime, chillTime?, bakeTime, totalTime, difficulty, equipment[]
 ingredientGroups[]` (each `{title, ingredients[]}` with `{ingredient, amount, unit?, note?}`),
 `instructions[]` (`{step, stage?, instruction, techniqueNote?, relatedLabSlug?}`), `bakersNotes[],
 storage, makeAhead?, freezing?, substitutions?, variations?, allergenNotes?,
-relatedWorkshopLessons?, sourceNote`. 13/13 seeded in `src/data/recipes.json`, one per canonical
+relatedWorkshopLessons?, sourceNote`. **52/52 seeded** in `src/data/recipes.json` (grown from 13/13
+in the Phase 1.5 saturation pass, same structure and quality bar — real technique respected per
+cookie: Krumkake/Pizzelle are iron-cooked not oven-baked, Speculaas/Springerle use carved molds,
+Thekua is fried, Macarons follow genuine macaronage), one per canonical
 cookie, keyed via `RECIPE_BY_COOKIE_ID`/`getRecipeForCookie()` in `src/lib/data.ts`. Rendered by
 `RecipeSection.tsx` on Cookie Detail, between Technique and Variations. `instructions[].
 relatedLabSlug` links a step directly to the Lab that explains its underlying technique (e.g. a

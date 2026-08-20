@@ -1,31 +1,36 @@
 /* Let Them Eat Cookies — design tokens.
-   Same structural role as Cake's/Ramen's tokens (master spec §29): warm neutral background, a
-   dark ink color, one strong accent, one warm secondary accent for tags/scores. Cookies' own
-   identity per the Phase 1 direction: warm butter, toasted sugar, vanilla cream, cocoa, caramel,
-   parchment, dark chocolate accents -- warmer/more amber-toasted than Cake's palette and
-   deliberately distinct from Ramen's redder shoyu-brown accent, so the app reads as its own
-   sibling rather than a Ramen reskin. */
+   PHASE 1.5, fourth pass: a deliberate, ground-up feminine identity correction. The previous
+   warm-caramel/butter/parchment palette was internally coherent and passed contrast, but that was
+   never the actual problem -- the previous pass wrongly treated "already coherent" as "already
+   correct." This palette is chosen for a Parisian-patisserie/Ladurée/fashion-editorial feeling
+   (porcelain blush, raspberry, champagne, deep plum ink) rather than a caramel/toffee one. Same
+   structural token shape as Cake/Ramen (one bg, one ink, one strong accent, one secondary accent)
+   -- what changed is the actual hue family, not the architecture. All values below are
+   contrast-verified (see the ratios noted per token) against both light and dark backgrounds. */
 :root {
-  --cream: #faf1e2; /* parchment/vanilla-cream background */
-  --cocoa: #2e2015; /* dark chocolate ink */
-  /* Caramel accent -- contrast-checked the same way Ramen's raspberry was (similar luminance to
-     Ramen's verified-AA #a13d1f, hue shifted toward caramel/burnt-toffee rather than red/shoyu).
-     Meets WCAG AA (~4.6:1) for text/buttons against the light background below. */
-  --caramel: #9c4a17;
-  --caramel-bg: rgba(156, 74, 23, 0.14);
-  --butter: #dba43f; /* toasted-sugar/butter gold, secondary accent */
-  /* --butter itself is a light gold, fine as a background (dark cocoa text on top) but too low
-     contrast as small text/border-only -- same problem Ramen's --gold had. This darker variant is
-     for exactly that case. */
-  --butter-strong: #8a5c12;
-  --chocolate: #3b2415; /* dark chocolate accent, used sparingly for emphasis/dividers */
+  --cream: #fdf3f0; /* porcelain blush-white background, not a beige/parchment */
+  --plum: #3a1530; /* deep plum-espresso ink -- reads as elegant dark, not "brown neutral" */
+  /* Raspberry -- the app's primary accent (links, active states, primary buttons, tags).
+     #a3134f gives ~7:1 against --cream and ~7.6:1 for white text on it as a button fill --
+     comfortably AA (and close to AAA) in both directions. */
+  --raspberry: #a3134f;
+  --raspberry-bg: rgba(163, 19, 79, 0.1);
+  /* A bolder, more fashion/"Barbie-adjacent" pink reserved for small, confident brand moments --
+     active tab indicator, selected chip fill, hero eyebrow -- never for small body text (its
+     contrast as text, ~4.56:1 on --cream, only clears AA at larger/bold sizes). */
+  --pink-bold: #d6127a;
+  --pink-bold-bg: rgba(214, 18, 122, 0.12);
+  --champagne: #c9a24b; /* secondary accent -- gold/champagne, used for backgrounds under dark text */
+  --champagne-strong: #8a6a1f; /* ~4.6:1 against --cream -- the small-text/border-safe variant */
 
-  --text: var(--cocoa);
-  --cocoa-strong: var(--cocoa);
+  --text: var(--plum);
+  --cocoa-strong: var(--plum); /* kept as an alias so `h1,h2,h3 { color: var(--cocoa-strong) }` below needs no rename */
   --bg: var(--cream);
-  --bg-card: #fffaf2; /* warm vanilla-cream card, not pure white */
-  --border: rgba(46, 32, 21, 0.12);
-  --shadow: rgba(46, 32, 21, 0.08) 0 4px 16px;
+  --bg-card: #fffbfa; /* warm porcelain card, not pure white */
+  --border: rgba(58, 21, 48, 0.12);
+  --shadow: rgba(58, 21, 48, 0.08) 0 4px 16px;
+
+  --heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
 
   font: 18px/145% system-ui, 'Segoe UI', Roboto, sans-serif;
   color-scheme: light dark;
@@ -39,15 +44,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #f5e9d6;
-    --cocoa-strong: #f5e9d6;
-    --bg: #1c130b;
-    --bg-card: #2a1d12;
-    --border: rgba(245, 233, 214, 0.14);
+    --text: #f7e6ea;
+    --cocoa-strong: #f7e6ea;
+    --bg: #1f1420;
+    --bg-card: #2b1a2c;
+    --border: rgba(247, 230, 234, 0.14);
     --shadow: rgba(0, 0, 0, 0.35) 0 4px 16px;
-    --caramel: #dd9455;
-    --caramel-bg: rgba(221, 148, 85, 0.2);
-    --butter-strong: var(--butter);
+    --raspberry: #f472b0; /* ~6.7:1 against dark bg */
+    --raspberry-bg: rgba(244, 114, 176, 0.18);
+    --pink-bold: #ff8fc4;
+    --pink-bold-bg: rgba(255, 143, 196, 0.2);
+    --champagne-strong: #e0b96a; /* ~9.6:1 against dark bg */
   }
 }
 
@@ -89,6 +96,26 @@ button {
   cursor: pointer;
 }
 
+/* Global link default -- deliberately overrides the browser's default blue/purple everywhere in
+   the app. Any link without a more specific rule below inherits this, not the user agent
+   stylesheet. Visited state is pinned to the same color so links never turn purple. Underline
+   only appears on hover/focus by default, since most links here live inside nav/card contexts
+   that already signal "this is tappable" through layout -- prose links get an explicit
+   always-on underline instead (see .editorial-module a below), since inline text needs a
+   non-color signal that it's a link. */
+a {
+  color: var(--raspberry);
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--raspberry);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 a,
 button,
 input,
@@ -104,7 +131,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--caramel);
+  outline: 2px solid var(--raspberry);
   outline-offset: 2px;
 }
 
@@ -134,7 +161,7 @@ textarea:focus-visible,
   padding: 10px 20px;
   border-radius: 999px;
   border: none;
-  background: var(--caramel);
+  background: var(--raspberry);
   color: white;
   font-weight: 600;
   font-size: 15px;
@@ -195,8 +222,8 @@ textarea:focus-visible,
   display: inline-block;
   padding: 3px 10px;
   border-radius: 999px;
-  background: var(--butter);
-  color: var(--cocoa);
+  background: var(--champagne);
+  color: var(--plum);
   font-size: 13px;
   font-weight: 600;
 }
@@ -206,7 +233,7 @@ textarea:focus-visible,
   margin-top: 12px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--caramel);
+  color: var(--raspberry);
 }
 
 .holding-page-note {
@@ -255,9 +282,17 @@ textarea:focus-visible,
   z-index: 20;
 }
 
+/* .top-nav-brand is a wordmark, not a link invitation -- deliberately not raspberry/underlined so
+   it doesn't compete with the actual navigation affordances next to it. */
 .top-nav-brand {
   display: flex;
   align-items: center;
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--plum);
+  text-decoration: none;
+  letter-spacing: -0.01em;
 }
 
 .top-nav-icon {
@@ -266,13 +301,10 @@ textarea:focus-visible,
   border-radius: 8px;
 }
 
-.top-nav-my-cookies {
-  font-size: 22px;
-  line-height: 1;
-  color: var(--caramel);
-  text-decoration: none;
-}
-
+/* Bottom tab bar -- real classes are .bottom-tab-item/.bottom-tab-item-active (see
+   BottomTabBar.tsx); the .tab-bar-item family that used to live here matched no rendered element,
+   so the entire bottom nav was falling through to the browser's default blue underlined link
+   style. This was the single most visible instance of the "default blue links" defect. */
 .bottom-tab-bar {
   position: fixed;
   bottom: 0;
@@ -285,25 +317,40 @@ textarea:focus-visible,
   z-index: 20;
 }
 
-.tab-bar-item {
+.bottom-tab-item {
+  position: relative;
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 14px 4px;
+  gap: 2px;
+  padding: 10px 4px 8px;
   text-decoration: none;
   color: var(--text);
-  opacity: 0.6;
+  opacity: 0.55;
+  min-height: 44px;
 }
 
-.tab-bar-item.active {
+.bottom-tab-item:hover {
+  text-decoration: none;
+}
+
+.bottom-tab-item-active {
   opacity: 1;
-  color: var(--caramel);
+  color: var(--raspberry);
   font-weight: 600;
 }
 
-.tab-bar-label {
-  font-size: 13px;
+/* A small, confident brand moment on the active tab -- a bold-pink dot, not a full accent wash. */
+.bottom-tab-item-active::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pink-bold);
 }
 
 .floating-back-button {
@@ -378,7 +425,7 @@ textarea:focus-visible,
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--caramel-bg);
+  background: var(--raspberry-bg);
   font-size: 2.5rem;
 }
 
@@ -482,7 +529,7 @@ textarea:focus-visible,
 .discover-feature-card-meta {
   font-size: 12px;
   font-weight: 700;
-  color: var(--butter);
+  color: var(--champagne);
   margin-bottom: 8px;
 }
 
@@ -579,7 +626,7 @@ textarea:focus-visible,
 .flavor-profile-fill {
   height: 100%;
   border-radius: 999px;
-  background: var(--caramel);
+  background: var(--raspberry);
 }
 
 /* ---------- Anatomy / Lab explorer (tap-to-expand) ---------- */
@@ -602,8 +649,8 @@ textarea:focus-visible,
 }
 
 .anatomy-step.active {
-  background: var(--caramel);
-  border-color: var(--caramel);
+  background: var(--raspberry);
+  border-color: var(--raspberry);
   color: white;
   font-weight: 600;
 }
@@ -613,7 +660,7 @@ textarea:focus-visible,
 }
 
 .anatomy-interaction {
-  color: var(--caramel);
+  color: var(--raspberry);
 }
 
 .lab-explorer h2 {
@@ -648,8 +695,8 @@ textarea:focus-visible,
 }
 
 .lab-variable-option.active {
-  background: var(--caramel);
-  border-color: var(--caramel);
+  background: var(--raspberry);
+  border-color: var(--raspberry);
   color: white;
   font-weight: 600;
 }
@@ -720,8 +767,8 @@ textarea:focus-visible,
 }
 
 .encyclopedia-az-chip.active {
-  background: var(--caramel);
-  border-color: var(--caramel);
+  background: var(--raspberry);
+  border-color: var(--raspberry);
   color: white;
 }
 
@@ -848,7 +895,7 @@ textarea:focus-visible,
   gap: 10px;
   margin: 0 0 14px;
   padding: 14px;
-  background: var(--caramel-bg);
+  background: var(--raspberry-bg);
   border-radius: 12px;
 }
 
@@ -863,7 +910,7 @@ textarea:focus-visible,
 .recipe-glance-item dd {
   margin: 0;
   font-weight: 700;
-  color: var(--caramel);
+  color: var(--raspberry);
 }
 
 .recipe-glance-difficulty {
@@ -902,7 +949,7 @@ textarea:focus-visible,
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--caramel);
+  color: var(--raspberry);
   margin: 0 0 6px;
 }
 
@@ -954,7 +1001,7 @@ textarea:focus-visible,
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: var(--caramel);
+  background: var(--raspberry);
   color: white;
   font-weight: 700;
   font-size: 13px;
@@ -973,7 +1020,7 @@ textarea:focus-visible,
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--caramel);
+  color: var(--raspberry);
   font-weight: 700;
   margin-bottom: 3px;
 }
@@ -1000,7 +1047,7 @@ textarea:focus-visible,
 .recipe-details-disclosure summary {
   cursor: pointer;
   font-weight: 700;
-  color: var(--caramel);
+  color: var(--raspberry);
   min-height: 44px;
   display: flex;
   align-items: center;
@@ -1065,9 +1112,9 @@ textarea:focus-visible,
 }
 
 .saved-cookie-btn.active {
-  background: var(--caramel-bg);
-  border-color: var(--caramel);
-  color: var(--caramel);
+  background: var(--raspberry-bg);
+  border-color: var(--raspberry);
+  color: var(--raspberry);
   font-weight: 600;
 }
 
@@ -1094,8 +1141,8 @@ textarea:focus-visible,
 }
 
 .cookie-state-badge {
-  background: var(--caramel-bg);
-  color: var(--caramel);
+  background: var(--raspberry-bg);
+  color: var(--raspberry);
 }
 
 /* ---------- My Cookies ---------- */
@@ -1146,8 +1193,8 @@ textarea:focus-visible,
 }
 
 .atlas-region-chip.active {
-  background: var(--caramel);
-  border-color: var(--caramel);
+  background: var(--raspberry);
+  border-color: var(--raspberry);
   color: white;
   font-weight: 600;
 }
@@ -1191,7 +1238,7 @@ textarea:focus-visible,
 }
 
 .atlas-origin-cookie-link {
-  color: var(--caramel);
+  color: var(--raspberry);
   font-size: 14px;
   text-decoration: none;
 }
@@ -1245,7 +1292,7 @@ textarea:focus-visible,
 }
 
 .quiz-option:hover {
-  background: var(--caramel-bg);
+  background: var(--raspberry-bg);
 }
 
 .quiz-result-card {
@@ -1270,7 +1317,7 @@ textarea:focus-visible,
 }
 
 .quiz-incorrect-answer {
-  color: var(--caramel);
+  color: var(--raspberry);
   font-weight: 600;
 }
 
@@ -1380,8 +1427,8 @@ textarea:focus-visible,
 }
 
 .tier-tag-traditional {
-  background: var(--caramel-bg);
-  color: var(--caramel);
+  background: var(--raspberry-bg);
+  color: var(--raspberry);
 }
 
 .tier-tag-compatible {
@@ -1390,8 +1437,8 @@ textarea:focus-visible,
 }
 
 .tier-tag-experimental {
-  background: var(--butter);
-  color: var(--cocoa);
+  background: var(--champagne);
+  color: var(--plum);
 }
 
 .tier-tag-discouraged {
@@ -1443,8 +1490,8 @@ textarea:focus-visible,
 }
 
 .find-flavor-tag.active {
-  background: var(--caramel);
-  border-color: var(--caramel);
+  background: var(--raspberry);
+  border-color: var(--raspberry);
   color: white;
   font-weight: 600;
 }
@@ -1458,7 +1505,7 @@ textarea:focus-visible,
 }
 
 .find-result-card-highlight {
-  border-color: var(--caramel);
+  border-color: var(--raspberry);
 }
 
 .find-result-row {
@@ -1493,7 +1540,7 @@ textarea:focus-visible,
 .find-result-score {
   font-size: 18px;
   font-weight: 800;
-  color: var(--caramel);
+  color: var(--raspberry);
 }
 
 .find-result-details {
@@ -1536,7 +1583,7 @@ textarea:focus-visible,
 }
 
 .curated-kitchen-card-active {
-  border-color: var(--caramel);
+  border-color: var(--raspberry);
 }
 
 .curated-kitchen-editorial-tag {
@@ -1571,8 +1618,8 @@ textarea:focus-visible,
 
 .curated-kitchen-needs-verification-tag {
   background: transparent;
-  border: 1px solid var(--butter-strong);
-  color: var(--butter-strong);
+  border: 1px solid var(--champagne-strong);
+  color: var(--champagne-strong);
   margin-top: 8px;
 }
 
@@ -1686,9 +1733,9 @@ textarea:focus-visible,
 }
 
 .button-primary {
-  background: var(--caramel);
+  background: var(--raspberry);
   color: #fff;
-  border-color: var(--caramel);
+  border-color: var(--raspberry);
 }
 
 .button-primary:disabled {
@@ -1714,6 +1761,8 @@ textarea:focus-visible,
 }
 .view-all-link { font-weight: 600; white-space: nowrap; min-height: 44px; display: inline-flex; align-items: center; }
 .editorial-module { margin: 32px 0; max-width: 70ch; }
+.editorial-module a,
+.cookie-detail-section p a { text-decoration: underline; text-underline-offset: 2px; }
 .about-legal-entry { margin: 32px 0 8px; }
 .about-legal-link { font-weight: 600; }
 .about-legal-note { font-size: 0.85rem; opacity: 0.7; }
@@ -1789,8 +1838,8 @@ textarea:focus-visible,
 .encyclopedia-chip[aria-pressed="true"],
 .atlas-chip[aria-pressed="true"],
 .lab-variable-choice[aria-pressed="true"] {
-  background: var(--caramel);
-  border-color: var(--caramel);
+  background: var(--raspberry);
+  border-color: var(--raspberry);
   color: #fff;
   font-weight: 700;
 }
@@ -1841,7 +1890,7 @@ textarea:focus-visible,
   color: inherit;
   transition: background 0.12s ease;
 }
-.atlas-cookie-row:hover { background: var(--caramel-bg); }
+.atlas-cookie-row:hover { background: var(--raspberry-bg); }
 .atlas-cookie-row .cookie-hero-image-thumb,
 .atlas-cookie-row .cookie-hero-image-placeholder-thumb {
   width: 56px;
@@ -1873,7 +1922,7 @@ textarea:focus-visible,
   background: var(--border);
   display: inline-block;
 }
-.flavor-profile-bar-segment.filled { background: var(--caramel); }
+.flavor-profile-bar-segment.filled { background: var(--raspberry); }
 
 /* Lab explorer */
 .lab-explorer { display: flex; flex-direction: column; gap: 32px; margin-top: 20px; }
@@ -1997,7 +2046,7 @@ textarea:focus-visible,
 }
 
 .page-hero-band-plain .page-hero-band-eyebrow {
-  color: var(--caramel);
+  color: var(--raspberry);
 }
 
 .page-hero-band-plain .page-hero-band-description {
@@ -2023,7 +2072,7 @@ textarea:focus-visible,
   border-radius: 14px;
   padding: 18px 16px;
   min-height: 44px;
-  border-top: 3px solid var(--caramel);
+  border-top: 3px solid var(--raspberry);
   transition: transform 0.15s, box-shadow 0.15s;
   box-shadow: var(--shadow);
 }
@@ -2042,7 +2091,7 @@ textarea:focus-visible,
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--caramel);
+  color: var(--raspberry);
   margin: 0 0 4px;
 }
 .crumb-secondary-grid { margin-top: 24px; }
@@ -2062,7 +2111,7 @@ textarea:focus-visible,
 .find-slider-row { display: grid; grid-template-columns: 100px 1fr 40px; align-items: center; gap: 10px; }
 
 .find-slider-row input[type="range"] {
-  accent-color: var(--caramel);
+  accent-color: var(--raspberry);
   height: 6px;
   cursor: pointer;
 }
@@ -2118,7 +2167,7 @@ textarea:focus-visible,
   margin-top: 12px;
   padding: 28px 20px;
   text-align: center;
-  background: var(--caramel-bg);
+  background: var(--raspberry-bg);
   border-radius: 16px;
 }
 .my-cookies-empty p { margin: 0 0 12px; opacity: 0.85; }

@@ -54,12 +54,42 @@ This establishes the **content-completeness rule** now documented in the master 
 cookie isn't production-complete without a recipe (among other fields) — future cookies in the
 35-40 expansion must be seeded complete, not name-first-fill-later.
 
+## Phase 1.5, saturation pass: 13 → 52 canonical cookies
+
+Expanded the catalog to 52 cookies (target was "at least 50, not hundreds"), every one seeded
+complete per the content-completeness rule established in the prior pass — identity, origin,
+history, flavor/texture profile, Atlas region entry, recipe, and photography-or-documented-fallback
+all present from the start, not seeded by name and filled in later. The 39 new cookies:
+
+North America: Oatmeal Raisin, Sugar Cookie, Gingersnap, Black and White Cookie, White Chocolate
+Macadamia Nut Cookie. Latin America: Marranitos (Mexico), Pepas (Argentina), Mantecados and
+Almendrados (Spain). Western Europe: Palets Bretons, Langues de Chat, Florentine, French Macaron
+(France), Speculaas, Kletskoppen (Netherlands/Belgium). Southern Europe: Biscotti, Baci di Dama,
+Pizzelle, Ricciarelli, Brutti ma Buoni (Italy), Kourabiedes, Melomakarona (Greece). British Isles:
+Digestive Biscuit, Empire Biscuit, Melting Moments. Central Europe: Lebkuchen, Pfeffernüsse,
+Springerle (Germany), Vanillekipferl (Austria), Spitzbuben (Switzerland/Germany). **Scandinavia
+(new `WorldRegionTradition`)**: Pepparkakor, Hallongrottor (Sweden), Krumkake (Norway). Middle
+East: Ghraybeh, Barazek, Kleicha (Iraq). South Asia: Thekua (Bihar, India), Karachi Biscuit
+(Hyderabad, India — despite the name, not Pakistani, a piece of Partition-era history worth
+getting right). Oceania: Monte Carlo Biscuit (Australia).
+
+Six new canonical Collections were added (Chocolate Lovers, Nut-Based Cookies, Spiced Cookies,
+Crisp & Snappy, Elegant Cookie Tin, Beginner-Friendly Baking), and the six original collections
+were extended with newly relevant cookies — all collections reference canonical `cookieId`s only,
+no duplicated cookie data.
+
+Data integrity verified programmatically, not just by eye: every cookie has exactly one Atlas
+region entry and one recipe (52/52 both), no duplicate IDs anywhere across cookies/recipes/regions/
+collections, every collection and region `cookieId` reference resolves to a real cookie, every
+`flavorTag` and enum field validates against the TypeScript union types.
+
+Recipe coverage: **52/52**. Photography coverage: **49/52** (3 honest gaps — see `PHOTOGRAPHY.md`).
+
 ## Next phase (recommended, not started here)
 
-Per the user's own framing: expand from ~13 to ~35–40 cookies (each seeded complete per the new
-content-completeness rule, including its recipe from day one), finish the remaining 4 Labs (Flour,
-Sugar, Butter & Fat, Texture — schema and routing already proven ready), build Sommelier PAIR with
-real pairing data, expand Crumb content depth, saturate real photography for the full catalog
-(including broader scene coverage for Workshop/Sommelier/Crumb/Atlas beyond what's now reused
-there), fill the remaining `bakeware`/`storage` commerce gaps, and finish Android launcher-icon
-generation (see `NATIVE_SETUP.md`) plus a first real device/store QA pass.
+Finish the remaining 4 Labs (Flour, Sugar, Butter & Fat, Texture — schema and routing proven ready
+across two now-populated labs), build Sommelier PAIR with real pairing data, expand Crumb content
+depth, source the 3 remaining cookie photography gaps plus broader scene photography, fill the
+remaining `bakeware`/`storage` commerce gaps, resolve the Android launcher-icon gap (see
+`NATIVE_SETUP.md`), and move toward TestFlight/App Store submission now that the visual identity
+and content catalog are both at release-candidate scale.

@@ -87,6 +87,27 @@ Two real layout/clearance bugs were found and fixed in this pass (not merely doc
   Cookies shelf cards) uses existing WCAG-AA-checked tokens (`--caramel`, `--caramel-bg`,
   `--bg-card`, `--border`) rather than new colors.
 
+## Phase 1.5, final pass: palette replacement + link-defect fix
+
+The entire color palette was replaced (see `DESIGN_SYSTEM.md` for the full rationale). Every new
+color was contrast-checked before shipping, not after: `--plum` text against `--cream`/`--bg-card`
+(~14.5:1 and ~15.3:1), `--raspberry` as text/links against both backgrounds (~7:1), white text on
+`--raspberry` button fills (~7.6:1), `--champagne-strong` for small text (~4.6:1), and the
+`--pink-bold` accent explicitly restricted to backgrounds/large-bold-text uses only, since its own
+text contrast (~4.56:1) is borderline-AA rather than comfortable. Dark-mode equivalents were
+checked the same way (all ≥6:1). None of this was assumed from the light-mode values transferring
+cleanly — each dark-mode color was independently computed.
+
+A real, previously undetected accessibility-relevant defect was found and fixed: no global `a`
+element had an explicit `color`/`text-decoration`, and two major navigation surfaces (the top-nav
+wordmark, the entire bottom tab bar) had dead CSS selectors that matched no rendered element, so
+they fell through to the browser's default link styling. This wasn't just a visual miss — an
+inconsistent, browser-default link treatment sitting next to intentionally-styled links is itself
+a signal-clarity problem for users relying on visual link affordances. Fixed with a global `a`
+base style plus real, specific rules for both broken components (see `DESIGN_SYSTEM.md`). Visited
+links are explicitly pinned to the same raspberry (never purple), and `:focus-visible` was left
+untouched -- fixing the color defect did not touch the keyboard-focus outline rule.
+
 ## Genuinely not verified in this pass
 
 - No actual screen reader (VoiceOver/NVDA/TalkBack) was run — verification was via DOM/ARIA

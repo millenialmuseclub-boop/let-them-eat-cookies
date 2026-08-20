@@ -12,13 +12,20 @@ Not final copy — structure prepared for the eventual App Store Connect listing
 ## Description (draft)
 
 > Let Them Eat Cookies is an editorial guide to cookies from around the world — their history,
-> their craft, and where they actually come from. Browse an encyclopedia of real cookie traditions
-> from every region, take the Cookie Personality Quiz, get matched to your ideal cookie with the
-> Sommelier, and learn the technique behind every bake in the Workshop.
+> their craft, and where they actually come from. Explore 52 canonical cookies across more than
+> a dozen culinary traditions, each with a complete original recipe you can actually bake. Browse
+> an encyclopedia of real cookie traditions from every region, take the Cookie Personality Quiz,
+> get matched to your ideal cookie with the Sommelier, and learn the technique behind every bake
+> in the Workshop.
 
 ## Keywords (draft)
 
-cookies, baking, recipes, dessert, world cuisine, baking guide, cookie recipes, dough
+cookies, baking, recipes, cookie recipes, dessert, world cuisine, baking guide, dough, pâtisserie
+
+## What's new since the last metadata draft
+
+52 canonical cookies (up from 13), each with a complete structured recipe (52/52) -- previously
+this listing could only promise an encyclopedia, not a usable recipe collection.
 
 ## Screenshots
 

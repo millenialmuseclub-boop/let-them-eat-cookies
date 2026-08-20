@@ -10,18 +10,22 @@ iOS/Android (native `ios/`/`android/` projects generated and syncing clean — s
 
 ## Status
 
-Phase 1.5, three passes so far: Foundation Verification + Repair → Visual Transformation +
-Cake-Level Polish → **Mobile App Completion + Recipes + Final Visual System**. `npm install` and
-`npm run build` both run clean. All 22 routes verified in a real browser at desktop and at
-375px/390px/430px mobile widths with no console errors and no horizontal overflow.
+Phase 1.5, four passes so far: Foundation Verification + Repair → Visual Transformation +
+Cake-Level Polish → Mobile App Completion + Recipes + Final Visual System → **Final Feminine
+Redesign + 50-Cookie Saturation**. `npm install` and `npm run build` both run clean. All routes
+verified in a real browser at desktop and at 375px/390px/430px mobile widths with no console
+errors and no horizontal overflow.
 
-This latest pass: finished the five hub pages left visually behind by the previous pass (Atlas,
-Workshop, Sommelier, Crumb, Curated Kitchen — each with a surface-specific composition, not one
-card pasted everywhere), gave all 13 canonical cookies a complete original structured recipe
-integrated directly into Cookie Detail, resolved the "Bench Scraper" product-naming collision, and
-refined My Cookies toward a personal-shelf feel. See `DESIGN_SYSTEM.md` for the hub-composition
-rationale and `COOKIE_DOMAIN_MODEL.md` for the Recipe schema. Content is intentionally still at 13
-cookies / 2 of 6 Labs populated — the next pass is content saturation, not this one.
+This latest pass replaced the app's entire color identity (a caramel/butter palette that was
+internally coherent but still read as masculine and web-like) with a porcelain/raspberry/plum
+pâtisserie palette, fixed a real defect where the top-nav wordmark and the *entire bottom tab bar*
+were rendering as unstyled default-blue browser links (dead CSS selectors matching no real
+element), and expanded the canonical catalog from 13 to **52 cookies**, each with a complete
+original recipe (52/52 coverage) and photography where a confident match exists (49/52 — 3 honest
+gaps, documented in `PHOTOGRAPHY.md`, not faked). See `DESIGN_SYSTEM.md` for the full palette and
+link-defect writeup, and `COOKIE_DOMAIN_MODEL.md`/`CONTENT_PLAN.md` for the catalog. 2 of 6
+Workshop Labs remain populated (Dough, Chocolate) — the architecture is proven ready for the rest,
+per `CONTENT_PLAN.md`.
 
 ## Structure
 
