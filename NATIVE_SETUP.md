@@ -25,11 +25,36 @@ raspberry/plum identity adopted in the visual-redesign pass. Regenerated this pa
   untouched (correctly inset adaptive icons need more care than this pass's simple resize
   pipeline provides) — a real, disclosed Android follow-up item, not a TestFlight blocker.
 
+## App Store Connect record — confirmed to exist (corrects earlier passes' assumption)
+
+The user shared the actual App Store Connect "App Information" page for this app, confirming a
+real record already exists:
+
+- **Apple ID**: `6803303494`
+- **Bundle ID**: `com.jordypop.letthemeatcookies` — **not** `com.letthemeatcookies.app`, which is
+  what every config file in this repo had until this pass. This was a genuine, real mismatch (not
+  a hypothetical one) — a build signed and archived against the old bundle ID would not have
+  matched this App Store Connect record and could not have uploaded successfully. Corrected in
+  `capacitor.config.ts`, `ios/App/App.xcodeproj/project.pbxproj`, `ios/release.xcconfig` (comment),
+  `.github/workflows/ios-release.yml`'s `ExportOptions.plist`, `android/app/build.gradle`
+  (`namespace`/`applicationId`, ahead of any Play Store registration, since that can't be changed
+  after publish either), and the Android Java package directory/declaration
+  (`android/app/src/main/java/com/jordypop/letthemeatcookies/MainActivity.java`).
+- **SKU**: `LETC-IOS-001`, **Name**: "Let Them Eat Cookies", **Subtitle**: "Explore the World of
+  Cookies", **Category**: Food & Drink (Lifestyle as secondary), **Primary language**: English
+  (U.S.), **Age rating**: 12+ globally with regional exceptions (13+ in most countries, per
+  Apple's current ratings system), **License**: Apple's Standard License Agreement, **Content
+  rights**: declared as not containing/showing/accessing third-party content.
+- This record's existence means someone already completed real Apple Developer portal work for
+  this app — the App ID `com.jordypop.letthemeatcookies` must already be registered (an App Store
+  Connect record cannot exist without a registered App ID behind it), even though the specific
+  provisioning profile for CI signing (see below) likely still needs to be created or located.
+
 ## iOS project configuration — verified
 
-- `capacitor.config.ts` — `appId: com.letthemeatcookies.app`, `appName: Let Them Eat Cookies`,
+- `capacitor.config.ts` — `appId: com.jordypop.letthemeatcookies`, `appName: Let Them Eat Cookies`,
   `webDir: dist`.
-- Bundle ID `com.letthemeatcookies.app`, version `1.0`, build `1` — confirmed in
+- Bundle ID `com.jordypop.letthemeatcookies`, version `1.0`, build `1` — confirmed in
   `project.pbxproj` (`PRODUCT_BUNDLE_IDENTIFIER`, `MARKETING_VERSION`, `CURRENT_PROJECT_VERSION`).
 - `IPHONEOS_DEPLOYMENT_TARGET = 15.0`.
 - Orientations: iPhone portrait + both landscapes; iPad all four (`Info.plist`
@@ -77,10 +102,11 @@ write directly into version control):
 **COOKIES-SPECIFIC RESOURCE** (cannot be reused, must be created fresh — the genuine remaining
 blocker):
 - `IOS_PROVISION_PROFILE_BASE64` — an App Store provisioning profile bound to
-  `com.letthemeatcookies.app` specifically. Provisioning profiles are 1:1 with a bundle ID; Cake's
-  profile (for `com.letthemeatcookies.app`... no, for Cake's own bundle ID) cannot cover Cookies.
-  This requires: registering the `com.letthemeatcookies.app` App ID in the Apple Developer portal
-  (if not already done), creating an App Store distribution provisioning profile named exactly
+  `com.jordypop.letthemeatcookies` specifically. Provisioning profiles are 1:1 with a bundle ID;
+  Cake's own profile (bound to Cake's bundle ID) cannot cover Cookies. This requires: confirming
+  the `com.jordypop.letthemeatcookies` App ID is registered in the Apple Developer portal (it must
+  be, since an App Store Connect record already exists under it -- Apple ID `6803303494`), creating
+  an App Store distribution provisioning profile named exactly
   **"Let Them Eat Cookies App Store"** (matching `ios/release.xcconfig`'s
   `PROVISIONING_PROFILE_SPECIFIER` and the workflow's `ExportOptions.plist` — rename in both places
   together if a different name is used), downloading it, base64-encoding it

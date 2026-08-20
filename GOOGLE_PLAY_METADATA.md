@@ -3,7 +3,7 @@
 Not final copy — structure prepared for the eventual Play Console listing.
 
 - **App name**: Let Them Eat Cookies
-- **Package name**: `com.letthemeatcookies.app`
+- **Package name**: `com.jordypop.letthemeatcookies`
 - **Version name / code**: 1.0 / 1
 - **Category**: Food & Drink
 - **Content rating**: Everyone

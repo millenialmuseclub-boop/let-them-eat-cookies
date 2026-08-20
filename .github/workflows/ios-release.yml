@@ -95,7 +95,7 @@ jobs:
             <string>manual</string>
             <key>provisioningProfiles</key>
             <dict>
-              <key>com.letthemeatcookies.app</key>
+              <key>com.jordypop.letthemeatcookies</key>
               <string>Let Them Eat Cookies App Store</string>
             </dict>
           </dict>

@@ -26,7 +26,7 @@ dropped the largest JS chunk from 633KB to 324KB raw, eliminating the build's ch
 `ios/release.xcconfig` + a real (not placeholder) `.github/workflows/ios-release.yml` were ported
 from Let Them Eat Cake's actual, proven, working release workflow. The GitHub repo now has this
 project's real history pushed to `main`. **Genuine remaining blocker**: TestFlight upload needs an
-App Store provisioning profile for `com.letthemeatcookies.app` (Apple Developer portal access,
+App Store provisioning profile for `com.jordypop.letthemeatcookies` (Apple Developer portal access,
 can't be done from here) plus re-adding Cake's reusable signing secrets to this repo (GitHub
 doesn't share secrets across repos even within the same account) — see `NATIVE_SETUP.md` for the
 exact, minimal remaining steps.

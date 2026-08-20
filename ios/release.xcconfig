@@ -9,9 +9,13 @@
 //
 // DEVELOPMENT_TEAM is the shared Let Them Eat family Apple Developer Team ID (not a secret --
 // reused as-is from Cake/Ramen's own release.xcconfig). PROVISIONING_PROFILE_SPECIFIER names a
-// profile that must still be created in the Apple Developer portal for com.letthemeatcookies.app
-// specifically -- profiles are bound 1:1 to a bundle ID and cannot be reused across apps, unlike
-// the Distribution certificate and Team ID above it.
+// profile that must still be created in the Apple Developer portal for
+// com.jordypop.letthemeatcookies specifically (the app's real, already-registered bundle ID --
+// note this deliberately does NOT follow the com.letthemeat<app>.app pattern Cake/Ramen use; the
+// App Store Connect record already existed under this ID before that was noticed, and bundle IDs
+// can't change after an App Store Connect record is created) -- profiles are bound 1:1 to a
+// bundle ID and cannot be reused across apps, unlike the Distribution certificate and Team ID
+// above it.
 CODE_SIGN_STYLE = Manual
 CODE_SIGN_IDENTITY = Apple Distribution
 DEVELOPMENT_TEAM = J48FJJ3ABL

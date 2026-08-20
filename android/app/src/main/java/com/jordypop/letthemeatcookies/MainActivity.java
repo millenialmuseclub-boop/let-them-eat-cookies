@@ -1,4 +1,4 @@
-package com.letthemeatcookies.app;
+package com.jordypop.letthemeatcookies;
 
 import com.getcapacitor.BridgeActivity;
 

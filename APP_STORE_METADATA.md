@@ -4,7 +4,7 @@ Not final copy — structure prepared for the eventual App Store Connect listing
 
 - **App name**: Let Them Eat Cookies
 - **Subtitle (draft)**: A World of Cookies, Explained
-- **Bundle ID**: `com.letthemeatcookies.app`
+- **Bundle ID**: `com.jordypop.letthemeatcookies`
 - **Version**: 1.0 (build 1)
 - **Category**: Food & Drink
 - **Age rating**: 4+ (no objectionable content)

@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.letthemeatcookies.app"
+    namespace = "com.jordypop.letthemeatcookies"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.letthemeatcookies.app"
+        applicationId "com.jordypop.letthemeatcookies"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
