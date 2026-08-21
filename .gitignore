@@ -22,3 +22,8 @@ release.xcconfig.local
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Capgo OTA signing key — never commit; treat like any other private signing key
+.capgo_key_v2
+.capgo_key_v2.pub
+capgo_key_v2

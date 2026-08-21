@@ -5,6 +5,7 @@ import { Capacitor } from '@capacitor/core'
 import { App as CapacitorApp } from '@capacitor/app'
 import './index.css'
 import App from './App.tsx'
+import { checkForOtaUpdate, markAppReady } from './lib/otaUpdater'
 
 // Android hardware back button -- ported directly from Ramen's main.tsx (itself ported from
 // Cake's): defer to real browser history, which BrowserRouter keeps in sync with actual route
@@ -28,3 +29,7 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+// Fire-and-forget, after the app has already rendered — never blocks startup.
+markAppReady()
+checkForOtaUpdate()
