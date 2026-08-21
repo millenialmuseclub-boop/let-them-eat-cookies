@@ -16,7 +16,9 @@ minutes in App Store Connect.
   Collection, Cookie 101 masthead, Dough/Chocolate Lab headers, lighter Workshop/Crumb rail
   (see git log for full detail).
 - All required GitHub secrets/variables already set (Cloudflare, Capgo, App Store Connect, iOS
-  distribution cert/profile).
+  distribution cert/profile, Android release keystore).
+- Android release signing verified end-to-end: a real signed `.aab` was successfully built in CI
+  against the actual keystore before this doc was finalized — not just configured, tested.
 
 ## Steps, in order
 
@@ -39,8 +41,7 @@ minutes in App Store Connect.
 4. **Attach build 2 to the app version** in App Store Connect, paste the release notes below into
    "What's New in This Version," and submit for review.
 
-5. **Android (Noodles only — this workflow exists; Cookies/Ramen don't have Android release
-   automation yet, see Gaps below)**:
+5. **Android**:
    ```bash
    gh workflow run "Build Signed Android Release Bundle"
    ```
@@ -62,10 +63,11 @@ Feel free to shorten or restyle this — it's a starting draft, not final copy.
 
 ## Known gaps (not addressed in this pass)
 
-- **No Android release automation for Cookies or Ramen** — no keystore secrets exist yet
-  (`ANDROID_KEYSTORE_BASE64` etc. are absent from both repos' GitHub secrets), and no
-  `android-release.yml` workflow exists for either. Noodles has both. If Android matters for
-  Cookies/Ramen, that's a separate setup pass (generate + securely store a release keystore, add
-  the workflow, wire secrets) — happy to do it, just say so.
 - Actual "Submit for Review" in App Store Connect is still a manual click — Apple's submission
   flow (export compliance question, etc.) isn't automated here.
+- Actual upload to Play Console is still a manual step — the workflow produces a signed `.aab`
+  artifact, it doesn't push it anywhere.
+- The release keystore (`.jks`, passwords, alias) was backed up and delivered to you directly as
+  a zip — store it somewhere durable (password manager/vault). It only exists as an opaque GitHub
+  secret otherwise, which works fine for CI builds but isn't human-recoverable if that secret is
+  ever accidentally overwritten.
